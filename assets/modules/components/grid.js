@@ -1,4 +1,4 @@
-define(["module", "react", "Label", "../components/icon/demo1", "../components/icon/demo2", "../components/icon/demo3", "../components/icon/demo12"], function (module, React, Label, Demo1, Demo2, Demo3, Demo12) {
+define(["module", "react", "Label", "../components/grid/demo1", "../components/grid/demo2", "../components/grid/demo3"], function (module, React, Label, Demo1, Demo2, Demo3) {
     "use strict";
 
     var Page = React.createClass({
@@ -10,12 +10,12 @@ define(["module", "react", "Label", "../components/icon/demo1", "../components/i
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "FontIcon 字体图标"
+                    "Grid 栅格"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "语义化的矢量图形。"
+                    "无极栅格。"
                 ),
                 React.createElement(
                     "h1",
@@ -24,30 +24,29 @@ define(["module", "react", "Label", "../components/icon/demo1", "../components/i
                 ),
                 React.createElement(
                     Label,
-                    { grid: 0.5, className: "code-col" },
+                    { grid: 1, className: "code-col" },
                     React.createElement(
                         Label,
                         { className: "code-box" },
                         React.createElement(Demo1, null)
-                    ),
-                    React.createElement(
-                        Label,
-                        { className: "code-box" },
-                        React.createElement(Demo3, null)
-                    ),
-                    React.createElement(
-                        Label,
-                        { className: "code-box" },
-                        React.createElement(Demo12, null)
                     )
                 ),
                 React.createElement(
                     Label,
-                    { grid: 0.5, className: "code-col" },
+                    { grid: 1, className: "code-col" },
                     React.createElement(
                         Label,
                         { className: "code-box" },
                         React.createElement(Demo2, null)
+                    )
+                ),
+                React.createElement(
+                    Label,
+                    { grid: 1, className: "code-col" },
+                    React.createElement(
+                        Label,
+                        { className: "code-box" },
+                        React.createElement(Demo3, null)
                     )
                 )
             );

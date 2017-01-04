@@ -1,5 +1,7 @@
 const React = require("react");
 const Label = require("Label");
+const Row = require("Row");
+const Col = require("Col");
 
 
 let Page = React.createClass({
@@ -77,65 +79,65 @@ let Page = React.createClass({
                 </blockquote>
 
                 <div className="mb-10">
-                    <Label grid={0.25} className="color-box">
-                        <div className="bg-dark color-box-inner">
-                            <div>DARK</div>
-                            <div>#1F2D3D</div>
-                        </div>
-                        <div className="bg-dark-light color-box-inner">
-                            <div>LIGHT DARK</div>
-                            <div>#324057</div>
-                        </div>
-                        <div className="bg-dark-lighter color-box-inner">
-                            <div>LIGHTER DARK</div>
-                            <div>#475669</div>
-                        </div>
-                    </Label>
+                    <Row>
+                        <Col grid={0.25} className="color-box">
+                            <div className="bg-dark color-box-inner">
+                                <div>DARK</div>
+                                <div>#1F2D3D</div>
+                            </div>
+                            <div className="bg-dark-light color-box-inner">
+                                <div>LIGHT DARK</div>
+                                <div>#324057</div>
+                            </div>
+                            <div className="bg-dark-lighter color-box-inner">
+                                <div>LIGHTER DARK</div>
+                                <div>#475669</div>
+                            </div>
+                        </Col>
+                        <Col grid={0.25} className="color-box">
+                            <div className="bg-silver color-box-inner">
+                                <div>Silver</div>
+                                <div>#8492A6</div>
+                            </div>
+                            <div className="bg-silver-light color-box-inner">
+                                <div>LIGHT Silver</div>
+                                <div>#99A9BF</div>
+                            </div>
+                            <div className="bg-silver-lighter color-box-inner">
+                                <div>LIGHTER Silver</div>
+                                <div>#C0CCDA</div>
+                            </div>
+                        </Col>
 
-                    <Label grid={0.25} className="color-box">
-                        <div className="bg-silver color-box-inner">
-                            <div>Silver</div>
-                            <div>#8492A6</div>
-                        </div>
-                        <div className="bg-silver-light color-box-inner">
-                            <div>LIGHT Silver</div>
-                            <div>#99A9BF</div>
-                        </div>
-                        <div className="bg-silver-lighter color-box-inner">
-                            <div>LIGHTER Silver</div>
-                            <div>#C0CCDA</div>
-                        </div>
-                    </Label>
+                        <Col grid={0.25} className="color-box">
+                            <div className="bg-gray color-box-inner text-dark-lighter">
+                                <div>GRAY</div>
+                                <div>#D3DCE6</div>
+                            </div>
+                            <div className="bg-gray-light color-box-inner text-dark-lighter">
+                                <div>LIGHT GRAY</div>
+                                <div>#E5E9F2</div>
+                            </div>
+                            <div className="bg-gray-lighter color-box-inner text-dark-lighter">
+                                <div>LIGHTER GRAY</div>
+                                <div>#EFF2F7</div>
+                            </div>
+                        </Col>
 
-                    <Label grid={0.25} className="color-box">
-                        <div className="bg-gray color-box-inner text-dark-lighter">
-                            <div>GRAY</div>
-                            <div>#D3DCE6</div>
-                        </div>
-                        <div className="bg-gray-light color-box-inner text-dark-lighter">
-                            <div>LIGHT GRAY</div>
-                            <div>#E5E9F2</div>
-                        </div>
-                        <div className="bg-gray-lighter color-box-inner text-dark-lighter">
-                            <div>LIGHTER GRAY</div>
-                            <div>#EFF2F7</div>
-                        </div>
-                    </Label>
+                        <Col grid={0.25} className="color-box">
+                            <div className="bg-white color-box-inner text-dark-lighter">
+                                <div>WHITE</div>
+                                <div>#F9FAFC</div>
+                            </div>
+                            <div className="bg-white-light color-box-inner text-dark-lighter">
+                                <div>LIGHT WHITE</div>
+                                <div>#FFFFFF</div>
+                            </div>
+                            <div className="bg-white color-box-inner text-dark">
 
-                    <Label grid={0.25} className="color-box">
-                        <div className="bg-white color-box-inner text-dark-lighter">
-                            <div>WHITE</div>
-                            <div>#F9FAFC</div>
-                        </div>
-                        <div className="bg-white-light color-box-inner text-dark-lighter">
-                            <div>LIGHT WHITE</div>
-                            <div>#FFFFFF</div>
-                        </div>
-                        <div className="bg-white color-box-inner text-dark">
-
-                        </div>
-                    </Label>
-
+                            </div>
+                        </Col>
+                    </Row>
                 </div>
             </div>
         );

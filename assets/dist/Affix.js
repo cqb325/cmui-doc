@@ -60,8 +60,8 @@ define(["module", "react", "react-dom", "classnames", "utils/Events", "utils/Dom
             var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Affix).call(this, props));
 
             _this.addState({
-                offsetTop: props.offsetTop||0,
-                offsetBottom: props.offsetBottom,
+                offsetTop: props.offsetTop || 0,
+                offsetBottom: props.offsetBottom || 0,
                 target: props.target,
                 offset: null
             });
@@ -69,10 +69,25 @@ define(["module", "react", "react-dom", "classnames", "utils/Events", "utils/Dom
         }
 
         _createClass(Affix, [{
+            key: "componentWillUnmount",
+            value: function componentWillUnmount() {
+                this._isMounted = false;
+
+                var target = null;
+                if (this.state.target) {
+                    target = Dom.query(this.state.target);
+                } else {
+                    target = document.body;
+                }
+                target = Dom.dom(target);
+                Events.off(target[0], "scroll", this._listener);
+            }
+        }, {
             key: "componentDidMount",
             value: function componentDidMount() {
                 var _this2 = this;
 
+                this._isMounted = true;
                 var ele = Dom.dom(ReactDOM.findDOMNode(this));
                 var target = null;
                 if (this.state.target) {
@@ -88,20 +103,24 @@ define(["module", "react", "react-dom", "classnames", "utils/Events", "utils/Dom
                 var bw = target[0].style.borderLeftWidth;
                 var pl = parseFloat(target[0].style.paddingLeft);
 
-                Events.on(target[0], "scroll", function (e) {
-                    if (target[0].scrollTop > needH) {
-                        _this2.setState({
-                            offset: {
-                                top: target[0].scrollTop + parseFloat(_this2.state.offsetTop) - needH,
-                                left: eleOffset.left - parentOffset.left - bw - pl
-                            }
-                        });
-                    } else {
-                        _this2.setState({
-                            offset: null
-                        });
+                var listener = this._listener = function (e) {
+                    if (_this2._isMounted) {
+                        if (target[0].scrollTop > needH) {
+                            _this2.setState({
+                                offset: {
+                                    top: target[0].scrollTop + parseFloat(_this2.state.offsetTop) - needH,
+                                    left: eleOffset.left - parentOffset.left - bw - pl
+                                }
+                            });
+                        } else {
+                            _this2.setState({
+                                offset: null
+                            });
+                        }
                     }
-                });
+                };
+
+                Events.on(target[0], "scroll", listener);
             }
         }, {
             key: "render",

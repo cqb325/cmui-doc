@@ -17,7 +17,9 @@ define(function(module, exports){
             {id:"33", text: "Radio",link: "components/radio"},
             {id:"34", text: "Icon",link: "components/icon"},
             {id:"35", text: "All Icons",link: "components/allIcons"},
-            {id:"36", text: "Affix",link: "components/affix"}
+            {id:"36", text: "Affix",link: "components/affix"},
+            {id:"37", text: "Grid",link: "components/grid"},
+            {id:"38", text: "Breadcrumb",link: "components/breadcrumb"}
         ]}
     ];
 });

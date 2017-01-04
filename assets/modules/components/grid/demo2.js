@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "FontIcon"], function (module, React, BaseDemo, FontIcon) {
+define(["module", "react", "../BaseDemo", "Row", "Col", "FontIcon"], function (module, React, BaseDemo, Row, Col, FontIcon) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -68,19 +68,36 @@ define(["module", "react", "../BaseDemo", "FontIcon"], function (module, React, 
                         "div",
                         { className: "code-box-demo" },
                         React.createElement(
-                            FontIcon,
-                            { font: "cfont", icon: "qq", style: { color: "#20A0FF", fontSize: "30px" } },
-                            " "
+                            Row,
+                            { className: "demo-row" },
+                            React.createElement(
+                                Col,
+                                { grid: 1 / 4, className: "demo-col" },
+                                "grid(1/4)"
+                            ),
+                            React.createElement(
+                                Col,
+                                { grid: { width: 1 / 4, offset: 1 / 2 }, className: "demo-col" },
+                                "grid{{width: 1/4, offset: 1/2}}"
+                            )
                         ),
                         React.createElement(
-                            FontIcon,
-                            { font: "cfont", icon: "iphone", style: { color: "#20A0FF", fontSize: "30px" } },
-                            " "
+                            Row,
+                            { className: "demo-row" },
+                            React.createElement(
+                                Col,
+                                { grid: { width: 1 / 3, offset: 1 / 2 }, className: "demo-col" },
+                                "grid{{width: 1/3, offset: 1/2}}"
+                            )
                         ),
                         React.createElement(
-                            FontIcon,
-                            { font: "cfont", icon: "android", style: { color: "#20A0FF", fontSize: "30px" } },
-                            " "
+                            Row,
+                            { className: "demo-row" },
+                            React.createElement(
+                                Col,
+                                { grid: { width: 1 / 2, offset: 1 / 6 }, className: "demo-col" },
+                                "grid{{width: 1/2, offset: 1/6}}"
+                            )
                         )
                     ),
                     React.createElement(
@@ -89,12 +106,14 @@ define(["module", "react", "../BaseDemo", "FontIcon"], function (module, React, 
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "自定义字体"
+                            "左右偏移"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "设置FontIcon的 font 属性即可设置字体的family，icon属性指向的字就是该字体中的图标，在页面中的head需要引入对应的css样式",
+                            "使用 grid 的 offset 可以将列向右侧偏。例如，offset=",
+                            1 / 2,
+                            " 将元素向右侧偏移了 50% 的宽度。",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),
@@ -104,7 +123,7 @@ define(["module", "react", "../BaseDemo", "FontIcon"], function (module, React, 
                         React.createElement(
                             "pre",
                             { className: "brush: js", ref: "code" },
-                            "\nconst FontIcon = require(\"FontIcon\");\n\nReactDOM.render(\n<div>\n    <FontIcon font=\"cfont\" icon={\"qq\"} style={{color: \"#20A0FF\", fontSize: \"30px\"}}> </FontIcon>\n    <FontIcon font=\"cfont\" icon={\"iphone\"} style={{color: \"#20A0FF\", fontSize: \"30px\"}}> </FontIcon>\n    <FontIcon font=\"cfont\" icon={\"android\"} style={{color: \"#20A0FF\", fontSize: \"30px\"}}> </FontIcon>\n</div>, mountNode);\n"
+                            "\nconst Row = require(\"Row\");\nconst Col = require(\"Col\");\n\nReactDOM.render(\n<div>\n    <Row className=\"demo-row\">\n        <Col grid={1/4} className=\"demo-col\">grid(1/4)</Col>\n        <Col grid={{width: 1/4, offset: 1/2}} className=\"demo-col\">{'grid{{width: 1/4, offset: 1/2}}'}</Col>\n    </Row>\n    <Row className=\"demo-row\">\n        <Col grid={{width: 1/3, offset: 1/2}} className=\"demo-col\">{'grid{{width: 1/3, offset: 1/2}}'}</Col>\n    </Row>\n    <Row className=\"demo-row\">\n        <Col grid={{width: 1/2, offset: 1/6}} className=\"demo-col\">{'grid{{width: 1/2, offset: 1/6}}'}</Col>\n    </Row>\n</div>, mountNode);\n"
                         )
                     )
                 );

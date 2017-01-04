@@ -115,7 +115,7 @@ define(['exports'], function (exports) {
     (function () {
         var text = [];
 
-        text.push('.' + gridPre + '{display: inline-block;zoom: 1;letter-spacing: normal;word-spacing: normal;vertical-align: middle;text-rendering: auto;box-sizing: border-box;}');
+        text.push('.' + gridPre + '{display: inline-block;zoom: 1;letter-spacing: normal;word-spacing: normal;text-rendering: auto;box-sizing: border-box;}');
 
         text.push('.' + gridPre + '-1{width:100%}');
         createStyle(text.join(''));

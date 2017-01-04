@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "FontIcon"], function (module, React, BaseDemo, FontIcon) {
+define(["module", "react", "react-dom", "../BaseDemo", "Breadcrumb", "FontIcon"], function (module, React, ReactDOM, BaseDemo, Breadcrumb, FontIcon) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -68,19 +68,28 @@ define(["module", "react", "../BaseDemo", "FontIcon"], function (module, React, 
                         "div",
                         { className: "code-box-demo" },
                         React.createElement(
-                            FontIcon,
-                            { font: "cfont", icon: "qq", style: { color: "#20A0FF", fontSize: "30px" } },
-                            " "
-                        ),
-                        React.createElement(
-                            FontIcon,
-                            { font: "cfont", icon: "iphone", style: { color: "#20A0FF", fontSize: "30px" } },
-                            " "
-                        ),
-                        React.createElement(
-                            FontIcon,
-                            { font: "cfont", icon: "android", style: { color: "#20A0FF", fontSize: "30px" } },
-                            " "
+                            Breadcrumb,
+                            null,
+                            React.createElement(
+                                Breadcrumb.Item,
+                                null,
+                                React.createElement(FontIcon, { icon: "home" })
+                            ),
+                            React.createElement(
+                                Breadcrumb.Item,
+                                { link: "javascript:void(0)" },
+                                React.createElement(FontIcon, { icon: "list-ul" }),
+                                React.createElement(
+                                    "span",
+                                    null,
+                                    "Application List"
+                                )
+                            ),
+                            React.createElement(
+                                Breadcrumb.Item,
+                                null,
+                                "Application"
+                            )
                         )
                     ),
                     React.createElement(
@@ -89,12 +98,12 @@ define(["module", "react", "../BaseDemo", "FontIcon"], function (module, React, 
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "自定义字体"
+                            "图标"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "设置FontIcon的 font 属性即可设置字体的family，icon属性指向的字就是该字体中的图标，在页面中的head需要引入对应的css样式",
+                            "图标放在文字前面。",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),
@@ -104,7 +113,7 @@ define(["module", "react", "../BaseDemo", "FontIcon"], function (module, React, 
                         React.createElement(
                             "pre",
                             { className: "brush: js", ref: "code" },
-                            "\nconst FontIcon = require(\"FontIcon\");\n\nReactDOM.render(\n<div>\n    <FontIcon font=\"cfont\" icon={\"qq\"} style={{color: \"#20A0FF\", fontSize: \"30px\"}}> </FontIcon>\n    <FontIcon font=\"cfont\" icon={\"iphone\"} style={{color: \"#20A0FF\", fontSize: \"30px\"}}> </FontIcon>\n    <FontIcon font=\"cfont\" icon={\"android\"} style={{color: \"#20A0FF\", fontSize: \"30px\"}}> </FontIcon>\n</div>, mountNode);\n"
+                            "\nconst Breadcrumb = require(\"Breadcrumb\");\nconst FontIcon = require(\"FontIcon\");\n\nReactDOM.render(\n<div>\n    <Breadcrumb>\n        <Breadcrumb.Item>\n            <FontIcon icon={\"home\"}></FontIcon>\n        </Breadcrumb.Item>\n        <Breadcrumb.Item link=\"javascript:void(0)\">\n            <FontIcon icon={\"list-ul\"}></FontIcon>\n            <span>Application List</span>\n        </Breadcrumb.Item>\n        <Breadcrumb.Item>Application</Breadcrumb.Item>\n    </Breadcrumb>\n</div>, mountNode);\n"
                         )
                     )
                 );

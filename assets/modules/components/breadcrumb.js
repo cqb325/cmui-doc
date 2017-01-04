@@ -1,4 +1,4 @@
-define(["module", "react", "Row", "Col", "Label", "../components/button/demo1", "../components/button/demo2", "../components/button/demo3", "../components/button/demo4", "../components/button/demo5"], function (module, React, Row, Col, Label, Demo1, Demo2, Demo3, Demo4, Demo5) {
+define(["module", "react", "Row", "Col", "Label", "../components/breadcrumb/demo1", "../components/breadcrumb/demo2", "../components/breadcrumb/demo3"], function (module, React, Row, Col, Label, Demo1, Demo2, Demo3) {
     "use strict";
 
     var Page = React.createClass({
@@ -10,12 +10,12 @@ define(["module", "react", "Row", "Col", "Label", "../components/button/demo1", 
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Button 按钮"
+                    "Breadcrumb 面包屑"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "按钮用于开始一个即时操作。响应用户点击行为，触发相应的业务逻辑。"
+                    "显示当前页面在系统层级结构中的位置，并能向上返回。"
                 ),
                 React.createElement(
                     "h1",
@@ -37,11 +37,6 @@ define(["module", "react", "Row", "Col", "Label", "../components/button/demo1", 
                             Label,
                             { className: "code-box" },
                             React.createElement(Demo3, null)
-                        ),
-                        React.createElement(
-                            Label,
-                            { className: "code-box" },
-                            React.createElement(Demo5, null)
                         )
                     ),
                     React.createElement(
@@ -51,11 +46,6 @@ define(["module", "react", "Row", "Col", "Label", "../components/button/demo1", 
                             Label,
                             { className: "code-box" },
                             React.createElement(Demo2, null)
-                        ),
-                        React.createElement(
-                            Label,
-                            { className: "code-box" },
-                            React.createElement(Demo4, null)
                         )
                     )
                 )

@@ -1,4 +1,4 @@
-define(["module", "react", "Label"], function (module, React, Label) {
+define(["module", "react", "Label", "Row", "Col"], function (module, React, Label, Row, Col) {
     "use strict";
 
     var Page = React.createClass({
@@ -186,175 +186,179 @@ define(["module", "react", "Label"], function (module, React, Label) {
                     "div",
                     { className: "mb-10" },
                     React.createElement(
-                        Label,
-                        { grid: 0.25, className: "color-box" },
+                        Row,
+                        null,
                         React.createElement(
-                            "div",
-                            { className: "bg-dark color-box-inner" },
+                            Col,
+                            { grid: 0.25, className: "color-box" },
                             React.createElement(
                                 "div",
-                                null,
-                                "DARK"
+                                { className: "bg-dark color-box-inner" },
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "DARK"
+                                ),
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "#1F2D3D"
+                                )
                             ),
                             React.createElement(
                                 "div",
-                                null,
-                                "#1F2D3D"
+                                { className: "bg-dark-light color-box-inner" },
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "LIGHT DARK"
+                                ),
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "#324057"
+                                )
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "bg-dark-lighter color-box-inner" },
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "LIGHTER DARK"
+                                ),
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "#475669"
+                                )
                             )
                         ),
                         React.createElement(
-                            "div",
-                            { className: "bg-dark-light color-box-inner" },
+                            Col,
+                            { grid: 0.25, className: "color-box" },
                             React.createElement(
                                 "div",
-                                null,
-                                "LIGHT DARK"
+                                { className: "bg-silver color-box-inner" },
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "Silver"
+                                ),
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "#8492A6"
+                                )
                             ),
                             React.createElement(
                                 "div",
-                                null,
-                                "#324057"
+                                { className: "bg-silver-light color-box-inner" },
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "LIGHT Silver"
+                                ),
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "#99A9BF"
+                                )
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "bg-silver-lighter color-box-inner" },
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "LIGHTER Silver"
+                                ),
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "#C0CCDA"
+                                )
                             )
                         ),
                         React.createElement(
-                            "div",
-                            { className: "bg-dark-lighter color-box-inner" },
+                            Col,
+                            { grid: 0.25, className: "color-box" },
                             React.createElement(
                                 "div",
-                                null,
-                                "LIGHTER DARK"
+                                { className: "bg-gray color-box-inner text-dark-lighter" },
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "GRAY"
+                                ),
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "#D3DCE6"
+                                )
                             ),
                             React.createElement(
                                 "div",
-                                null,
-                                "#475669"
+                                { className: "bg-gray-light color-box-inner text-dark-lighter" },
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "LIGHT GRAY"
+                                ),
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "#E5E9F2"
+                                )
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "bg-gray-lighter color-box-inner text-dark-lighter" },
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "LIGHTER GRAY"
+                                ),
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "#EFF2F7"
+                                )
                             )
+                        ),
+                        React.createElement(
+                            Col,
+                            { grid: 0.25, className: "color-box" },
+                            React.createElement(
+                                "div",
+                                { className: "bg-white color-box-inner text-dark-lighter" },
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "WHITE"
+                                ),
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "#F9FAFC"
+                                )
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "bg-white-light color-box-inner text-dark-lighter" },
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "LIGHT WHITE"
+                                ),
+                                React.createElement(
+                                    "div",
+                                    null,
+                                    "#FFFFFF"
+                                )
+                            ),
+                            React.createElement("div", { className: "bg-white color-box-inner text-dark" })
                         )
-                    ),
-                    React.createElement(
-                        Label,
-                        { grid: 0.25, className: "color-box" },
-                        React.createElement(
-                            "div",
-                            { className: "bg-silver color-box-inner" },
-                            React.createElement(
-                                "div",
-                                null,
-                                "Silver"
-                            ),
-                            React.createElement(
-                                "div",
-                                null,
-                                "#8492A6"
-                            )
-                        ),
-                        React.createElement(
-                            "div",
-                            { className: "bg-silver-light color-box-inner" },
-                            React.createElement(
-                                "div",
-                                null,
-                                "LIGHT Silver"
-                            ),
-                            React.createElement(
-                                "div",
-                                null,
-                                "#99A9BF"
-                            )
-                        ),
-                        React.createElement(
-                            "div",
-                            { className: "bg-silver-lighter color-box-inner" },
-                            React.createElement(
-                                "div",
-                                null,
-                                "LIGHTER Silver"
-                            ),
-                            React.createElement(
-                                "div",
-                                null,
-                                "#C0CCDA"
-                            )
-                        )
-                    ),
-                    React.createElement(
-                        Label,
-                        { grid: 0.25, className: "color-box" },
-                        React.createElement(
-                            "div",
-                            { className: "bg-gray color-box-inner text-dark-lighter" },
-                            React.createElement(
-                                "div",
-                                null,
-                                "GRAY"
-                            ),
-                            React.createElement(
-                                "div",
-                                null,
-                                "#D3DCE6"
-                            )
-                        ),
-                        React.createElement(
-                            "div",
-                            { className: "bg-gray-light color-box-inner text-dark-lighter" },
-                            React.createElement(
-                                "div",
-                                null,
-                                "LIGHT GRAY"
-                            ),
-                            React.createElement(
-                                "div",
-                                null,
-                                "#E5E9F2"
-                            )
-                        ),
-                        React.createElement(
-                            "div",
-                            { className: "bg-gray-lighter color-box-inner text-dark-lighter" },
-                            React.createElement(
-                                "div",
-                                null,
-                                "LIGHTER GRAY"
-                            ),
-                            React.createElement(
-                                "div",
-                                null,
-                                "#EFF2F7"
-                            )
-                        )
-                    ),
-                    React.createElement(
-                        Label,
-                        { grid: 0.25, className: "color-box" },
-                        React.createElement(
-                            "div",
-                            { className: "bg-white color-box-inner text-dark-lighter" },
-                            React.createElement(
-                                "div",
-                                null,
-                                "WHITE"
-                            ),
-                            React.createElement(
-                                "div",
-                                null,
-                                "#F9FAFC"
-                            )
-                        ),
-                        React.createElement(
-                            "div",
-                            { className: "bg-white-light color-box-inner text-dark-lighter" },
-                            React.createElement(
-                                "div",
-                                null,
-                                "LIGHT WHITE"
-                            ),
-                            React.createElement(
-                                "div",
-                                null,
-                                "#FFFFFF"
-                            )
-                        ),
-                        React.createElement("div", { className: "bg-white color-box-inner text-dark" })
                     )
                 )
             );

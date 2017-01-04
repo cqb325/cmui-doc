@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "FontIcon"], function (module, React, BaseDemo, FontIcon) {
+define(["module", "react", "react-dom", "../BaseDemo", "Breadcrumb", "FontIcon"], function (module, React, ReactDOM, BaseDemo, Breadcrumb, FontIcon) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -68,19 +68,23 @@ define(["module", "react", "../BaseDemo", "FontIcon"], function (module, React, 
                         "div",
                         { className: "code-box-demo" },
                         React.createElement(
-                            FontIcon,
-                            { font: "cfont", icon: "qq", style: { color: "#20A0FF", fontSize: "30px" } },
-                            " "
-                        ),
-                        React.createElement(
-                            FontIcon,
-                            { font: "cfont", icon: "iphone", style: { color: "#20A0FF", fontSize: "30px" } },
-                            " "
-                        ),
-                        React.createElement(
-                            FontIcon,
-                            { font: "cfont", icon: "android", style: { color: "#20A0FF", fontSize: "30px" } },
-                            " "
+                            Breadcrumb,
+                            null,
+                            React.createElement(
+                                Breadcrumb.Item,
+                                null,
+                                "Home"
+                            ),
+                            React.createElement(
+                                Breadcrumb.Item,
+                                { link: "javascript:void(0)" },
+                                "Application Center"
+                            ),
+                            React.createElement(
+                                Breadcrumb.Item,
+                                null,
+                                "Application List"
+                            )
                         )
                     ),
                     React.createElement(
@@ -89,12 +93,12 @@ define(["module", "react", "../BaseDemo", "FontIcon"], function (module, React, 
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "自定义字体"
+                            "基本用法"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "设置FontIcon的 font 属性即可设置字体的family，icon属性指向的字就是该字体中的图标，在页面中的head需要引入对应的css样式",
+                            "最简单的用法。",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),
@@ -104,7 +108,7 @@ define(["module", "react", "../BaseDemo", "FontIcon"], function (module, React, 
                         React.createElement(
                             "pre",
                             { className: "brush: js", ref: "code" },
-                            "\nconst FontIcon = require(\"FontIcon\");\n\nReactDOM.render(\n<div>\n    <FontIcon font=\"cfont\" icon={\"qq\"} style={{color: \"#20A0FF\", fontSize: \"30px\"}}> </FontIcon>\n    <FontIcon font=\"cfont\" icon={\"iphone\"} style={{color: \"#20A0FF\", fontSize: \"30px\"}}> </FontIcon>\n    <FontIcon font=\"cfont\" icon={\"android\"} style={{color: \"#20A0FF\", fontSize: \"30px\"}}> </FontIcon>\n</div>, mountNode);\n"
+                            "\nconst Breadcrumb = require(\"Breadcrumb\");\n\nReactDOM.render(\n<div>\n    <Breadcrumb>\n        <Breadcrumb.Item>Home</Breadcrumb.Item>\n        <Breadcrumb.Item link=\"javascript:void(0)\">Application Center</Breadcrumb.Item>\n        <Breadcrumb.Item>Application List</Breadcrumb.Item>\n    </Breadcrumb>\n</div>, mountNode);\n"
                         )
                     )
                 );

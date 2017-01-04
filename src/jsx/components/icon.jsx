@@ -3,6 +3,7 @@ const Label = require("Label");
 const Demo1 = require("../components/icon/demo1");
 const Demo2 = require("../components/icon/demo2");
 const Demo3 = require("../components/icon/demo3");
+const Demo12 = require("../components/icon/demo12");
 
 
 let Page = React.createClass({
@@ -23,6 +24,9 @@ let Page = React.createClass({
                     </Label>
                     <Label className="code-box">
                         <Demo3></Demo3>
+                    </Label>
+                    <Label className="code-box">
+                        <Demo12></Demo12>
                     </Label>
                 </Label>
                 <Label grid={0.5} className="code-col">
