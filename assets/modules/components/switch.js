@@ -1,4 +1,4 @@
-define(["module", "react", "Label", "../components/switch/demo1", "../components/switch/demo2"], function (module, React, Label, Demo1, Demo2) {
+define(["module", "react", "Label", "../components/switch/demo1", "../components/switch/demo2", "../components/switch/demo3", "../components/switch/demo4", "../components/switch/demo5"], function (module, React, Label, Demo1, Demo2, Demo3, Demo4, Demo5) {
     "use strict";
 
     var Page = React.createClass({
@@ -31,6 +31,16 @@ define(["module", "react", "Label", "../components/switch/demo1", "../components
                         Label,
                         { className: "code-box" },
                         React.createElement(Demo1, null)
+                    ),
+                    React.createElement(
+                        Label,
+                        { className: "code-box" },
+                        React.createElement(Demo3, null)
+                    ),
+                    React.createElement(
+                        Label,
+                        { className: "code-box" },
+                        React.createElement(Demo5, null)
                     )
                 ),
                 React.createElement(
@@ -40,6 +50,11 @@ define(["module", "react", "Label", "../components/switch/demo1", "../components
                         Label,
                         { className: "code-box" },
                         React.createElement(Demo2, null)
+                    ),
+                    React.createElement(
+                        Label,
+                        { className: "code-box" },
+                        React.createElement(Demo4, null)
                     )
                 )
             );

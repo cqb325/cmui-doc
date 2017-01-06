@@ -2,6 +2,9 @@ const React = require("react");
 const Label = require("Label");
 const Demo1 = require("../components/switch/demo1");
 const Demo2 = require("../components/switch/demo2");
+const Demo3 = require("../components/switch/demo3");
+const Demo4 = require("../components/switch/demo4");
+const Demo5 = require("../components/switch/demo5");
 
 
 let Page = React.createClass({
@@ -21,11 +24,20 @@ let Page = React.createClass({
                     <Label className="code-box">
                         <Demo1></Demo1>
                     </Label>
+                    <Label className="code-box">
+                        <Demo3></Demo3>
+                    </Label>
+                    <Label className="code-box">
+                        <Demo5></Demo5>
+                    </Label>
                 </Label>
 
                 <Label grid={0.5} className="code-col">
                     <Label className="code-box">
                         <Demo2></Demo2>
+                    </Label>
+                    <Label className="code-box">
+                        <Demo4></Demo4>
                     </Label>
                 </Label>
             </div>
