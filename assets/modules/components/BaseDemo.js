@@ -91,6 +91,7 @@ define(["module", "react", "react-dom", "core/Ajax"], function (module, React, R
             value: function componentDidMount() {
                 var block = ReactDOM.findDOMNode(this.refs.code);
                 SyntaxHighlighter.highlight({}, block);
+                hljs.highlightBlock(block);
             }
         }]);
 

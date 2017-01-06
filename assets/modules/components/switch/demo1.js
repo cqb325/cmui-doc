@@ -89,8 +89,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Switch"], function (modul
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
                             "pre",
-                            { className: "brush: js", ref: "code" },
-                            "\nconst Switch = require(\"Switch\");\n\nReactDOM.render(\n<div>\n    <Switch></Switch>\n</div>, mountNode);\n"
+                            null,
+                            React.createElement(
+                                "code",
+                                { className: "jsx", ref: "code" },
+                                "\nconst Switch = require(\"Switch\");\n\nReactDOM.render(\n<div>\n    <Switch></Switch>\n</div>, mountNode);\n"
+                            )
                         )
                     )
                 );

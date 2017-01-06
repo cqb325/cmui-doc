@@ -18,7 +18,8 @@ class Demo extends BaseDemo{
                     </div>
                 </div>
                 <div className="code-box-src" ref="boxSrc">
-                    <pre className="brush: js" ref="code">
+                    <pre>
+                        <code className="jsx" ref="code">
                         {`
 const Switch = require("Switch");
 
@@ -27,6 +28,7 @@ ReactDOM.render(
     <Switch></Switch>
 </div>, mountNode);
 `}
+                        </code>
                     </pre>
                 </div>
             </div>

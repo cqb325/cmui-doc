@@ -35,6 +35,7 @@ class BaseDemo extends React.Component {
     componentDidMount(){
         let block = ReactDOM.findDOMNode(this.refs.code);
         SyntaxHighlighter.highlight({}, block);
+        hljs.highlightBlock(block);
     }
 }
 
