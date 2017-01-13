@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "Row", "Col", "FontIcon"], function (module, React, BaseDemo, Row, Col, FontIcon) {
+define(["module", "react", "../BaseDemo", "Row", "Col", "FontIcon", "../Code"], function (module, React, BaseDemo, Row, Col, FontIcon, Code) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -121,8 +121,8 @@ define(["module", "react", "../BaseDemo", "Row", "Col", "FontIcon"], function (m
                         "div",
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
-                            "pre",
-                            { className: "brush: js", ref: "code" },
+                            Code,
+                            { className: "language-jsx" },
                             "\nconst Row = require(\"Row\");\nconst Col = require(\"Col\");\n\nReactDOM.render(\n<div>\n    <Row className=\"demo-row\">\n        <Col grid={1/4} className=\"demo-col\">grid(1/4)</Col>\n        <Col grid={{width: 1/4, offset: 1/2}} className=\"demo-col\">{'grid{{width: 1/4, offset: 1/2}}'}</Col>\n    </Row>\n    <Row className=\"demo-row\">\n        <Col grid={{width: 1/3, offset: 1/2}} className=\"demo-col\">{'grid{{width: 1/3, offset: 1/2}}'}</Col>\n    </Row>\n    <Row className=\"demo-row\">\n        <Col grid={{width: 1/2, offset: 1/6}} className=\"demo-col\">{'grid{{width: 1/2, offset: 1/6}}'}</Col>\n    </Row>\n</div>, mountNode);\n"
                         )
                     )

@@ -2,6 +2,7 @@ const React = require("react");
 const BaseDemo = require("../BaseDemo");
 const FontIcon = require("FontIcon");
 const Pagination = require("Pagination");
+const Code = require("../Code");
 
 class Demo extends BaseDemo{
     render(){
@@ -20,7 +21,7 @@ class Demo extends BaseDemo{
                     </div>
                 </div>
                 <div className="code-box-src" ref="boxSrc">
-                    <pre className="brush: js" ref="code">
+                    <Code className="language-jsx">
                         {`
 const Pagination = require("Pagination");
 
@@ -31,7 +32,7 @@ ReactDOM.render(
     <Pagination theme="primary" shape="none" displayInfo={false} current={1} pageSize={10} total={100}></Pagination>
 </div>, mountNode);
 `}
-                    </pre>
+                    </Code>
                 </div>
             </div>
         );

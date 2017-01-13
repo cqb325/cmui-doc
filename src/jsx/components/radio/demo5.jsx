@@ -3,6 +3,7 @@ const BaseDemo = require("../BaseDemo");
 const CheckBox = require("CheckBox");
 const RadioGroup = require("RadioGroup");
 const FontIcon = require("FontIcon");
+const Code = require("../Code");
 
 class Demo extends BaseDemo{
     render(){
@@ -24,7 +25,7 @@ class Demo extends BaseDemo{
                     </div>
                 </div>
                 <div className="code-box-src" ref="boxSrc">
-                    <pre className="brush: js" ref="code">
+                    <Code className="language-jsx">
                         {`
 const RadioGroup = require("RadioGroup");
 
@@ -39,7 +40,7 @@ ReactDOM.render(
     <RadioGroup data={groupData} stick={true} value="0" valueField="type" textField="name"></RadioGroup>
 </div>, mountNode);
 `}
-                    </pre>
+                    </Code>
                 </div>
             </div>
         );

@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "FontIcon", "Steps", "Button"], function (module, React, BaseDemo, FontIcon, Steps, Button) {
+define(["module", "react", "../BaseDemo", "FontIcon", "Steps", "../Code", "Button"], function (module, React, BaseDemo, FontIcon, Steps, Code, Button) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -158,8 +158,8 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Steps", "Button"], functi
                         "div",
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
-                            "pre",
-                            { className: "brush: js", ref: "code" },
+                            Code,
+                            { className: "language-jsx" },
                             "\nconst Steps = require(\"Steps\");\nconst Step = Steps.Step;\nconst Button = require(\"Button\");\n\nclass Demo extends BaseDemo{\n    constructor(props){\n        super(props);\n\n        this.state = {\n            current: 0\n        };\n\n        this.steps = [{\n            title: 'First',\n            content: 'First-content',\n        }, {\n            title: 'Second',\n            content: 'Second-content',\n        }, {\n            title: 'Last',\n            content: 'Last-content',\n        }];\n\n        this.next = this.next.bind(this);\n        this.prev = this.prev.bind(this);\n    }\n\n    next(){\n        let current = this.state.current;\n        if(current < this.steps.length - 1){\n            current ++;\n\n            this.setState({\n                current\n            });\n        }\n    }\n\n    prev(){\n        let current = this.state.current;\n        if(current > 0){\n            current --;\n\n            this.setState({\n                current\n            });\n        }\n    }\n\n    render(){\n        return (\n            <div>\n                <Steps current={this.state.current}>\n                    {this.steps.map((step)=>{ return <Step key={step.title} title={step.title} /> })}\n                </Steps>\n                <div className=\"steps-content\">{this.steps[this.state.current].content}</div>\n\n                <div className=\"mt-20\">\n                    <Button theme=\"primary\" onClick={this.next}>Next</Button>\n                    <Button theme=\"primary\" onClick={this.prev} className=\"ml-15\">Prev</Button>\n                </div>\n            </div>\n        );\n    }\n}\nReactDOM.render(\n<Demo/>, mountNode);\n"
                         )
                     )

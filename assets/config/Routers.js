@@ -25,7 +25,9 @@ define(function(module, exports){
             {id:"311", text: "Pagination",link: "components/pagination"},
             {id:"312", text: "Input",link: "components/input"},
             {id:"313", text: "Steps",link: "components/steps"},
-            {id:"314", text: "Switch",link: "components/switch"}
+            {id:"314", text: "Switch",link: "components/switch"},
+            {id:"315", text: "Card",link: "components/card"},
+            {id:"316", text: "Tooltip",link: "components/tooltip"}
         ]}
     ];
 });

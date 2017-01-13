@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "Button", "FontIcon"], function (module, React, BaseDemo, Button, FontIcon) {
+define(["module", "react", "../BaseDemo", "Button", "FontIcon", "../Code"], function (module, React, BaseDemo, Button, FontIcon, Code) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -135,8 +135,8 @@ define(["module", "react", "../BaseDemo", "Button", "FontIcon"], function (modul
                         "div",
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
-                            "pre",
-                            { className: "brush: js", ref: "code" },
+                            Code,
+                            { className: "language-jsx" },
                             "\nconst Button = require(\"Button\");\n\nReactDOM.render(\n<div>\n    <div>\n        <Button>Default</Button>\n        <Button disabled={true} className=\"ml-10\">Default</Button>\n    </div>\n    <div className=\"mt-15\">\n        <Button theme=\"primary\" icon=\"cloud\"></Button>\n        <Button theme=\"primary\" disabled={true} icon=\"cloud\" className=\"ml-10\"></Button>\n    </div>\n    <div className=\"mt-15\">\n        <Button theme=\"primary\" raised={true}>Raised</Button>\n        <Button theme=\"primary\" disabled={true} className=\"ml-10\">Disabled</Button>\n    </div>\n\n    <div className=\"mt-15\">\n        <Button theme=\"primary\" flat={true}>Flat</Button>\n        <Button theme=\"primary\" flat={true} disabled={true} className=\"ml-10\">Disabled</Button>\n    </div>\n</div>, mountNode);\n"
                         )
                     )

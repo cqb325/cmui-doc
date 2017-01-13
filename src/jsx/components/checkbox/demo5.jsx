@@ -3,6 +3,7 @@ const BaseDemo = require("../BaseDemo");
 const CheckBox = require("CheckBox");
 const CheckBoxGroup = require("CheckBoxGroup");
 const FontIcon = require("FontIcon");
+const Code = require("../Code");
 
 class Demo extends BaseDemo{
     render(){
@@ -28,7 +29,7 @@ class Demo extends BaseDemo{
                     </div>
                 </div>
                 <div className="code-box-src" ref="boxSrc">
-                    <pre className="brush: js" ref="code">
+                    <Code className="language-jsx">
                         {`
 const CheckBox = require("CheckBox");
 const CheckBoxGroup = require("CheckBoxGroup");
@@ -45,7 +46,7 @@ ReactDOM.render(
     <CheckBoxGroup data={groupData} value="0,1" disabled={true} valueField="type" textField="name"></CheckBoxGroup>
 </div>, mountNode);
 `}
-                    </pre>
+                    </Code>
                 </div>
             </div>
         );

@@ -1,6 +1,7 @@
 const React = require("react");
 const BaseDemo = require("../BaseDemo");
 const FontIcon = require("FontIcon");
+const Code = require("../Code");
 
 class Demo extends BaseDemo{
     render(){
@@ -19,7 +20,7 @@ class Demo extends BaseDemo{
                     </div>
                 </div>
                 <div className="code-box-src" ref="boxSrc">
-                    <pre className="brush: js" ref="code">
+                    <Code className="language-jsx">
                         {`
 const FontIcon = require("FontIcon");
 
@@ -29,7 +30,7 @@ ReactDOM.render(
     <FontIcon icon="spinner" style={style} spin={true} pulse={true}></FontIcon>
 </div>, mountNode);
 `}
-                    </pre>
+                    </Code>
                 </div>
             </div>
         );

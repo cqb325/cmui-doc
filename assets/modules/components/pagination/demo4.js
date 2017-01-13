@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "FontIcon", "Pagination"], function (module, React, BaseDemo, FontIcon, Pagination) {
+define(["module", "react", "../BaseDemo", "FontIcon", "Pagination", "../Code"], function (module, React, BaseDemo, FontIcon, Pagination, Code) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -90,8 +90,8 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Pagination"], function (m
                         "div",
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
-                            "pre",
-                            { className: "brush: js", ref: "code" },
+                            Code,
+                            { className: "language-jsx" },
                             "\nconst Pagination = require(\"Pagination\");\n\nReactDOM.render(\n<div>\n    <Pagination theme=\"primary\" current={1} pageSize={10} total={100}></Pagination>\n    <Pagination theme=\"primary\" shape=\"circle\" current={1} pageSize={10} total={100}></Pagination>\n    <Pagination theme=\"primary\" shape=\"none\" displayInfo={false} current={1} pageSize={10} total={100}></Pagination>\n</div>, mountNode);\n"
                         )
                     )

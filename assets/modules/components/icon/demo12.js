@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "FontIcon"], function (module, React, BaseDemo, FontIcon) {
+define(["module", "react", "../BaseDemo", "FontIcon", "../Code"], function (module, React, BaseDemo, FontIcon, Code) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -102,8 +102,8 @@ define(["module", "react", "../BaseDemo", "FontIcon"], function (module, React, 
                         "div",
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
-                            "pre",
-                            { className: "brush: js", ref: "code" },
+                            Code,
+                            { className: "language-jsx" },
                             "\nconst FontIcon = require(\"FontIcon\");\n\nReactDOM.render(\n<div>\n    <FontIcon font=\"cfont\" icon={\"qq\"} style={{color: \"#20A0FF\", fontSize: \"30px\"}}> </FontIcon>\n    <FontIcon font=\"cfont\" icon={\"iphone\"} style={{color: \"#20A0FF\", fontSize: \"30px\"}}> </FontIcon>\n    <FontIcon font=\"cfont\" icon={\"android\"} style={{color: \"#20A0FF\", fontSize: \"30px\"}}> </FontIcon>\n</div>, mountNode);\n"
                         )
                     )

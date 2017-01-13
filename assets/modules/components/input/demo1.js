@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "FontIcon", "Input"], function (module, React, BaseDemo, FontIcon, Input) {
+define(["module", "react", "../BaseDemo", "FontIcon", "Input", "../Code"], function (module, React, BaseDemo, FontIcon, Input, Code) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -88,8 +88,8 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Input"], function (module
                         "div",
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
-                            "pre",
-                            { className: "brush: js", ref: "code" },
+                            Code,
+                            { className: "language-jsx" },
                             "\nconst Input = require(\"Input\");\n\nReactDOM.render(\n<div>\n    <Input name=\"text\"  placeholder=\"Basic usage\"></Input>\n</div>, mountNode);\n"
                         )
                     )

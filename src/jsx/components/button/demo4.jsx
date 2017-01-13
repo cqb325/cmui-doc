@@ -2,6 +2,7 @@ const React = require("react");
 const BaseDemo = require("../BaseDemo");
 const Button = require("Button");
 const FontIcon = require("FontIcon");
+const Code = require("../Code");
 
 class Demo extends BaseDemo{
 
@@ -35,7 +36,7 @@ class Demo extends BaseDemo{
                     </div>
                 </div>
                 <div className="code-box-src" ref="boxSrc">
-                    <pre className="brush: js" ref="code">
+                    <Code className="language-jsx">
                         {`
 const Button = require("Button");
 
@@ -60,7 +61,7 @@ ReactDOM.render(
     </div>
 </div>, mountNode);
 `}
-                    </pre>
+                    </Code>
                 </div>
             </div>
         );

@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "FontIcon"], function (module, React, BaseDemo, FontIcon) {
+define(["module", "react", "../BaseDemo", "FontIcon", "../Code"], function (module, React, BaseDemo, FontIcon, Code) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -124,8 +124,8 @@ define(["module", "react", "../BaseDemo", "FontIcon"], function (module, React, 
                         "div",
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
-                            "pre",
-                            { className: "brush: js", ref: "code" },
+                            Code,
+                            { className: "language-jsx" },
                             "\nconst FontIcon = require(\"FontIcon\");\n\nReactDOM.render(\n<div>\n    <FontIcon icon=\"camera-retro\" style={style}> normal size</FontIcon><br/>\n    <FontIcon icon=\"camera-retro\" style={style} size=\"lg\"> lg size</FontIcon><br/>\n    <FontIcon icon=\"camera-retro\" style={style} size=\"2x\"> 2x size</FontIcon><br/>\n    <FontIcon icon=\"camera-retro\" style={style} size=\"3x\"> 3x size</FontIcon><br/>\n    <FontIcon icon=\"camera-retro\" style={style} size=\"4x\"> 4x size</FontIcon><br/>\n    <FontIcon icon=\"camera-retro\" style={style} size=\"5x\"> 5x size</FontIcon><br/>\n</div>, mountNode);\n"
                         )
                     )

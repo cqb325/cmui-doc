@@ -1,4 +1,4 @@
-define(["module", "react", "react-dom", "../BaseDemo", "Button", "FontIcon"], function (module, React, ReactDOM, BaseDemo, Button, FontIcon) {
+define(["module", "react", "react-dom", "../BaseDemo", "Button", "FontIcon", "../Code"], function (module, React, ReactDOM, BaseDemo, Button, FontIcon, Code) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -144,8 +144,8 @@ define(["module", "react", "react-dom", "../BaseDemo", "Button", "FontIcon"], fu
                         "div",
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
-                            "pre",
-                            { className: "brush: js", ref: "code" },
+                            Code,
+                            { className: "language-jsx" },
                             "\nconst Button = require(\"Button\");\n\nReactDOM.render(\n<div>\n    <div>\n        <Button theme=\"default\" className=\"mr-5\">Default</Button>\n        <Button theme=\"primary\" className=\"mr-5\">Primary</Button>\n        <Button theme=\"success\" className=\"mr-5\">Success</Button>\n    </div>\n    <div className=\"mt-15\">\n        <Button theme=\"default\" size=\"large\" className=\"mr-5\">Default</Button>\n        <Button theme=\"primary\" size=\"large\" className=\"mr-5\">Primary</Button>\n        <Button theme=\"success\" size=\"large\" className=\"mr-5\">Success</Button>\n    </div>\n    <div className=\"mt-15\">\n        <Button theme=\"default\" size=\"small\" className=\"mr-5\">Default</Button>\n        <Button theme=\"primary\" size=\"small\" className=\"mr-5\">Primary</Button>\n        <Button theme=\"success\" size=\"small\" className=\"mr-5\">Success</Button>\n    </div>\n</div>, mountNode);\n"
                         )
                     )

@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "CheckBox", "FontIcon"], function (module, React, BaseDemo, CheckBox, FontIcon) {
+define(["module", "react", "../BaseDemo", "CheckBox", "FontIcon", "../Code"], function (module, React, BaseDemo, CheckBox, FontIcon, Code) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -89,8 +89,8 @@ define(["module", "react", "../BaseDemo", "CheckBox", "FontIcon"], function (mod
                         "div",
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
-                            "pre",
-                            { className: "brush: js", ref: "code" },
+                            Code,
+                            { className: "language-jsx" },
                             "\nconst CheckBox = require(\"CheckBox\");\n\nReactDOM.render(\n<div>\n    <CheckBox value=\"0\" label=\"Iphone\" disabled={true}/>\n    <CheckBox value=\"1\" label=\"Android\" disabled={true} checked={true}/>\n</div>, mountNode);\n"
                         )
                     )

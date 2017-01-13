@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "Button", "ButtonGroup", "FontIcon"], function (module, React, BaseDemo, Button, ButtonGroup, FontIcon) {
+define(["module", "react", "../BaseDemo", "Button", "ButtonGroup", "FontIcon", "../Code"], function (module, React, BaseDemo, Button, ButtonGroup, FontIcon, Code) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -142,8 +142,8 @@ define(["module", "react", "../BaseDemo", "Button", "ButtonGroup", "FontIcon"], 
                         "div",
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
-                            "pre",
-                            { className: "brush: js", ref: "code" },
+                            Code,
+                            { className: "language-jsx" },
                             "\nconst Button = require(\"Button\");\nconst ButtonGroup = require(\"ButtonGroup\");\n\nclass Demo extends BaseDemo{\n\n    constructor(props){\n        super(props);\n\n        this.state = {\n            size: \"default\"\n        }\n    }\n\n    componentDidMount(){\n        this.refs.btnGroup.on(\"select\", (btn)=>{\n            let size = btn.props[\"data-size\"];\n            this.setState({\n                size: size\n            });\n        });\n    }\n\n    render(){\n        <div>\n            <div>\n                <ButtonGroup ref=\"btnGroup\">\n                    <Button theme=\"primary\" data-size=\"small\">Small</Button>\n                    <Button theme=\"primary\" active={true} data-size=\"default\">Default</Button>\n                    <Button theme=\"primary\" data-size=\"large\">Large</Button>\n                </ButtonGroup>\n            </div>\n            <div className=\"mt-15\">\n                <Button theme=\"primary\" size={this.state.size} icon=\"cloud\"></Button>\n                <Button theme=\"primary\" size={this.state.size} raised={true} className=\"ml-10\">Raised</Button>\n                <Button theme=\"primary\" size={this.state.size} raised={true} icon=\"download\" className=\"ml-10\">Download</Button>\n            </div>\n        </div>\n    }\n}\n"
                         )
                     )

@@ -3,6 +3,7 @@ const ReactDOM = require("react-dom");
 const BaseDemo = require("../BaseDemo");
 const DateTime = require("DateTime");
 const FontIcon = require("FontIcon");
+const Code = require("../Code");
 
 class Demo extends BaseDemo{
     render(){
@@ -19,7 +20,7 @@ class Demo extends BaseDemo{
                     </div>
                 </div>
                 <div className="code-box-src" ref="boxSrc">
-                    <pre className="brush: js" ref="code">
+                    <Code className="language-jsx">
                         {`
 const DateTime = require("DateTime");
 
@@ -28,7 +29,7 @@ ReactDOM.render(
     <DateTime theme="black"></DateTime>
 </div>, mountNode);
 `}
-                    </pre>
+                    </Code>
                 </div>
             </div>
         );

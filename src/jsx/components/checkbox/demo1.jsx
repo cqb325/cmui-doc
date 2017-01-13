@@ -2,6 +2,7 @@ const React = require("react");
 const BaseDemo = require("../BaseDemo");
 const CheckBox = require("CheckBox");
 const FontIcon = require("FontIcon");
+const Code = require("../Code");
 
 class Demo extends BaseDemo{
     render(){
@@ -20,7 +21,7 @@ class Demo extends BaseDemo{
                     </div>
                 </div>
                 <div className="code-box-src" ref="boxSrc">
-                    <pre className="brush: js" ref="code">
+                    <Code className="language-jsx">
                         {`
 const CheckBox = require("CheckBox");
 
@@ -31,7 +32,7 @@ ReactDOM.render(
     <CheckBox value="2" label="WinPhone"/>
 </div>, mountNode);
 `}
-                    </pre>
+                    </Code>
                 </div>
             </div>
         );

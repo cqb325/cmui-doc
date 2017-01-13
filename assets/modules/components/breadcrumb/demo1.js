@@ -1,4 +1,4 @@
-define(["module", "react", "react-dom", "../BaseDemo", "Breadcrumb", "FontIcon"], function (module, React, ReactDOM, BaseDemo, Breadcrumb, FontIcon) {
+define(["module", "react", "react-dom", "../BaseDemo", "Breadcrumb", "FontIcon", "../Code"], function (module, React, ReactDOM, BaseDemo, Breadcrumb, FontIcon, Code) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -106,8 +106,8 @@ define(["module", "react", "react-dom", "../BaseDemo", "Breadcrumb", "FontIcon"]
                         "div",
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
-                            "pre",
-                            { className: "brush: js", ref: "code" },
+                            Code,
+                            { className: "language-jsx" },
                             "\nconst Breadcrumb = require(\"Breadcrumb\");\n\nReactDOM.render(\n<div>\n    <Breadcrumb>\n        <Breadcrumb.Item>Home</Breadcrumb.Item>\n        <Breadcrumb.Item link=\"javascript:void(0)\">Application Center</Breadcrumb.Item>\n        <Breadcrumb.Item>Application List</Breadcrumb.Item>\n    </Breadcrumb>\n</div>, mountNode);\n"
                         )
                     )

@@ -247,6 +247,7 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
                 if (!rules["required"] && (value == null || value == "" || value == undefined)) {
                     if (this.state.errorTip) {
                         this.setState({ errorTip: null });
+                        this.refs.tooltip.setTitle(null);
                     }
                     return true;
                 }
@@ -295,6 +296,7 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
                 this.emit("valid", value, true, this);
 
                 this.setState({ errorTip: null });
+                this.refs.tooltip.setTitle(null);
                 return true;
             }
         }, {
@@ -359,6 +361,7 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
                     }
                     if (this._isMounted) {
                         this.setState({ errorTip: errorTip });
+                        this.refs.tooltip.setTitle(errorTip);
                     }
                     if (this.props.onValid) {
                         this.props.onValid(value, remoteRet, this);
@@ -384,6 +387,7 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
                         errorTip = errorTip.call(null, rule.parameters);
                     }
                     this.setState({ errorTip: errorTip });
+                    this.refs.tooltip.setTitle(errorTip);
                     if (this.props.onValid) {
                         this.props.onValid(value, result, this);
                     }
@@ -391,15 +395,6 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
                 }
 
                 return result;
-            }
-        }, {
-            key: "renderErrorTip",
-            value: function renderErrorTip() {
-                if (this.state.errorTip) {
-                    return React.createElement(Tooltip, { theme: "danger", bindTarget: this, className: "error-tip", align: this._tipAlign, ref: "tooltip", content: this.state.errorTip });
-                } else {
-                    return null;
-                }
             }
         }, {
             key: "getReference",
@@ -448,6 +443,7 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
             key: "setErrorTip",
             value: function setErrorTip(msg) {
                 this.setState({ errorTip: msg });
+                this.refs.tooltip.setTitle(msg);
             }
         }, {
             key: "setRule",
@@ -488,7 +484,6 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
                 });
 
                 var items = this._getControl(type);
-                var errorTip = this.renderErrorTip();
                 var customChildren = this._renderChildren();
 
                 var labelEle = null;
@@ -509,12 +504,15 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
                     }
                 }
                 return React.createElement(
-                    "div",
-                    { className: className, style: style },
-                    labelEle,
-                    items,
-                    customChildren,
-                    errorTip
+                    Tooltip,
+                    { theme: "error", className: "error-tip", align: this._tipAlign, ref: "tooltip", title: this.state.errorTip },
+                    React.createElement(
+                        "div",
+                        { className: className, style: style },
+                        labelEle,
+                        items,
+                        customChildren
+                    )
                 );
             }
         }]);

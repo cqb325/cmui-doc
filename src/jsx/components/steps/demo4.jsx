@@ -3,6 +3,7 @@ const BaseDemo = require("../BaseDemo");
 const FontIcon = require("FontIcon");
 const Steps = require("Steps");
 const Step = Steps.Step;
+const Code = require("../Code");
 
 const Button = require("Button");
 
@@ -73,7 +74,7 @@ class Demo extends BaseDemo{
                     </div>
                 </div>
                 <div className="code-box-src" ref="boxSrc">
-                    <pre className="brush: js" ref="code">
+                    <Code className="language-jsx">
                         {`
 const Steps = require("Steps");
 const Step = Steps.Step;
@@ -143,7 +144,7 @@ class Demo extends BaseDemo{
 ReactDOM.render(
 <Demo/>, mountNode);
 `}
-                    </pre>
+                    </Code>
                 </div>
             </div>
         );

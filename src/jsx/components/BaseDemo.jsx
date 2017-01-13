@@ -19,24 +19,6 @@ class BaseDemo extends React.Component {
         var boxSrc = ReactDOM.findDOMNode(this.refs.boxSrc);
         $(boxSrc).toggleClass("active");
     }
-
-    componentWillMount(){
-        // if(this.url) {
-        //     Ajax.ajax({
-        //         url: "../src/jsx/components/button/demo1.jsx",
-        //         dataType: "text",
-        //         method: "get"
-        //     }).then((data)=> {
-        //         this.setState({src: `${data}`});
-        //     });
-        // }
-    }
-
-    componentDidMount(){
-        let block = ReactDOM.findDOMNode(this.refs.code);
-        SyntaxHighlighter.highlight({}, block);
-        hljs.highlightBlock(block);
-    }
 }
 
 module.exports = BaseDemo;

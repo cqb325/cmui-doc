@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "Button", "ButtonGroup", "FontIcon"], function (module, React, BaseDemo, Button, ButtonGroup, FontIcon) {
+define(["module", "react", "../BaseDemo", "Button", "ButtonGroup", "FontIcon", "../Code"], function (module, React, BaseDemo, Button, ButtonGroup, FontIcon, Code) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -139,8 +139,8 @@ define(["module", "react", "../BaseDemo", "Button", "ButtonGroup", "FontIcon"], 
                         "div",
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
-                            "pre",
-                            { className: "brush: js", ref: "code" },
+                            Code,
+                            { className: "language-jsx" },
                             "\nconst Button = require(\"Button\");\nconst ButtonGroup = require(\"ButtonGroup\");\n\nReactDOM.render(\n<div>\n    <div>\n        <ButtonGroup>\n            <Button>Default</Button>\n            <Button>Default</Button>\n            <Button>Default</Button>\n        </ButtonGroup>\n    </div>\n    <div className=\"mt-15\">\n        <ButtonGroup>\n            <Button theme=\"primary\" icon=\"cloud\"></Button>\n            <Button theme=\"primary\" icon=\"cloud\"></Button>\n            <Button theme=\"primary\" icon=\"cloud\"></Button>\n        </ButtonGroup>\n    </div>\n    <div className=\"mt-15\">\n        <ButtonGroup>\n            <Button theme=\"primary\" icon=\"angle-left\">Go back</Button>\n            <Button theme=\"primary\" icon=\"angle-right\" iconAlign=\"right\">Go forward</Button>\n        </ButtonGroup>\n    </div>\n</div>, mountNode);\n"
                         )
                     )

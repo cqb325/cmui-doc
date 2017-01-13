@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "FontIcon", "Switch"], function (module, React, BaseDemo, FontIcon, Switch) {
+define(["module", "react", "../BaseDemo", "FontIcon", "Switch", "../Code"], function (module, React, BaseDemo, FontIcon, Switch, Code) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -88,13 +88,9 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Switch"], function (modul
                         "div",
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
-                            "pre",
-                            null,
-                            React.createElement(
-                                "code",
-                                { className: "jsx", ref: "code" },
-                                "\nconst Switch = require(\"Switch\");\n\nReactDOM.render(\n<div>\n    <Switch></Switch>\n</div>, mountNode);\n"
-                            )
+                            Code,
+                            { className: "language-jsx" },
+                            "\nconst Switch = require(\"Switch\");\n\nReactDOM.render(\n<div>\n    <Switch></Switch>\n</div>, mountNode);\n"
                         )
                     )
                 );

@@ -4,6 +4,7 @@ const BaseDemo = require("../BaseDemo");
 const DateRange = require("DateRange");
 const FontIcon = require("FontIcon");
 const moment = require("moment");
+const Code = require("../Code");
 
 class Demo extends BaseDemo{
     render(){
@@ -24,7 +25,7 @@ class Demo extends BaseDemo{
                     </div>
                 </div>
                 <div className="code-box-src" ref="boxSrc">
-                    <pre className="brush: js" ref="code">
+                    <Code className="language-jsx">
                         {`
 const DateTime = require("DateTime");
 
@@ -33,7 +34,7 @@ ReactDOM.render(
     <DateRange maxRange={7}></DateRange>
 </div>, mountNode);
 `}
-                    </pre>
+                    </Code>
                 </div>
             </div>
         );

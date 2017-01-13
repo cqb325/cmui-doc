@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "Button", "Affix", "FontIcon"], function (module, React, BaseDemo, Button, Affix, FontIcon) {
+define(["module", "react", "../BaseDemo", "Button", "Affix", "FontIcon", "../Code"], function (module, React, BaseDemo, Button, Affix, FontIcon, Code) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -102,8 +102,8 @@ define(["module", "react", "../BaseDemo", "Button", "Affix", "FontIcon"], functi
                         "div",
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
-                            "pre",
-                            { className: "brush: js", ref: "code" },
+                            Code,
+                            { className: "language-jsx" },
                             "\nconst Button = require(\"Button\");\nconst Affix = require(\"Affix\");\n\nReactDOM.render(\n<div>\n    <Affix target=\".desktop-wrap\">\n        <Button theme={\"primary\"}>Affix</Button>\n    </Affix>\n    <div>temp</div>\n    <div style={{height: \"1000px\"}}></div>\n</div>, mountNode);\n"
                         )
                     )

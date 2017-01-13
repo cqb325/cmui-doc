@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "RadioGroup", "FontIcon"], function (module, React, BaseDemo, RadioGroup, FontIcon) {
+define(["module", "react", "../BaseDemo", "RadioGroup", "FontIcon", "../Code"], function (module, React, BaseDemo, RadioGroup, FontIcon, Code) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -90,8 +90,8 @@ define(["module", "react", "../BaseDemo", "RadioGroup", "FontIcon"], function (m
                         "div",
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
-                            "pre",
-                            { className: "brush: js", ref: "code" },
+                            Code,
+                            { className: "language-jsx" },
                             "\nconst RadioGroup = require(\"RadioGroup\");\n\nlet groupData = [\n    {id: \"0\", text: \"iPhone\"},\n    {id: \"1\", text: \"Android\"},\n    {id: \"2\", text: \"WinPhone\"}\n];\n\nReactDOM.render(\n<div>\n    <RadioGroup data={groupData} disabled={true} value=\"0\"></RadioGroup>\n</div>, mountNode);\n"
                         )
                     )

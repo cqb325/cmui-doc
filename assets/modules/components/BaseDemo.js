@@ -73,26 +73,6 @@ define(["module", "react", "react-dom", "core/Ajax"], function (module, React, R
                 var boxSrc = ReactDOM.findDOMNode(this.refs.boxSrc);
                 $(boxSrc).toggleClass("active");
             }
-        }, {
-            key: "componentWillMount",
-            value: function componentWillMount() {
-                // if(this.url) {
-                //     Ajax.ajax({
-                //         url: "../src/jsx/components/button/demo1.jsx",
-                //         dataType: "text",
-                //         method: "get"
-                //     }).then((data)=> {
-                //         this.setState({src: `${data}`});
-                //     });
-                // }
-            }
-        }, {
-            key: "componentDidMount",
-            value: function componentDidMount() {
-                var block = ReactDOM.findDOMNode(this.refs.code);
-                SyntaxHighlighter.highlight({}, block);
-                hljs.highlightBlock(block);
-            }
         }]);
 
         return BaseDemo;

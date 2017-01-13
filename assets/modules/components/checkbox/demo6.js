@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "CheckBoxGroup", "FontIcon"], function (module, React, BaseDemo, CheckBoxGroup, FontIcon) {
+define(["module", "react", "../BaseDemo", "CheckBoxGroup", "FontIcon", "../Code"], function (module, React, BaseDemo, CheckBoxGroup, FontIcon, Code) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -88,8 +88,8 @@ define(["module", "react", "../BaseDemo", "CheckBoxGroup", "FontIcon"], function
                         "div",
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
-                            "pre",
-                            { className: "brush: js", ref: "code" },
+                            Code,
+                            { className: "language-jsx" },
                             "\nconst CheckBoxGroup = require(\"CheckBoxGroup\");\n\nReactDOM.render(\n<div>\n    <CheckBoxGroup url=\"data.json\" value=\"0\" valueField=\"type\" textField=\"name\"></CheckBoxGroup>\n</div>, mountNode);\n"
                         )
                     )

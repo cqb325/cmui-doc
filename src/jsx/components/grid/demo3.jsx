@@ -3,6 +3,7 @@ const BaseDemo = require("../BaseDemo");
 const Row = require("Row");
 const Col = require("Col");
 const FontIcon = require("FontIcon");
+const Code = require("../Code");
 
 class Demo extends BaseDemo{
     render(){
@@ -38,7 +39,7 @@ class Demo extends BaseDemo{
                     </div>
                 </div>
                 <div className="code-box-src" ref="boxSrc">
-                    <pre className="brush: js" ref="code">
+                    <Code className="language-jsx">
                         {`
 const Row = require("Row");
 const Col = require("Col");
@@ -67,7 +68,7 @@ ReactDOM.render(
     </Row>
 </div>, mountNode);
 `}
-                    </pre>
+                    </Code>
                 </div>
             </div>
         );

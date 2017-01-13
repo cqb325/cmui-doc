@@ -1,4 +1,4 @@
-define(["module", "react", "react-dom", "../BaseDemo", "DateRange", "FontIcon", "moment"], function (module, React, ReactDOM, BaseDemo, DateRange, FontIcon, moment) {
+define(["module", "react", "react-dom", "../BaseDemo", "DateRange", "FontIcon", "moment", "../Code"], function (module, React, ReactDOM, BaseDemo, DateRange, FontIcon, moment, Code) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -92,8 +92,8 @@ define(["module", "react", "react-dom", "../BaseDemo", "DateRange", "FontIcon", 
                         "div",
                         { className: "code-box-src", ref: "boxSrc" },
                         React.createElement(
-                            "pre",
-                            { className: "brush: js", ref: "code" },
+                            Code,
+                            { className: "language-jsx" },
                             "\nconst DateTime = require(\"DateTime\");\n\nReactDOM.render(\n<div>\n    <DateRange maxRange={7}></DateRange>\n</div>, mountNode);\n"
                         )
                     )

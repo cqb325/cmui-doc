@@ -2,6 +2,7 @@ const React = require("react");
 const BaseDemo = require("../BaseDemo");
 const CheckBoxGroup = require("CheckBoxGroup");
 const FontIcon = require("FontIcon");
+const Code = require("../Code");
 
 class Demo extends BaseDemo{
     render(){
@@ -18,7 +19,7 @@ class Demo extends BaseDemo{
                     </div>
                 </div>
                 <div className="code-box-src" ref="boxSrc">
-                    <pre className="brush: js" ref="code">
+                    <Code className="language-jsx">
                         {`
 const CheckBoxGroup = require("CheckBoxGroup");
 
@@ -27,7 +28,7 @@ ReactDOM.render(
     <CheckBoxGroup url="data.json" value="0" valueField="type" textField="name"></CheckBoxGroup>
 </div>, mountNode);
 `}
-                    </pre>
+                    </Code>
                 </div>
             </div>
         );
