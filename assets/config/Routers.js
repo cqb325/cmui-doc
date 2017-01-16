@@ -19,6 +19,7 @@ define(function(module, exports){
             {id:"35", text: "All Icons",link: "components/allIcons"},
             {id:"36", text: "Affix",link: "components/affix"},
             {id:"37", text: "Grid",link: "components/grid"},
+            {id:"371", text: "Layout",link: "components/layout"},
             {id:"38", text: "Breadcrumb",link: "components/breadcrumb"},
             {id:"39", text: "DateTime",link: "components/datetime"},
             {id:"310", text: "DateRange",link: "components/daterange"},

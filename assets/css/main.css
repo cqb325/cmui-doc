@@ -273,3 +273,22 @@ pre[class*="language-"] {
   border-radius: 4px;
   cursor: default;
 }
+.demo-layout {
+  text-align: center;
+}
+.demo-layout .cm-layout-content {
+  background: #108ee9;
+  color: #fff;
+  min-height: 120px;
+  line-height: 120px;
+}
+.demo-layout .cm-layout-header,
+.demo-layout .cm-layout-footer {
+  background: #7dbcea;
+  color: #fff;
+}
+.demo-layout .cm-layout-sider {
+  background: #3ba0e9;
+  color: #fff;
+  line-height: 120px;
+}
