@@ -64,7 +64,6 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'uti
     }
 
     var PropTypes = React.PropTypes;
-    var createFragment = React.addons.createFragment;
 
     var MessageBox = function (_BaseComponent) {
         _inherits(MessageBox, _BaseComponent);
@@ -104,6 +103,8 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'uti
 
             //保存的数据
             _this.data = null;
+
+            _this.panel = null;
             return _this;
         }
 
@@ -130,9 +131,8 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'uti
         }, {
             key: "hide",
             value: function hide() {
-                this.setState({
-                    visibility: false
-                });
+                var ele = Dom.dom(ReactDOM.findDOMNode(this.panel));
+                ele.hide();
 
                 if (this.props.onHide) {
                     this.props.onHide();
@@ -161,11 +161,13 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'uti
             value: function show(msg, title) {
                 var _this2 = this;
 
-                this.setState({
-                    title: this.state.title || title,
-                    msg: msg,
-                    visibility: true
-                });
+                // this.setState({
+                //     title: this.state.title || title,
+                //     msg: msg,
+                //     visibility: true
+                // });
+
+                this.panel.setTitleAndContent(title, msg);
 
                 if (!this.backdrop) {
                     var ele = Dom.query(".shadow-backdrop");
@@ -181,7 +183,8 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'uti
                 this.backdrop.style.display = "block";
 
                 window.setTimeout(function () {
-                    var ele = ReactDOM.findDOMNode(_this2);
+                    var ele = ReactDOM.findDOMNode(_this2.panel);
+                    Dom.dom(ele).show();
                     var w = ele.clientWidth;
                     var h = ele.clientHeight;
                     ele.style.marginLeft = -w / 2 + "px";
@@ -194,8 +197,13 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'uti
                 }, 0);
             }
         }, {
-            key: "render",
-            value: function render() {
+            key: "componentDidMount",
+            value: function componentDidMount() {
+                var _this3 = this;
+
+                this.container = document.createElement("div");
+                document.body.appendChild(this.container);
+
                 var _props = this.props;
                 var className = _props.className;
                 var style = _props.style;
@@ -204,13 +212,21 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'uti
                 var props = _extends({}, this.props);
                 props.className = className;
 
-                var sty = style || {};
-                sty.display = this.state.visibility ? "block" : "none";
-                props.style = sty;
-
                 props.footers = this.footers;
+                style = _extends({}, style);
+                style.display = "none";
+                props.style = style;
 
-                return React.createElement(Panel, _extends({}, props, { content: this.state.msg }));
+                window.setTimeout(function () {
+                    ReactDOM.render(React.createElement(Panel, _extends({ ref: function ref(_ref) {
+                            _this3.panel = _ref;
+                        } }, props, { content: _this3.state.msg })), _this3.container);
+                }, 0);
+            }
+        }, {
+            key: "render",
+            value: function render() {
+                return React.createElement("div", null);
             }
         }]);
 

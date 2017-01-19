@@ -1,9 +1,6 @@
 const React = require("react");
 const Label = require("Label");
 const Demo1 = require("../components/layout/demo1");
-const Demo2 = require("../components/tooltip/demo2");
-const Demo3 = require("../components/tooltip/demo3");
-const Demo4 = require("../components/tooltip/demo4");
 
 
 let Page = React.createClass({

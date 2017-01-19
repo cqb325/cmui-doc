@@ -71,6 +71,21 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
         }
 
         _createClass(Panel, [{
+            key: "setTitle",
+            value: function setTitle(title) {
+                this.setState({ title: title });
+            }
+        }, {
+            key: "setContent",
+            value: function setContent(content) {
+                this.setState({ content: content });
+            }
+        }, {
+            key: "setTitleAndContent",
+            value: function setTitleAndContent(title, content) {
+                this.setState({ title: title, content: content });
+            }
+        }, {
             key: "renderHeader",
             value: function renderHeader() {
                 var tools = this.props.tools;

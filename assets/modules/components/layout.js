@@ -1,4 +1,4 @@
-define(["module", "react", "Label", "../components/layout/demo1", "../components/tooltip/demo2", "../components/tooltip/demo3", "../components/tooltip/demo4"], function (module, React, Label, Demo1, Demo2, Demo3, Demo4) {
+define(["module", "react", "Label", "../components/layout/demo1"], function (module, React, Label, Demo1) {
     "use strict";
 
     var Page = React.createClass({

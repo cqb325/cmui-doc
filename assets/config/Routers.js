@@ -28,6 +28,7 @@ define(function(module, exports){
             {id:"313", text: "Steps",link: "components/steps"},
             {id:"314", text: "Switch",link: "components/switch"},
             {id:"315", text: "Card",link: "components/card"},
+            {id:"317", text: "Panel",link: "components/panel"},
             {id:"316", text: "Tooltip",link: "components/tooltip"}
         ]}
     ];
