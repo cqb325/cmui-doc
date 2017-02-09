@@ -1,4 +1,4 @@
-define(["module", "react", "Label", "../components/panel/demo1", "../components/panel/demo2"], function (module, React, Label, Demo1, Demo2) {
+define(["module", "react", "Label", "../components/messagebox/demo1", "../components/messagebox/demo2"], function (module, React, Label, Demo1, Demo2) {
     "use strict";
 
     var Page = React.createClass({
@@ -10,12 +10,12 @@ define(["module", "react", "Label", "../components/panel/demo1", "../components/
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Panel 面板"
+                    "MessageBox 消息框"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "通用内容容器。",
+                    "消息框。",
                     React.createElement("br", null)
                 ),
                 React.createElement(

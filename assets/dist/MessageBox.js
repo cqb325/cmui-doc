@@ -80,24 +80,37 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'uti
                 type: props.type || "info"
             });
 
-            _this.confirm = _this.confirm.bind(_this);
-            _this.cancle = _this.cancle.bind(_this);
+            var confirmText = props.confirmText || "确 定";
+            var cancelText = props.cancelText || "取 消";
 
-            var components = [React.createElement(
-                Button,
-                { theme: "success", raised: true, icon: "check", onClick: _this.confirm },
-                "确 定"
-            )];
-            if (props.type === "confirm") {
-                components.push(React.createElement(
+            var confirmTheme = props.confirmTheme || "primary";
+            var cancelTheme = props.cancelTheme || "default";
+
+            var confirmIcon = props.confirmIcon || "check";
+            var cancelIcon = props.cancelIcon || "close";
+
+            if (props.footers) {
+                _this.footers = props.footers;
+            } else {
+                _this.confirm = _this.confirm.bind(_this);
+                _this.cancle = _this.cancle.bind(_this);
+
+                var components = [React.createElement(
                     Button,
-                    { theme: "info", raised: true, icon: "close", className: "ml-10", onClick: _this.cancle },
-                    "取 消"
-                ));
+                    { theme: confirmTheme, raised: true, icon: confirmIcon, onClick: _this.confirm },
+                    confirmText
+                )];
+                if (props.type === "confirm") {
+                    components.push(React.createElement(
+                        Button,
+                        { theme: cancelTheme, raised: true, icon: cancelIcon, className: "ml-10", onClick: _this.cancle },
+                        cancelText
+                    ));
+                }
+                _this.footers = {
+                    components: components
+                };
             }
-            _this.footers = {
-                components: components
-            };
 
             _this.backdrop = null;
 
@@ -167,7 +180,7 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'uti
                 //     visibility: true
                 // });
 
-                this.panel.setTitleAndContent(title, msg);
+                this.panel.setTitleAndContent(this.state.title || title, msg);
 
                 if (!this.backdrop) {
                     var ele = Dom.query(".shadow-backdrop");
