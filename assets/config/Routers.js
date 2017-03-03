@@ -30,7 +30,8 @@ define(function(module, exports){
             {id:"315", text: "Card",link: "components/card"},
             {id:"317", text: "Panel",link: "components/panel"},
             {id:"316", text: "Tooltip",link: "components/tooltip"},
-            {id:"318", text: "MessageBox",link: "components/messagebox"}
+            {id:"318", text: "MessageBox",link: "components/messagebox"},
+            {id:"319", text: "Menu",link: "components/menu"}
         ]}
     ];
 });

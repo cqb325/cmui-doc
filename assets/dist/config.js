@@ -31,7 +31,7 @@
             "react": '../lib/react-with-addons',
             "classnames": '../lib/classnames',
             "moment": '../lib/moment',
-            "velocity": '../lib/velocity.min',
+            "velocity": '../lib/velocity',
             "store": "../lib/store.min",
             "WebUploader": "../lib/webuploader",
             "common": "../modules/common",
