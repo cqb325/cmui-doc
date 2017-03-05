@@ -15,6 +15,32 @@ blockquote {
   margin: 0;
   padding: 0;
 }
+#desktop {
+  margin-left: 10%;
+  margin-right: 10%;
+  height: 100%;
+}
+.rc-desktop-wrap {
+  position: relative;
+  padding-left: 200px;
+}
+.rc-desktop-wrap .desktop {
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid #f7f7f7;
+  margin-left: -1px;
+}
+.rc-desktop-wrap .menu-wrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-right: 1px solid #f7f7f7;
+}
+.rc-desktop-wrap .menu-wrap .cm-menu {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
 .section {
   padding: 0 5%;
   display: flex;

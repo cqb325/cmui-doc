@@ -305,45 +305,45 @@ section {
   color: #f9fafc !important;
 }
 .text-normal {
-  color: #666666;
+  color: #666666 !important;
 }
 .text-promote {
   font-size: 12px;
-  color: #999999;
+  color: #999999 !important;
 }
 .text-invalid {
   font-size: 12px;
-  color: #cccccc;
+  color: #cccccc !important;
 }
 .text-link {
   font-size: 12px;
-  color: #20a0ff;
+  color: #20a0ff !important;
 }
 .main-title {
   font-size: 16px;
-  color: #666666;
+  color: #666666 !important;
 }
 .main-title-bold {
   font-size: 16px;
-  color: #666666;
+  color: #666666 !important;
   font-weight: 700;
 }
 .sub-title {
   font-size: 14px;
-  color: #666666;
+  color: #666666 !important;
 }
 .sub-title-bold {
   font-size: 14px;
-  color: #666666;
+  color: #666666 !important;
   font-weight: 700;
 }
 .small-title {
   font-size: 12px;
-  color: #666666;
+  color: #666666 !important;
 }
 .small-title-bold {
   font-size: 12px;
-  color: #666666;
+  color: #666666 !important;
   font-weight: 700;
 }
 .cm-accordion {
@@ -1200,7 +1200,7 @@ a:focus {
   user-select: none;
 }
 .cm-select .cm-select-value {
-  padding: 4px 30px 4px 10px;
+  padding: 0 30px 0 10px;
   height: 30px;
   border: 1px solid #ccc;
   border-radius: 2px;
@@ -1219,29 +1219,46 @@ a:focus {
 .cm-select .cm-select-value.placeholder {
   color: #999999;
 }
+.cm-select .cm-select-value-text {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  line-height: 30px;
+  vertical-align: middle;
+  font-size: 13px;
+}
 .cm-select .cm-select-cert {
   position: absolute;
   display: inline-block;
-  width: 20px;
-  height: 20px;
-  right: 5px;
-  top: 5px;
+  width: 9px;
+  height: 14px;
+  right: 11px;
+  top: 8px;
   cursor: pointer;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .cm-select .cm-select-cert:before {
-  width: 0;
-  height: 0;
-  border-top: 6px solid #666;
-  border-right: 6px solid transparent;
-  border-left: 6px solid transparent;
-  content: "";
+  content: '\f107';
+  width: 9px;
+  height: 14px;
   position: absolute;
-  right: 4px;
-  top: 8px;
+  right: 0;
+  top: 0;
   z-index: 0;
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
+  -webkit-transform-origin: center center;
+  -moz-transform-origin: center center;
+  -ms-transform-origin: center center;
+  -o-transform-origin: center center;
+  transform-origin: center center;
 }
 .cm-select .cm-select-options-wrap {
   position: absolute;
@@ -1261,7 +1278,7 @@ a:focus {
   -o-transform: translate(0, -100%);
   transform: translate(0, -100%);
   margin: 0 10px 10px 10px;
-  background: whitesmoke;
+  background: #ffffff;
   max-height: 300px;
   overflow-x: hidden;
   -webkit-box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
@@ -1281,14 +1298,18 @@ a:focus {
   padding: 5px 10px;
   width: 100%;
   height: 100%;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+  color: #888;
+  color: rgba(0, 0, 0, 0.65);
 }
 .cm-select .cm-select-options ul li a:hover {
-  background: #0078e7;
-  color: white;
+  background-color: #ecf6fd;
+  font-weight: 400;
 }
 .cm-select .cm-select-options ul li.active a {
-  background: #0078e7;
-  color: white;
+  background-color: #f7f7f7;
+  font-weight: 700;
 }
 .cm-select.hasEmptyOption ul li:first-child {
   border-bottom: 1px solid #ccc;
@@ -3238,29 +3259,40 @@ a:focus {
   height: 0;
   clear: both;
 }
-.cm-menu.cm-menu-horizontal .cm-menu-submenu {
+.cm-menu.cm-menu-horizontal > .cm-menu-item.cm-menu-item-active {
+  background: transparent;
+  border-right: 0;
+  border-bottom: 2px solid #20a0ff;
+}
+.cm-menu.cm-menu-horizontal > .cm-menu-item,
+.cm-menu.cm-menu-horizontal > .cm-menu-submenu {
   float: left;
   position: relative;
   border-bottom: 2px solid transparent;
 }
-.cm-menu.cm-menu-horizontal .cm-menu-submenu.cm-menu-submenu-active {
+.cm-menu.cm-menu-horizontal > .cm-menu-item.cm-menu-submenu-active,
+.cm-menu.cm-menu-horizontal > .cm-menu-submenu.cm-menu-submenu-active {
   border-bottom: 2px solid #20a0ff;
 }
-.cm-menu.cm-menu-horizontal .cm-menu-submenu .cm-menu-submenu-title {
+.cm-menu.cm-menu-horizontal > .cm-menu-item .cm-menu-submenu-title,
+.cm-menu.cm-menu-horizontal > .cm-menu-submenu .cm-menu-submenu-title {
   padding: 0 20px;
 }
-.cm-menu.cm-menu-horizontal .cm-menu-submenu .cm-menu-submenu-title:after {
+.cm-menu.cm-menu-horizontal > .cm-menu-item .cm-menu-submenu-title:after,
+.cm-menu.cm-menu-horizontal > .cm-menu-submenu .cm-menu-submenu-title:after {
   display: none;
 }
-.cm-menu.cm-menu-horizontal .cm-menu-submenu .cm-menu-submenu-title.cm-menu-disabled {
+.cm-menu.cm-menu-horizontal > .cm-menu-item .cm-menu-submenu-title.cm-menu-disabled,
+.cm-menu.cm-menu-horizontal > .cm-menu-submenu .cm-menu-submenu-title.cm-menu-disabled {
   color: #8492a6;
 }
-.cm-menu.cm-menu-horizontal .cm-menu-submenu > .cm-menu {
+.cm-menu.cm-menu-horizontal > .cm-menu-item > .cm-menu,
+.cm-menu.cm-menu-horizontal > .cm-menu-submenu > .cm-menu {
   top: 100%;
   left: 0;
   position: absolute;
   min-width: 100%;
-  margin-top: 7px;
+  margin-top: 2px;
   z-index: 1050;
   display: none;
   background: #ffffff;
@@ -3353,4 +3385,75 @@ a:focus {
 }
 .cm-badge .cm-badge-status-dot.cm-badge-status-warning {
   background: #f7ba2a;
+}
+.cm-arrow-steps {
+  font-size: 0;
+  width: 100%;
+  line-height: 1.5;
+  height: 40px;
+}
+.cm-arrow-steps .cm-steps-item {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  border-top: 1px solid #c0ccda;
+  border-bottom: 1px solid #c0ccda;
+}
+.cm-arrow-steps .cm-steps-item:first-child {
+  border-left: 1px solid #c0ccda;
+}
+.cm-arrow-steps .cm-steps-item:not(:first-child) .cm-step-head {
+  padding-left: 10px;
+  margin-left: -10px;
+}
+.cm-arrow-steps .cm-steps-item.cm-steps-status-finish .cm-step-title,
+.cm-arrow-steps .cm-steps-item.cm-steps-status-process .cm-step-title {
+  color: #ffffff;
+}
+.cm-arrow-steps .cm-steps-item.cm-steps-status-finish .cm-steps-step,
+.cm-arrow-steps .cm-steps-item.cm-steps-status-process .cm-steps-step {
+  background: #20a0ff;
+}
+.cm-arrow-steps .cm-steps-item.cm-steps-status-finish .cm-steps-step:after,
+.cm-arrow-steps .cm-steps-item.cm-steps-status-process .cm-steps-step:after {
+  background: #20a0ff;
+}
+.cm-arrow-steps .cm-steps-step:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -15px;
+  top: 5px;
+  width: 30px;
+  height: 30px;
+  z-index: 1;
+  border-top: 1px solid #c0ccda;
+  border-right: 1px solid #c0ccda;
+  -webkit-transform-origin: center center;
+  -moz-transform-origin: center center;
+  -ms-transform-origin: center center;
+  -o-transform-origin: center center;
+  transform-origin: center center;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.cm-arrow-steps .cm-step-main {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+.cm-arrow-steps .cm-step-title {
+  font-size: 14px;
+  color: #777;
+  font-weight: bold;
+  display: inline-block;
+  padding: 10px;
+}
+.cm-arrow-steps .cm-step-description {
+  font-size: 12px;
+  color: #ddd;
 }

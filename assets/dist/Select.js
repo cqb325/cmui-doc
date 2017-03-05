@@ -60,11 +60,12 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
         function Select(props) {
             _classCallCheck(this, Select);
 
-            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Select).call(this, props));
+            var _this = _possibleConstructorReturn(this, (Select.__proto__ || Object.getPrototypeOf(Select)).call(this, props));
 
             _this.selectedItems = {};
             var valueField = props.valueField || "id";
             var data = _this._rebuildData(props.data, props.value, valueField);
+            _this.sep = props.sep || ',';
 
             _this.addState({
                 value: props.value,
@@ -94,22 +95,27 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
                 if (!data) {
                     return null;
                 }
+                var defaultValues = defaultValue ? defaultValue.split(this.sep) : [];
                 if (Core.isArray(data)) {
                     var one = data[0];
                     if (Core.isString(one)) {
                         return data.map(function (item) {
                             var option = { id: item, text: item };
-                            if (item == defaultValue) {
-                                this.selectedItems[item] = option;
+                            for (var i in defaultValues) {
+                                if (item == defaultValues[i]) {
+                                    this.selectedItems[item] = option;
+                                }
                             }
                             return option;
-                        });
+                        }, this);
                     }
                     if (Core.isObject(one)) {
                         if (defaultValue != undefined) {
                             data.forEach(function (item) {
-                                if (item[valueField] == defaultValue) {
-                                    this.selectedItems[defaultValue] = item;
+                                for (var i in defaultValues) {
+                                    if (item[valueField] == defaultValues[i]) {
+                                        this.selectedItems[item[valueField]] = item;
+                                    }
                                 }
                             }, this);
                         }
@@ -122,8 +128,10 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
                     var ret = [];
                     for (var id in data) {
                         var item = { id: id, text: data[id] };
-                        if (id == defaultValue) {
-                            this.selectedItems[defaultValue] = item;
+                        for (var i in defaultValues) {
+                            if (id == defaultValues[i]) {
+                                this.selectedItems[id] = item;
+                            }
                         }
                         ret.push(item);
                     }
@@ -136,24 +144,41 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
         }, {
             key: "_renderValues",
             value: function _renderValues() {
-                var item = this.selectedItems[this.state.value];
-                var textField = this.props.textField || "text",
-                    label = item ? item[textField] : this.props.placeholder ? this.props.placeholder + "&nbsp;" : "&nbsp;",
-                    className = classnames("cm-select-value", {
-                    placeholder: !item && this.props.placeholder
-                });
+                var _this2 = this;
 
-                var optionsTpl = this.props.optionsTpl,
-                    html = label;
-                if (optionsTpl && item) {
-                    html = substitute(optionsTpl, item);
+                var values = this.state.value ? this.state.value.split(this.sep) : [];
+                var html = [];
+                var className = classnames("cm-select-value", {
+                    placeholder: !values.length && this.props.placeholder
+                });
+                if(values.length) {
+                    values.forEach(function (value) {
+                        var item = _this2.selectedItems[value];
+
+                        var textField = _this2.props.textField || "text",
+                            label = item ? item[textField] : _this2.props.placeholder ? _this2.props.placeholder + "&nbsp;" : "&nbsp;";
+
+                        var optionsTpl = _this2.props.optionsTpl;
+
+                        if (optionsTpl && item) {
+                            html.push(substitute(optionsTpl, item));
+                        } else {
+                            html.push(label);
+                        }
+                    });
+                }else{
+                    html.push(_this2.props.placeholder ? _this2.props.placeholder + "&nbsp;" : "&nbsp;");
                 }
-                html += '<input type="hidden" name="' + this.props.name + '" value="' + this.state.value + '">';
+                html = '<div class="cm-select-value-text">' + html.join(this.sep) || '&nbsp;' + '</div>';
+
+                html = html + '<input type="hidden" name="' + this.props.name + '" value="' + this.state.value + '">';
+
                 return React.createElement("span", { className: className, dangerouslySetInnerHTML: { __html: html } });
             }
         }, {
             key: "_renderFilter",
             value: function _renderFilter() {
+
                 return "";
             }
         }, {
@@ -169,7 +194,11 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
                     this.selectedItems = {};
                 } else {
                     if (this.props.multi) {
-                        this.selectedItems[item[valueField]] = item;
+                        if (this.selectedItems[item[valueField]]) {
+                            delete this.selectedItems[item[valueField]];
+                        } else {
+                            this.selectedItems[item[valueField]] = item;
+                        }
                         value = this.getSelectedValues();
                     } else {
                         value = item[valueField];
@@ -197,7 +226,7 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
                     for (var value in this.selectedItems) {
                         ret.push(value);
                     }
-                    return ret.join(",");
+                    return ret.join(this.sep);
                 }
                 return "";
             }
@@ -218,23 +247,25 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
                 if (value != undefined) {
                     for (var i in data) {
                         var item = data[i];
-                        if (item[valueField] == value) {
-                            this.selectedItems[value] = item;
-                            this.setState({ value: value });
-                            break;
+                        var values = value.split(this.sep);
+                        for (var j in values) {
+                            if (item[valueField] == values[j]) {
+                                this.selectedItems[values[j]] = item;
+                            }
                         }
                     }
+                    this.setState({ value: value });
                 }
             }
         }, {
             key: "_renderOptions",
             value: function _renderOptions() {
-                var _props = this.props;
-                var disabled = _props.disabled;
-                var readOnly = _props.readOnly;
-                var textField = _props.textField;
-                var valueField = _props.valueField;
-                var optionsTpl = _props.optionsTpl;
+                var _props = this.props,
+                    disabled = _props.disabled,
+                    readOnly = _props.readOnly,
+                    textField = _props.textField,
+                    valueField = _props.valueField,
+                    optionsTpl = _props.optionsTpl;
 
 
                 var data = this.state.data;
@@ -298,12 +329,12 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
         }, {
             key: "showOptions",
             value: function showOptions() {
-                var _this2 = this;
+                var _this3 = this;
 
                 if (this.props.readOnly || this.props.disabled) {
                     return;
                 }
-                if (this.state.active) {
+                if (this.state.active && !this.props.multi) {
                     this.hideOptions();
                     return;
                 }
@@ -316,19 +347,19 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
                 var dropup = Dom.overView(container, offset);
 
                 Dom.withoutTransition(container, function () {
-                    _this2.setState({ dropup: dropup });
+                    _this3.setState({ dropup: dropup });
                 });
 
                 this.bindClickAway();
 
                 setTimeout(function () {
-                    _this2.setState({ active: true });
+                    _this3.setState({ active: true });
                 }, 0);
             }
         }, {
             key: "hideOptions",
             value: function hideOptions() {
-                var _this3 = this;
+                var _this4 = this;
 
                 this.setState({ active: false });
                 var options = ReactDOM.findDOMNode(this.refs.options);
@@ -341,7 +372,7 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
                 }
 
                 setTimeout(function () {
-                    if (_this3.state.active === false) {
+                    if (_this4.state.active === false) {
                         options.style.display = 'none';
                     }
                 }, time);
@@ -358,31 +389,27 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
         }, {
             key: "componentWillMount",
             value: function componentWillMount() {
-                var _this4 = this;
-
                 if (this.props.url) {
-                    (function () {
-                        var scope = _this4;
-                        Ajax.get(_this4.props.url, {}, function (data) {
-                            if (data) {
-                                data = scope._rebuildData(data);
-                                scope.setState({
-                                    data: data
-                                });
-                            }
-                        });
-                    })();
+                    var scope = this;
+                    Ajax.get(this.props.url, {}, function (data) {
+                        if (data) {
+                            data = scope._rebuildData(data);
+                            scope.setState({
+                                data: data
+                            });
+                        }
+                    });
                 }
             }
         }, {
             key: "render",
             value: function render() {
-                var _props2 = this.props;
-                var className = _props2.className;
-                var disabled = _props2.disabled;
-                var readOnly = _props2.readOnly;
-                var style = _props2.style;
-                var grid = _props2.grid;
+                var _props2 = this.props,
+                    className = _props2.className,
+                    disabled = _props2.disabled,
+                    readOnly = _props2.readOnly,
+                    style = _props2.style,
+                    grid = _props2.grid;
 
                 className = classnames("cm-select", getGrid(grid), {
                     active: this.state.active,

@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "Button", "Affix", "FontIcon", "../Cod
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -89,12 +89,12 @@ define(["module", "react", "../BaseDemo", "Button", "Affix", "FontIcon", "../Cod
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "基本用法"
+                            "\u57FA\u672C\u7528\u6CD5"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "简单的Affix 设置target作为固钉的容器",
+                            "\u7B80\u5355\u7684Affix \u8BBE\u7F6Etarget\u4F5C\u4E3A\u56FA\u9489\u7684\u5BB9\u5668",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

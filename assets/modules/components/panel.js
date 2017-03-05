@@ -10,18 +10,18 @@ define(["module", "react", "Label", "../components/panel/demo1", "../components/
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Panel 面板"
+                    "Panel \u9762\u677F"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "通用内容容器。",
+                    "\u901A\u7528\u5185\u5BB9\u5BB9\u5668\u3002",
                     React.createElement("br", null)
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "代码演示"
+                    "\u4EE3\u7801\u6F14\u793A"
                 ),
                 React.createElement(
                     Label,

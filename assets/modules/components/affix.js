@@ -10,17 +10,17 @@ define(["module", "react", "Label", "../components/affix/demo1"], function (modu
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Affix 固钉"
+                    "Affix \u56FA\u9489"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "固钉。"
+                    "\u56FA\u9489\u3002"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "代码演示"
+                    "\u4EE3\u7801\u6F14\u793A"
                 ),
                 React.createElement(
                     Label,

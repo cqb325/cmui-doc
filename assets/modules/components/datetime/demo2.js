@@ -55,7 +55,7 @@ define(["module", "react", "react-dom", "../BaseDemo", "DateTime", "FontIcon", "
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -75,12 +75,12 @@ define(["module", "react", "react-dom", "../BaseDemo", "DateTime", "FontIcon", "
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "主题"
+                            "\u4E3B\u9898"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "设置DateTime的theme属性可以设置样式主题。支持的主题是black,不设置默认为白色。",
+                            "\u8BBE\u7F6EDateTime\u7684theme\u5C5E\u6027\u53EF\u4EE5\u8BBE\u7F6E\u6837\u5F0F\u4E3B\u9898\u3002\u652F\u6301\u7684\u4E3B\u9898\u662Fblack,\u4E0D\u8BBE\u7F6E\u9ED8\u8BA4\u4E3A\u767D\u8272\u3002",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

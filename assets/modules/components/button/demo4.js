@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "Button", "FontIcon", "../Code"], func
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -122,12 +122,12 @@ define(["module", "react", "../BaseDemo", "Button", "FontIcon", "../Code"], func
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "禁用状态"
+                            "\u7981\u7528\u72B6\u6001"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "添加 disabled 属性即可让按钮处于不可用状态，同时按钮样式也会改变。",
+                            "\u6DFB\u52A0 disabled \u5C5E\u6027\u5373\u53EF\u8BA9\u6309\u94AE\u5904\u4E8E\u4E0D\u53EF\u7528\u72B6\u6001\uFF0C\u540C\u65F6\u6309\u94AE\u6837\u5F0F\u4E5F\u4F1A\u6539\u53D8\u3002",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

@@ -84,7 +84,7 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
         function Menu(props) {
             _classCallCheck(this, Menu);
 
-            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Menu).call(this, props));
+            var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this, props));
 
             _this.onSelect = _this.onSelect.bind(_this);
             _this.onClick = _this.onClick.bind(_this);
@@ -116,11 +116,11 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
             }
         }, {
             key: "onSelect",
-            value: function onSelect(item) {
+            value: function onSelect(item, e) {
                 if (this.props.onSelect) {
-                    this.props.onSelect(item);
+                    this.props.onSelect(item, e);
                 }
-                this.emit("select", item);
+                this.emit("select", item, e);
             }
         }, {
             key: "unSelect",
@@ -221,7 +221,8 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
                         parent: _this2,
                         root: _this2,
                         index: index,
-                        level: 1
+                        level: 1,
+                        layout: _this2.props.layout
                     });
                     return React.cloneElement(child, props);
                 });
@@ -229,9 +230,9 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
         }, {
             key: "render",
             value: function render() {
-                var _props = this.props;
-                var className = _props.className;
-                var style = _props.style;
+                var _props = this.props,
+                    className = _props.className,
+                    style = _props.style;
 
                 className = classnames(className, "cm-menu", this.state.theme, _defineProperty({}, "cm-menu-" + this.state.layout, this.props.layout != undefined));
                 return React.createElement(
@@ -257,14 +258,14 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
         function SubMenu(props) {
             _classCallCheck(this, SubMenu);
 
-            var _this3 = _possibleConstructorReturn(this, Object.getPrototypeOf(SubMenu).call(this, props));
+            var _this3 = _possibleConstructorReturn(this, (SubMenu.__proto__ || Object.getPrototypeOf(SubMenu)).call(this, props));
 
             _this3.addState({
                 hover: false,
                 collapsed: !props.open || false
             });
 
-            _this3.identify = props.identify || UUID.v4();
+            _this3.identify = props.identify || "SubMenu_level_" + props.level + "_index_" + props.index;
             _this3.children = [];
             _this3.name = "SubMenu";
             return _this3;
@@ -311,9 +312,33 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
                 this.setState({ hover: false });
             }
         }, {
-            key: "onClick",
-            value: function onClick() {
+            key: "onMouseLeave",
+            value: function onMouseLeave() {
                 if (this.props.disabled) {
+                    return false;
+                }
+                if (this.props.layout === "horizontal") {
+                    this.onClick(null, true);
+                }
+            }
+        }, {
+            key: "onMouseEnter",
+            value: function onMouseEnter() {
+                if (this.props.disabled) {
+                    return false;
+                }
+                if (this.props.layout === "horizontal") {
+                    this.onClick(null, true);
+                }
+            }
+        }, {
+            key: "onClick",
+            value: function onClick(event, called) {
+                if (this.props.disabled) {
+                    return false;
+                }
+
+                if (!called && this.props.layout === "horizontal") {
                     return false;
                 }
                 var parent = this.props.root;
@@ -326,7 +351,7 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
                     }
                 }
 
-                if (this.props.onClick) {
+                if (!called && this.props.onClick) {
                     this.props.onClick(this);
                 }
 
@@ -440,7 +465,10 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
                 var paddingLeft = 24 * this.props.level;
                 return React.createElement(
                     "li",
-                    { className: className2 },
+                    { className: className2,
+                        onMouseEnter: this.onMouseEnter.bind(this),
+                        onMouseLeave: this.onMouseLeave.bind(this)
+                    },
                     React.createElement(
                         "div",
                         { className: className,
@@ -473,7 +501,7 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
         function MenuItemGroup(props) {
             _classCallCheck(this, MenuItemGroup);
 
-            var _this6 = _possibleConstructorReturn(this, Object.getPrototypeOf(MenuItemGroup).call(this, props));
+            var _this6 = _possibleConstructorReturn(this, (MenuItemGroup.__proto__ || Object.getPrototypeOf(MenuItemGroup)).call(this, props));
 
             _this6.children = [];
             _this6.name = "MenuItemGroup";
@@ -539,9 +567,9 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
         function Item(props) {
             _classCallCheck(this, Item);
 
-            var _this8 = _possibleConstructorReturn(this, Object.getPrototypeOf(Item).call(this, props));
+            var _this8 = _possibleConstructorReturn(this, (Item.__proto__ || Object.getPrototypeOf(Item)).call(this, props));
 
-            _this8.identify = props.identify || UUID.v4();
+            _this8.identify = props.identify || "Item_level_" + props.level + "_index_" + props.index;
 
             _this8.addState({
                 active: props.select || false
@@ -552,29 +580,29 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
 
         _createClass(Item, [{
             key: "onClick",
-            value: function onClick() {
+            value: function onClick(e) {
                 if (this.props.disabled) {
                     return false;
                 }
 
                 if (this.props.onClick) {
-                    this.props.onClick(this);
+                    this.props.onClick(this, e);
                 }
 
                 var parent = this.props.root;
                 if (parent.lastSelect && parent.lastSelect != this) {
                     parent.lastSelect.unSelect();
                 }
-                this.select();
+                this.select(e);
             }
         }, {
             key: "select",
-            value: function select() {
+            value: function select(e) {
                 this.setState({ active: true });
                 var parent = this.props.root;
                 parent.lastSelect = this;
                 if (this.props.onSelect) {
-                    this.props.onSelect(this);
+                    this.props.onSelect(this, e);
                 }
             }
         }, {
@@ -586,6 +614,11 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
                 if (parent.unSelect) {
                     parent.unSelect(this);
                 }
+            }
+        }, {
+            key: "getKey",
+            value: function getKey() {
+                return this.identify;
             }
         }, {
             key: "componentDidMount",

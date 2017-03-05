@@ -55,7 +55,7 @@ define(["module", "react", "react-dom", "../BaseDemo", "DateTime", "FontIcon", "
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -78,12 +78,12 @@ define(["module", "react", "react-dom", "../BaseDemo", "DateTime", "FontIcon", "
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "限制选择"
+                            "\u9650\u5236\u9009\u62E9"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "设置 startDate 可以限制可选的开始日期， endDate 可以限制可选的结束日期。",
+                            "\u8BBE\u7F6E startDate \u53EF\u4EE5\u9650\u5236\u53EF\u9009\u7684\u5F00\u59CB\u65E5\u671F\uFF0C endDate \u53EF\u4EE5\u9650\u5236\u53EF\u9009\u7684\u7ED3\u675F\u65E5\u671F\u3002",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

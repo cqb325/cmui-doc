@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Button", "MessageBox", ".
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -72,7 +72,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Button", "MessageBox", ".
                     React.createElement(
                         "div",
                         { className: "code-box-demo" },
-                        React.createElement(MessageBox, { title: "提示", ref: "msg", confirmTheme: "primary" }),
+                        React.createElement(MessageBox, { title: "\u63D0\u793A", ref: "msg", confirmTheme: "primary" }),
                         React.createElement(
                             Button,
                             { onClick: this.show.bind(this) },
@@ -85,12 +85,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Button", "MessageBox", ".
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "简单用法"
+                            "\u7B80\u5355\u7528\u6CD5"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "简单用法。",
+                            "\u7B80\u5355\u7528\u6CD5\u3002",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),
@@ -100,7 +100,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Button", "MessageBox", ".
                         React.createElement(
                             Code,
                             { className: "language-jsx" },
-                            "\nconst MessageBox = require(\"MessageBox\");\nconst Button = require(\"Button\");\n\nReact.createClass({\n    show(){\n        this.refs.msg.show(\"Message Content\");\n    }\n\n    render(){\n        return <div>\n            <MessageBox title=\"提示\" ref=\"msg\" confirmTheme=\"primary\"></MessageBox>\n            <Button onClick={show}>Show</Button>\n        </div>\n    }\n});\n"
+                            "\nconst MessageBox = require(\"MessageBox\");\nconst Button = require(\"Button\");\n\nReact.createClass({\n    show(){\n        this.refs.msg.show(\"Message Content\");\n    }\n\n    render(){\n        return <div>\n            <MessageBox title=\"\u63D0\u793A\" ref=\"msg\" confirmTheme=\"primary\"></MessageBox>\n            <Button onClick={show}>Show</Button>\n        </div>\n    }\n});\n"
                         )
                     )
                 );

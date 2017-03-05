@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "../Code"], function (modu
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -77,12 +77,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "../Code"], function (modu
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "旋转"
+                            "\u65CB\u8F6C"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "设置FontIcon的 spin 为true， 可以让图标随着中心旋转",
+                            "\u8BBE\u7F6EFontIcon\u7684 spin \u4E3Atrue\uFF0C \u53EF\u4EE5\u8BA9\u56FE\u6807\u968F\u7740\u4E2D\u5FC3\u65CB\u8F6C",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tooltip", "../Code"], fun
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -83,12 +83,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tooltip", "../Code"], fun
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "触发条件"
+                            "\u89E6\u53D1\u6761\u4EF6"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "设置 trigger 属性为 click 时 点击的时候触发显示和隐藏提示。默认为hover",
+                            "\u8BBE\u7F6E trigger \u5C5E\u6027\u4E3A click \u65F6 \u70B9\u51FB\u7684\u65F6\u5019\u89E6\u53D1\u663E\u793A\u548C\u9690\u85CF\u63D0\u793A\u3002\u9ED8\u8BA4\u4E3Ahover",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

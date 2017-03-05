@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "Button", "ButtonGroup", "FontIcon", "
         function Demo(props) {
             _classCallCheck(this, Demo);
 
-            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).call(this, props));
+            var _this = _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).call(this, props));
 
             _this.state = {
                 size: "default"
@@ -129,12 +129,12 @@ define(["module", "react", "../BaseDemo", "Button", "ButtonGroup", "FontIcon", "
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "按钮组合事件"
+                            "\u6309\u94AE\u7EC4\u5408\u4E8B\u4EF6"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "ButtonGroup可以添加onSelect事件，也接受on(\"select\")事件监听 事件回调包含一个Button类型的参数，为当前选中的Button。",
+                            "ButtonGroup\u53EF\u4EE5\u6DFB\u52A0onSelect\u4E8B\u4EF6\uFF0C\u4E5F\u63A5\u53D7on(\"select\")\u4E8B\u4EF6\u76D1\u542C \u4E8B\u4EF6\u56DE\u8C03\u5305\u542B\u4E00\u4E2AButton\u7C7B\u578B\u7684\u53C2\u6570\uFF0C\u4E3A\u5F53\u524D\u9009\u4E2D\u7684Button\u3002",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

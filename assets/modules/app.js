@@ -1,24 +1,111 @@
-define(['react', 'jquery', 'react-dom', 'ReactRouter', "Routers", "SideBar"], function (React, jQuery, ReactDOM, ReactRouter, Routers, SideBar) {
+define(['react', 'jquery', 'react-dom', 'ReactRouter', "FontIcon", "Routers", "SideBar", "Menu"], function (React, jQuery, ReactDOM, ReactRouter, FontIcon, Routers, SideBar, Menu) {
     'use strict';
 
     var Router = ReactRouter.Router;
     var Route = ReactRouter.Route;
     var IndexRoute = ReactRouter.IndexRoute;
 
+
     var APP = {
         sysName: "CMUI",
         menus: Routers
     };
 
+    var SubMenu = Menu.SubMenu;
+    var MenuItemGroup = Menu.MenuItemGroup;
+
     var App = React.createClass({
         displayName: 'App',
+        getInitialState: function getInitialState() {
+            return {};
+        },
+        renderMenu: function renderMenu() {
+            var _this = this;
+
+            this.menuIndex = 0;
+            return Routers.map(function (menuItem) {
+                _this.menuIndex++;
+                if (menuItem.link) {
+                    var icon = menuItem.icon ? React.createElement(FontIcon, { icon: menuItem.icon, style: { marginRight: "8px" } }) : null;
+                    return React.createElement(
+                        Menu.Item,
+                        { key: _this.menuIndex, identify: menuItem.identify, link: menuItem.link },
+                        icon,
+                        menuItem.text
+                    );
+                } else {
+                    var _icon = menuItem.icon ? React.createElement(FontIcon, { icon: menuItem.icon }) : null;
+                    return React.createElement(
+                        SubMenu,
+                        { open: true, key: _this.menuIndex, title: React.createElement(
+                                'span',
+                                null,
+                                _icon,
+                                menuItem.text
+                            ) },
+                        _this.renderSubMenu(menuItem.children)
+                    );
+                }
+            });
+        },
+        renderSubMenu: function renderSubMenu(subMenus) {
+            var _this2 = this;
+
+            return subMenus.map(function (menuItem) {
+                _this2.menuIndex++;
+                if (menuItem.link) {
+                    var icon = menuItem.icon ? React.createElement(FontIcon, { icon: menuItem.icon, style: { marginRight: "8px" } }) : null;
+                    return React.createElement(
+                        Menu.Item,
+                        { key: _this2.menuIndex, identify: menuItem.identify, link: menuItem.link },
+                        icon,
+                        menuItem.text
+                    );
+                } else {
+                    return React.createElement(
+                        MenuItemGroup,
+                        { key: _this2.menuIndex, title: menuItem.text },
+                        _this2.renderMenuItemGroup(menuItem.children)
+                    );
+                }
+            });
+        },
+        renderMenuItemGroup: function renderMenuItemGroup(subMenus) {
+            var _this3 = this;
+
+            return subMenus.map(function (menuItem) {
+                _this3.menuIndex++;
+                if (menuItem.link) {
+                    var icon = menuItem.icon ? React.createElement(FontIcon, { icon: menuItem.icon, style: { marginRight: "8px" } }) : null;
+                    return React.createElement(
+                        Menu.Item,
+                        { key: _this3.menuIndex, identify: menuItem.identify, link: menuItem.link },
+                        icon,
+                        menuItem.text
+                    );
+                } else {
+                    return null;
+                }
+            });
+        },
         render: function render() {
             return React.createElement(
                 'div',
-                null,
+                { className: 'rc-desktop-wrap' },
                 React.createElement(
-                    SideBar,
-                    { data: APP.menus, style: { width: '200px' }, header: APP.sysName, hasExpand: true },
+                    'div',
+                    { className: 'menu-wrap' },
+                    React.createElement(
+                        Menu,
+                        { style: { width: 200 },
+                            ref: 'menu'
+                        },
+                        this.renderMenu()
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'desktop' },
                     this.props.children
                 )
             );
@@ -34,9 +121,9 @@ define(['react', 'jquery', 'react-dom', 'ReactRouter', "Routers", "SideBar"], fu
                     if (subItem.link.indexOf(".html") != -1) {
                         routers.push(React.createElement(Route, { path: subItem.link, key: subIndex }));
                     } else {
-                        routers.push(React.createElement(Route, { key: subIndex, path: subItem.link,
+                        routers.push(React.createElement(Route, { key: subIndex, path: subItem.link.substring(2),
                             getComponents: function getComponents(nextState, callback) {
-                                var module_url = _ctx + "/" + subItem.link;
+                                var module_url = _ctx + "/" + subItem.link.substring(2);
                                 require.ensure([module_url], function (Widget) {
                                     callback(null, Widget);
                                 });
@@ -49,8 +136,8 @@ define(['react', 'jquery', 'react-dom', 'ReactRouter', "Routers", "SideBar"], fu
             if (item.link.indexOf(".html") != -1) {
                 routers.push(React.createElement(Route, { path: item.link, key: index }));
             } else {
-                routers.push(React.createElement(Route, { path: item.link, key: index, getComponents: function getComponents(nextState, callback) {
-                        var module_url = _ctx + "/" + item.link;
+                routers.push(React.createElement(Route, { path: item.link.substring(2), key: index, getComponents: function getComponents(nextState, callback) {
+                        var module_url = _ctx + "/" + item.link.substring(2);
                         require.ensure([module_url], function (Widget) {
                             callback(null, Widget);
                         });

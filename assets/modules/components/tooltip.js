@@ -10,19 +10,19 @@ define(["module", "react", "Label", "../components/tooltip/demo1", "../component
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Tooltip 文字提示"
+                    "Tooltip \u6587\u5B57\u63D0\u793A"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "简单的文字提示气泡框。",
+                    "\u7B80\u5355\u7684\u6587\u5B57\u63D0\u793A\u6C14\u6CE1\u6846\u3002",
                     React.createElement("br", null),
-                    "鼠标移入则显示提示，移出消失，气泡浮层不承载复杂文本和操作。"
+                    "\u9F20\u6807\u79FB\u5165\u5219\u663E\u793A\u63D0\u793A\uFF0C\u79FB\u51FA\u6D88\u5931\uFF0C\u6C14\u6CE1\u6D6E\u5C42\u4E0D\u627F\u8F7D\u590D\u6742\u6587\u672C\u548C\u64CD\u4F5C\u3002"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "代码演示"
+                    "\u4EE3\u7801\u6F14\u793A"
                 ),
                 React.createElement(
                     Label,

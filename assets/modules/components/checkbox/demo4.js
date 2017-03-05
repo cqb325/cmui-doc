@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "CheckBox", "CheckBoxGroup", "FontIcon
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -76,12 +76,12 @@ define(["module", "react", "../BaseDemo", "CheckBox", "CheckBoxGroup", "FontIcon
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "CheckBox 组 堆积布局"
+                            "CheckBox \u7EC4 \u5806\u79EF\u5E03\u5C40"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "checkbox组堆积布局，设置CheckBoxGroup的layout为stack。",
+                            "checkbox\u7EC4\u5806\u79EF\u5E03\u5C40\uFF0C\u8BBE\u7F6ECheckBoxGroup\u7684layout\u4E3Astack\u3002",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

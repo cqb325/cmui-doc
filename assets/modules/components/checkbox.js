@@ -10,17 +10,17 @@ define(["module", "react", "Label", "../components/checkbox/demo1", "../componen
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "CheckBox 复选框"
+                    "CheckBox \u590D\u9009\u6846"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "多选框。"
+                    "\u591A\u9009\u6846\u3002"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "代码演示"
+                    "\u4EE3\u7801\u6F14\u793A"
                 ),
                 React.createElement(
                     Label,

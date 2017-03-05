@@ -10,17 +10,17 @@ define(["module", "react", "Row", "Col", "Label", "../components/datetime/demo1"
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "DateTime 时间选择器"
+                    "DateTime \u65F6\u95F4\u9009\u62E9\u5668"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "选择日期和时间的控件。"
+                    "\u9009\u62E9\u65E5\u671F\u548C\u65F6\u95F4\u7684\u63A7\u4EF6\u3002"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "代码演示"
+                    "\u4EE3\u7801\u6F14\u793A"
                 ),
                 React.createElement(
                     Row,

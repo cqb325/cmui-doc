@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "RadioGroup", "FontIcon", "../Code"], 
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -75,12 +75,12 @@ define(["module", "react", "../BaseDemo", "RadioGroup", "FontIcon", "../Code"], 
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "从数据源生成"
+                            "\u4ECE\u6570\u636E\u6E90\u751F\u6210"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "RadioGroup 可以通过获取数据源数据生成单选框组 。",
+                            "RadioGroup \u53EF\u4EE5\u901A\u8FC7\u83B7\u53D6\u6570\u636E\u6E90\u6570\u636E\u751F\u6210\u5355\u9009\u6846\u7EC4 \u3002",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),
