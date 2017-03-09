@@ -1,5 +1,20 @@
-define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids'], function (module, React, classnames, BaseComponent, grids) {
+define(["module", "react", "classnames", "core/BaseComponent", 'FontIcon', 'utils/grids'], function (module, React, classnames, BaseComponent, FontIcon, grids) {
     "use strict";
+
+    function _defineProperty(obj, key, value) {
+        if (key in obj) {
+            Object.defineProperty(obj, key, {
+                value: value,
+                enumerable: true,
+                configurable: true,
+                writable: true
+            });
+        } else {
+            obj[key] = value;
+        }
+
+        return obj;
+    }
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -84,6 +99,21 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids'], f
                 }
             }
         }, {
+            key: "getValue",
+            value: function getValue() {
+                return this.state.value;
+            }
+        }, {
+            key: "getMax",
+            value: function getMax() {
+                return this.state.max;
+            }
+        }, {
+            key: "getMin",
+            value: function getMin() {
+                return this.state.min;
+            }
+        }, {
             key: "componentDidMount",
             value: function componentDidMount() {
                 this._isMounted = true;
@@ -94,30 +124,123 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids'], f
                 this._isMounted = false;
             }
         }, {
+            key: "renderCircle",
+            value: function renderCircle() {
+                var colorMap = {
+                    primary: "#20A0FF",
+                    danger: "#FF4949",
+                    success: "#13CE66",
+                    warning: "#F7BA2A"
+                };
+                var r = this.props.radius;
+                // 计算当前角度对应的弧度值
+                var rad = 2 * Math.PI;
+
+                // 极坐标转换成直角坐标
+                var x = (Math.sin(rad) * r).toFixed(2);
+                var y = -(Math.cos(rad) * r).toFixed(2);
+
+                // path 属性 A 61 61 0 1 1 -0 61 A 61 61 0 1 1 -0 -61
+                var descriptions = ['M', 0, -r, 'A', r, r, 0, 1, 1, x, -y, 'A', r, r, 0, 1, 1, x, y];
+
+                var strokeWidth = 6;
+                var tx = r + strokeWidth / 2;
+
+                var percent = (this.state.value - this.state.min) / (this.state.max - this.state.min);
+                var dd = rad * r;
+                var offset = dd * (1 - percent);
+                var status = this.props.status;
+                if (this.state.value == this.state.max) {
+                    status = "finished";
+                }
+
+                var color = status === "finished" ? "success" : this.state.theme;
+                if (status === "exception") {
+                    color = "danger";
+                }
+                return React.createElement(
+                    "svg",
+                    { width: "100%", height: "100%", version: "1.1",
+                        xmlns: "http://www.w3.org/2000/svg", style: { width: 2 * r + strokeWidth, height: 2 * r + strokeWidth } },
+                    React.createElement("circle", { cx: tx, cy: tx, r: r, stroke: "#f3f3f3",
+                        strokeWidth: strokeWidth, fillOpacity: "0" }),
+                    React.createElement("path", { className: "cm-progress-bar-path",
+                        d: descriptions.join(" "),
+                        strokeLinecap: "round",
+                        strokeWidth: strokeWidth,
+                        fillOpacity: "0",
+                        stroke: colorMap[color],
+                        transform: "translate(" + tx + "," + tx + ")",
+                        style: { strokeDashoffset: offset, strokeDasharray: dd }
+                    })
+                );
+            }
+        }, {
             key: "render",
             value: function render() {
+                var _classnames;
+
                 var _props = this.props;
                 var className = _props.className;
                 var style = _props.style;
-                var disabled = _props.disabled;
                 var grid = _props.grid;
                 var showPercent = _props.showPercent;
-                var striped = _props.striped;
                 var active = _props.active;
+                var status = _props.status;
+                var type = _props.type;
 
-                className = classnames("cm-progress", className, getGrid(grid), this.state.theme, {
-                    disabled: disabled,
-                    striped: striped,
-                    active: active
-                });
-                var width = ((this.state.value - this.state.min) / (this.state.max - this.state.min) * 100).toFixed(2) + "%";
+                if (this.state.value == this.state.max) {
+                    status = "finished";
+                }
+                className = classnames("cm-progress", className, getGrid(grid), this.state.theme, (_classnames = {
+                    "cm-progress-active": active,
+                    "cm-progress-show-info": showPercent
+                }, _defineProperty(_classnames, "cm-progress-" + status, status), _defineProperty(_classnames, "cm-progress-" + type, type), _classnames));
+                var current = parseInt((this.state.value - this.state.min) / (this.state.max - this.state.min) * 100);
+                var width = current + "%";
                 var percent = showPercent ? width : null;
+
+                if (status === "finished" && showPercent) {
+                    var icon = type === "circle" ? "check" : "check-circle";
+                    percent = React.createElement(FontIcon, { icon: icon });
+                }
+                if (status === "exception" && showPercent) {
+                    var _icon = type === "circle" ? "close" : "times-circle";
+                    percent = React.createElement(FontIcon, { icon: _icon });
+                }
+
+                if (this.props.format && typeof this.props.format === 'function') {
+                    percent = this.props.format(current, this.state.value, this.state.min, this.state.max);
+                }
+
+                var bar = null,
+                    fontSize = 25;
+                if (type === "circle") {
+                    bar = this.renderCircle();
+                    fontSize = fontSize * this.props.radius / 60;
+                } else {
+                    bar = React.createElement("div", { className: "cm-progress-bar", style: { width: width, height: this.props.strokeWidth } });
+                }
                 return React.createElement(
                     "div",
                     { className: className, style: style },
                     React.createElement(
                         "div",
-                        { className: "cm-progress-bar", style: { width: width } },
+                        { className: "cm-progress-outer" },
+                        React.createElement(
+                            "div",
+                            { className: "cm-progress-inner" },
+                            bar,
+                            type === "circle" ? React.createElement(
+                                "span",
+                                { className: "cm-progress-info", style: { fontSize: fontSize } },
+                                percent
+                            ) : null
+                        )
+                    ),
+                    type === "circle" ? null : React.createElement(
+                        "span",
+                        { className: "cm-progress-info" },
                         percent
                     )
                 );
@@ -126,6 +249,14 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids'], f
 
         return Progress;
     }(BaseComponent);
+
+    Progress.defaultProps = {
+        showPercent: true,
+        strokeWidth: 10,
+        type: "line",
+        radius: 60,
+        theme: "primary"
+    };
 
     module.exports = Progress;
 });

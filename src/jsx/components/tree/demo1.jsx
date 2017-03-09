@@ -39,6 +39,22 @@ class Demo extends BaseDemo{
                         {`
 const Tree = require("Tree");
 
+let treeData = [{
+    id: 0,
+    text: "中国",
+    open: true,
+    children: [
+        {
+            id: '1',
+            text: "北京",
+            children: [{id: '11', text: "海淀"},{id: '12', text: "朝阳"}]
+        },{
+            id: '2',
+            text: "上海"
+        }
+    ]
+}];
+
 ReactDOM.render(
 <div>
    <Tree data={treeData}></Tree>

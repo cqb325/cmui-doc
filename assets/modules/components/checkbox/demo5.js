@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "CheckBox", "CheckBoxGroup", "FontIcon
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -81,12 +81,12 @@ define(["module", "react", "../BaseDemo", "CheckBox", "CheckBoxGroup", "FontIcon
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "CheckBox \u7EC4 \u7981\u7528\u72B6\u6001"
+                            "CheckBox 组 禁用状态"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "checkbox\u7EC4 \u901A\u8FC7\u8BBE\u7F6Edisabled\u4E3Atrue \u4E5F\u53EF\u4EE5\u8BBE\u7F6E\u7981\u7528\u72B6\u6001 \u3002",
+                            "checkbox组 通过设置disabled为true 也可以设置禁用状态 。",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

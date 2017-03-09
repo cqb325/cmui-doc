@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "CheckBox", "FontIcon", "../Code"], fu
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -76,12 +76,12 @@ define(["module", "react", "../BaseDemo", "CheckBox", "FontIcon", "../Code"], fu
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u7981\u7528\u72B6\u6001"
+                            "禁用状态"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u7981\u7528\u72B6\u6001\u4E0B\u7684checkbox",
+                            "禁用状态下的checkbox",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

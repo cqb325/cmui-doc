@@ -10,18 +10,18 @@ define(["module", "react", "Label", "../components/messagebox/demo1", "../compon
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "MessageBox \u6D88\u606F\u6846"
+                    "MessageBox 消息框"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "\u6D88\u606F\u6846\u3002",
+                    "消息框。",
                     React.createElement("br", null)
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "\u4EE3\u7801\u6F14\u793A"
+                    "代码演示"
                 ),
                 React.createElement(
                     Label,

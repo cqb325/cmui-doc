@@ -80,6 +80,15 @@ define(["module", "react", "react-dom", "classnames", "core/BaseComponent"], fun
         }
 
         _createClass(Badge, [{
+            key: "componentWillReceiveProps",
+            value: function componentWillReceiveProps(nextProps) {
+                if (nextProps.value !== this.state.value) {
+                    this.setState({
+                        value: nextProps.value
+                    });
+                }
+            }
+        }, {
             key: "renderCount",
             value: function renderCount() {
                 if (this.state.status) {

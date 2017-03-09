@@ -6,6 +6,7 @@ const Demo1 = require("../components/select/demo1");
 const Demo2 = require("../components/select/demo2");
 const Demo3 = require("../components/select/demo3");
 const Demo4 = require("../components/select/demo4");
+const Demo5 = require("../components/select/demo5");
 
 
 let Page = React.createClass({
@@ -32,6 +33,9 @@ let Page = React.createClass({
                     <Col grid={0.5} className="code-col">
                         <Label className="code-box">
                             <Demo2></Demo2>
+                        </Label>
+                        <Label className="code-box">
+                            <Demo5></Demo5>
                         </Label>
                     </Col>
 

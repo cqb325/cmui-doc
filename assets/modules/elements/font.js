@@ -11,17 +11,17 @@ define(["module", "react", "Label"], function (module, React, Label) {
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "\u5B57\u4F53"
+                    "字体"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "\u8DE8\u5E73\u53F0\u7684\u5B57\u4F53\u8BBE\u5B9A\uFF0C\u529B\u6C42\u5728\u5404\u4E2A\u64CD\u4F5C\u7CFB\u7EDF\u4E0B\u90FD\u6709\u6700\u4F73\u5C55\u793A\u6548\u679C\u3002"
+                    "跨平台的字体设定，力求在各个操作系统下都有最佳展示效果。"
                 ),
                 React.createElement(
                     "h1",
                     { className: "main-title-bold" },
-                    "\u4E2D\u6587\u5B57\u4F53"
+                    "中文字体"
                 ),
                 React.createElement(
                     "div",
@@ -35,7 +35,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                             React.createElement(
                                 "div",
                                 { className: "font-40 demo-font-PingFang" },
-                                "\u5B57\u4F53"
+                                "字体"
                             ),
                             React.createElement(
                                 "div",
@@ -53,7 +53,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                             React.createElement(
                                 "div",
                                 { className: "font-40 demo-font-Hiragino" },
-                                "\u5B57\u4F53"
+                                "字体"
                             ),
                             React.createElement(
                                 "div",
@@ -71,7 +71,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                             React.createElement(
                                 "div",
                                 { className: "font-40 demo-font-YaHei" },
-                                "\u5B57\u4F53"
+                                "字体"
                             ),
                             React.createElement(
                                 "div",
@@ -84,7 +84,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                 React.createElement(
                     "h1",
                     { className: "main-title-bold" },
-                    "\u6570\u5B57\u82F1\u6587\u5B57\u4F53"
+                    "数字英文字体"
                 ),
                 React.createElement(
                     "div",
@@ -147,7 +147,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                 React.createElement(
                     "h1",
                     { className: "main-title-bold" },
-                    "\u5B57\u4F53\u4F7F\u7528\u89C4\u8303"
+                    "字体使用规范"
                 ),
                 React.createElement(
                     "div",
@@ -161,7 +161,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                             React.createElement(
                                 "div",
                                 null,
-                                "\u4E3B\u6807\u9898"
+                                "主标题"
                             )
                         ),
                         React.createElement(
@@ -183,7 +183,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                             React.createElement(
                                 "div",
                                 null,
-                                "\u6211\u662F\u6807\u9898\u52A0\u7C97 #666 16px"
+                                "我是标题加粗 #666 16px"
                             )
                         ),
                         React.createElement(
@@ -205,7 +205,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                             React.createElement(
                                 "div",
                                 null,
-                                "\u6B21\u7EA7\u6807\u9898"
+                                "次级标题"
                             )
                         ),
                         React.createElement(
@@ -227,7 +227,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                             React.createElement(
                                 "div",
                                 null,
-                                "\u6211\u662F\u6807\u9898 \u52A0\u7C97 #666 14px"
+                                "我是标题 加粗 #666 14px"
                             )
                         ),
                         React.createElement(
@@ -249,7 +249,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                             React.createElement(
                                 "div",
                                 null,
-                                "\u5C0F\u6807\u9898"
+                                "小标题"
                             )
                         ),
                         React.createElement(
@@ -271,7 +271,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                             React.createElement(
                                 "div",
                                 null,
-                                "\u6211\u662F\u6807\u9898 \u52A0\u7C97 #666 12px"
+                                "我是标题 加粗 #666 12px"
                             )
                         ),
                         React.createElement(
@@ -293,7 +293,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                             React.createElement(
                                 "div",
                                 null,
-                                "\u6B63\u6587"
+                                "正文"
                             )
                         ),
                         React.createElement(
@@ -315,7 +315,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                             React.createElement(
                                 "div",
                                 null,
-                                "\u6211\u662F\u6B63\u6587 #666 12px"
+                                "我是正文 #666 12px"
                             )
                         ),
                         React.createElement(
@@ -337,7 +337,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                             React.createElement(
                                 "div",
                                 null,
-                                "\u8F85\u52A9\u6587\u5B57"
+                                "辅助文字"
                             )
                         ),
                         React.createElement(
@@ -359,7 +359,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                             React.createElement(
                                 "div",
                                 null,
-                                "\u6211\u662F\u8F85\u52A9\u6587\u5B57 #999 12px"
+                                "我是辅助文字 #999 12px"
                             )
                         ),
                         React.createElement(
@@ -381,7 +381,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                             React.createElement(
                                 "div",
                                 null,
-                                "\u5931\u6548\u6587\u5B57"
+                                "失效文字"
                             )
                         ),
                         React.createElement(
@@ -403,7 +403,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                             React.createElement(
                                 "div",
                                 null,
-                                "\u6211\u662F\u5931\u6548\u6587\u5B57 #ccc 12px"
+                                "我是失效文字 #ccc 12px"
                             )
                         ),
                         React.createElement(
@@ -425,7 +425,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                             React.createElement(
                                 "div",
                                 null,
-                                "\u94FE\u63A5\u6587\u5B57"
+                                "链接文字"
                             )
                         ),
                         React.createElement(
@@ -447,7 +447,7 @@ define(["module", "react", "Label"], function (module, React, Label) {
                             React.createElement(
                                 "div",
                                 null,
-                                "\u6211\u662F\u94FE\u63A5\u6587\u5B57 #20A0FF 12px"
+                                "我是链接文字 #20A0FF 12px"
                             )
                         ),
                         React.createElement(

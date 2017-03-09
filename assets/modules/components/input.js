@@ -10,17 +10,17 @@ define(["module", "react", "Label", "../components/input/demo1"], function (modu
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Input \u8F93\u5165\u6846"
+                    "Input 输入框"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "\u8F93\u5165\u6846\u3002"
+                    "输入框。"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "\u4EE3\u7801\u6F14\u793A"
+                    "代码演示"
                 ),
                 React.createElement(
                     Label,

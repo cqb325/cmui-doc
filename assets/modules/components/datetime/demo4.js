@@ -55,7 +55,7 @@ define(["module", "react", "react-dom", "../BaseDemo", "DateTime", "FontIcon", "
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -75,12 +75,12 @@ define(["module", "react", "react-dom", "../BaseDemo", "DateTime", "FontIcon", "
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u65E5\u671F"
+                            "日期"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u8BBE\u7F6E dateOnly \u4E3A true \u53EA\u80FD\u9009\u62E9\u65E5\u671F\u3002",
+                            "设置 dateOnly 为 true 只能选择日期。",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

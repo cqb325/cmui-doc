@@ -10,17 +10,17 @@ define(["module", "react", "Row", "Col", "Label", "../components/daterange/demo1
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "DateRange \u65F6\u95F4\u6BB5\u9009\u62E9\u5668"
+                    "DateRange 时间段选择器"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "\u9009\u62E9\u4E00\u6BB5\u65F6\u95F4\u7684\u63A7\u4EF6\u3002"
+                    "选择一段时间的控件。"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "\u4EE3\u7801\u6F14\u793A"
+                    "代码演示"
                 ),
                 React.createElement(
                     Row,

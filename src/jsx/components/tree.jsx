@@ -1,6 +1,12 @@
 const React = require("react");
 const Label = require("Label");
+const Row = require("Row");
+const Col = require("Col");
 const Demo1 = require("../components/tree/demo1");
+const Demo2 = require("../components/tree/demo2");
+const Demo3 = require("../components/tree/demo3");
+const Demo4 = require("../components/tree/demo4");
+const Demo5 = require("../components/tree/demo5");
 
 
 let Page = React.createClass({
@@ -15,11 +21,27 @@ let Page = React.createClass({
 
                 <h1 className="page-h1">代码演示</h1>
 
-                <Label className="code-col">
-                    <Label grid={0.5} className="code-box">
-                        <Demo1></Demo1>
-                    </Label>
-                </Label>
+                <Row>
+                    <Col grid={0.5} className="code-col">
+                        <Label className="code-box">
+                            <Demo1></Demo1>
+                        </Label>
+                        <Label className="code-box">
+                            <Demo3></Demo3>
+                        </Label>
+                        <Label className="code-box">
+                            <Demo5></Demo5>
+                        </Label>
+                    </Col>
+                    <Col grid={0.5} className="code-col">
+                        <Label className="code-box">
+                            <Demo2></Demo2>
+                        </Label>
+                        <Label className="code-box">
+                            <Demo4></Demo4>
+                        </Label>
+                    </Col>
+                </Row>
             </div>
         );
     }

@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "Row", "Col", "FontIcon", "../Code"], 
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -146,12 +146,12 @@ define(["module", "react", "../BaseDemo", "Row", "Col", "FontIcon", "../Code"], 
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u54CD\u5E94\u5F0F\u5E03\u5C40"
+                            "响应式布局"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u6805\u683C\u5E03\u5C40 \u4E3A\u54CD\u5E94\u5F0F\u5E03\u5C40\u9884\u8BBE\u4E86\u56DB\u4E2A\u5C3A\u5BF8\uFF0Csm/md/lg/xl\u3002",
+                            "栅格布局 为响应式布局预设了四个尺寸，sm/md/lg/xl。",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

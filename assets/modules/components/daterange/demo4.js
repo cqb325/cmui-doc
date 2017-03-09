@@ -55,7 +55,7 @@ define(["module", "react", "react-dom", "../BaseDemo", "DateRange", "FontIcon", 
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -79,12 +79,12 @@ define(["module", "react", "react-dom", "../BaseDemo", "DateRange", "FontIcon", 
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u9650\u5236\u9009\u62E9"
+                            "限制选择"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u8BBE\u7F6E maxRange \u53EF\u4EE5\u9650\u5236\u6700\u5927\u9009\u62E9\u5929\u6570\u3002",
+                            "设置 maxRange 可以限制最大选择天数。",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

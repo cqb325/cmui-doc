@@ -1200,7 +1200,7 @@ a:focus {
   user-select: none;
 }
 .cm-select .cm-select-value {
-  padding: 0 30px 0 10px;
+  padding: 4px 30px 4px 10px;
   height: 30px;
   border: 1px solid #ccc;
   border-radius: 2px;
@@ -1225,9 +1225,8 @@ a:focus {
   overflow: hidden;
   white-space: nowrap;
   display: inline-block;
-  line-height: 30px;
+  line-height: 1.5;
   vertical-align: middle;
-  font-size: 13px;
 }
 .cm-select .cm-select-cert {
   position: absolute;
@@ -1791,84 +1790,154 @@ a:focus {
 .cm-progress {
   position: relative;
   width: 100%;
-  height: 20px;
-  border-radius: 2px;
-  overflow: hidden;
-  background: #f5f5f5;
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: #7f7f7f;
+}
+.cm-progress.cm-progress-show-info .cm-progress-outer {
+  padding-right: 45px;
+  margin-right: -45px;
+}
+.cm-progress .cm-progress-outer {
+  width: 100%;
+  display: inline-block;
+}
+.cm-progress .cm-progress-inner {
+  display: inline-block;
+  width: 100%;
+  background-color: #f7f7f7;
+  border-radius: 100px;
+  vertical-align: middle;
+}
+.cm-progress .cm-progress-info {
+  display: inline-block;
+  width: 35px;
+  margin-left: 10px;
+  font-family: tahoma;
+  position: relative;
+  top: -1px;
 }
 .cm-progress .cm-progress-bar {
-  width: 0;
-  height: 100%;
-  background-color: #dddddd;
-  color: #333;
-  font-size: 12px;
-  padding: 0 5px;
-  line-height: 20px;
-  -webkit-transition: width 0.4s;
-  -moz-transition: width 0.4s;
-  -ms-transition: width 0.4s;
-  -o-transition: width 0.4s;
-  transition: width 0.4s;
+  border-radius: 100px;
+  background-color: #20a0ff;
+  -webkit-transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
+  transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
+  position: relative;
+  height: 10px;
 }
-.cm-progress.striped .cm-progress-bar {
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  -webkit-background-size: 30px 30px;
-  background-size: 30px 30px;
-}
-.cm-progress .cm-progress-bar.active,
-.cm-progress.active .cm-progress-bar {
-  -webkit-animation: progress-bar-stripes 2s linear infinite;
-  -o-animation: progress-bar-stripes 2s linear infinite;
-  animation: progress-bar-stripes 2s linear infinite;
-}
-@-webkit-keyframes progress-bar-stripes {
-  from {
-    background-position: 30px 0;
-  }
-  to {
-    background-position: 0 0;
-  }
-}
-@-o-keyframes progress-bar-stripes {
-  from {
-    background-position: 30px 0;
-  }
-  to {
-    background-position: 0 0;
-  }
-}
-@keyframes progress-bar-stripes {
-  from {
-    background-position: 30px 0;
-  }
-  to {
-    background-position: 0 0;
-  }
-}
-.cm-progress.primary .cm-progress-bar {
-  background-color: #337ab7;
-  color: white;
+.cm-progress.cm-progress-active .cm-progress-bar:before {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 10px;
+  -webkit-animation: cm-progress-active 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+  animation: cm-progress-active 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
 }
 .cm-progress.success .cm-progress-bar {
-  background-color: #5cb85c;
-  color: white;
-}
-.cm-progress.info .cm-progress-bar {
-  background-color: #5bc0de;
-  color: white;
+  background-color: #13ce66;
 }
 .cm-progress.warning .cm-progress-bar {
-  background-color: #f0ad4e;
-  color: white;
+  background-color: #f7ba2a;
+}
+.cm-progress.primary .cm-progress-bar {
+  background-color: #20a0ff;
 }
 .cm-progress.danger .cm-progress-bar {
-  background-color: #d9534f;
-  color: white;
+  background-color: #ff4949;
+}
+.cm-progress.cm-progress-circle {
+  width: auto;
+}
+.cm-progress.cm-progress-circle .cm-progress-outer {
+  width: auto;
+  padding-right: 0;
+  margin-right: 0;
+}
+.cm-progress.cm-progress-circle .cm-progress-inner {
+  position: relative;
+  line-height: 1;
+  font-size: 25px;
+  background-color: transparent;
+}
+.cm-progress.cm-progress-circle .cm-progress-info {
+  display: block;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  line-height: 1;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 0;
+  font-family: tahoma;
+  margin: 0;
+}
+.cm-progress.cm-progress-finished .cm-progress-bar {
+  background-color: #13ce66;
+}
+.cm-progress.cm-progress-finished .cm-progress-info {
+  color: #13ce66;
+}
+.cm-progress.cm-progress-exception .cm-progress-bar {
+  background-color: #ff4949;
+}
+.cm-progress.cm-progress-exception .cm-progress-info {
+  color: #ff4949;
+}
+.cm-progress .cm-progress-bar-path {
+  transition: stroke-dashoffset 0.3s ease 0s, stroke 0.3s ease;
+}
+@-webkit-keyframes cm-progress-dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes cm-progress-dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  50% {
+    stroke-dashoffset: 200;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@-webkit-keyframes cm-progress-active {
+  0% {
+    opacity: .1;
+    width: 0;
+  }
+  20% {
+    opacity: .5;
+    width: 0;
+  }
+  to {
+    opacity: 0;
+    width: 100%;
+  }
+}
+@keyframes cm-progress-active {
+  0% {
+    opacity: .1;
+    width: 0;
+  }
+  20% {
+    opacity: .5;
+    width: 0;
+  }
+  to {
+    opacity: 0;
+    width: 100%;
+  }
 }
 .cm-tab .cm-tab-header {
   list-style: none;

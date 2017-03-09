@@ -11,22 +11,22 @@ define(["module", "react", "Label", "Row", "Col"], function (module, React, Labe
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "\u8272\u503C\u53C2\u8003"
+                    "色值参考"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "\u8272\u5F69\u5728\u754C\u9762\u8BBE\u8BA1\u4E2D\u7684\u4F7F\u7528\u5E94\u540C\u65F6\u5177\u5907\u54C1\u724C\u8BC6\u522B\u6027\u4EE5\u53CA\u754C\u9762\u8BBE\u8BA1\u529F\u80FD\u6027\u3002\u8272\u5F69\u662F\u76F8\u5F53\u611F\u6027\u7684\u4E1C\u897F\uFF0C\u8BBE\u8BA1\u4E2D\u5BF9\u8272\u5F69\u7684\u8FD0\u7528\u9996\u8981\u5E94\u8003\u8651\u5230\u54C1\u724C\u5C42\u9762\u7684\u8868\u8FBE\uFF0C\u53E6\u5916\u5F88\u91CD\u8981\u7684\u4E00\u70B9\u662F\u8272\u5F69\u7684\u8FD0\u7528\u5E94\u8FBE\u5230\u4FE1\u606F\u4F20\u9012\uFF0C\u52A8\u4F5C\u6307\u5F15\uFF0C\u4EA4\u4E92\u53CD\u9988\uFF0C\u6216\u662F\u5F3A\u5316\u548C\u51F8\u73B0\u67D0\u4E00\u4E2A\u5143\u7D20\u7684\u76EE\u7684\u3002\u4EFB\u4F55\u989C\u8272\u7684\u9009\u53D6\u548C\u4F7F\u7528\u5E94\u8BE5\u662F\u6709\u610F\u4E49\u7684\u3002"
+                    "色彩在界面设计中的使用应同时具备品牌识别性以及界面设计功能性。色彩是相当感性的东西，设计中对色彩的运用首要应考虑到品牌层面的表达，另外很重要的一点是色彩的运用应达到信息传递，动作指引，交互反馈，或是强化和凸现某一个元素的目的。任何颜色的选取和使用应该是有意义的。"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "\u4E3B\u8272"
+                    "主色"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "CMUI\u7684\u4E3B\u8272\u662F\u9C9C\u8273\u3001\u53CB\u597D\u7684\u84DD\u8272\u3002"
+                    "CMUI的主色是鲜艳、友好的蓝色。"
                 ),
                 React.createElement(
                     "div",
@@ -89,12 +89,12 @@ define(["module", "react", "Label", "Row", "Col"], function (module, React, Labe
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "\u8F85\u52A9\u8272"
+                    "辅助色"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "\u9664\u4E86\u4E3B\u8272\u5916\u7684\u573A\u666F\u8272\uFF0C\u9700\u8981\u5728\u4E0D\u540C\u7684\u573A\u666F\u4E2D\u4F7F\u7528\uFF08\u4F8B\u5982\u5371\u9669\u8272\u8868\u793A\u5371\u9669\u7684\u64CD\u4F5C\uFF09\u3002"
+                    "除了主色外的场景色，需要在不同的场景中使用（例如危险色表示危险的操作）。"
                 ),
                 React.createElement(
                     "div",
@@ -175,12 +175,12 @@ define(["module", "react", "Label", "Row", "Col"], function (module, React, Labe
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "\u4E2D\u6027\u8272"
+                    "中性色"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "\u4E2D\u6027\u8272\u7528\u4E8E\u6587\u672C\u3001\u80CC\u666F\u548C\u8FB9\u6846\u989C\u8272\u3002\u901A\u8FC7\u8FD0\u7528\u4E0D\u540C\u7684\u4E2D\u6027\u8272\uFF0C\u6765\u8868\u73B0\u5C42\u6B21\u7ED3\u6784\u3002"
+                    "中性色用于文本、背景和边框颜色。通过运用不同的中性色，来表现层次结构。"
                 ),
                 React.createElement(
                     "div",

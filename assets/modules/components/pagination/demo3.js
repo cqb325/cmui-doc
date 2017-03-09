@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Pagination", "../Code"], 
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -80,12 +80,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Pagination", "../Code"], 
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u5706\u5F62"
+                            "圆形"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u8BBE\u7F6Eshape\u4E3Acircle\u9875\u53F7\u53D8\u4E3A\u5706\u5F62, theme \u652F\u6301 cyan, none",
+                            "设置shape为circle页号变为圆形, theme 支持 cyan, none",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

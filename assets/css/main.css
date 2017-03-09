@@ -35,6 +35,7 @@ blockquote {
   left: 0;
   top: 0;
   border-right: 1px solid #f7f7f7;
+  margin-bottom: 100px;
 }
 .rc-desktop-wrap .menu-wrap .cm-menu {
   -webkit-box-shadow: none;

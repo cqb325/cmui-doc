@@ -10,12 +10,12 @@ define(["module", "react", "Label", "../components/layout/demo1"], function (mod
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Layout \u5E03\u5C40"
+                    "Layout 布局"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "\u53EF\u534F\u52A9\u8FDB\u884C\u9875\u9762\u7EA7\u6574\u4F53\u5E03\u5C40\u3002\u91C7\u7528flex\u5E03\u5C40 \u6CE8\u610F\u6D4F\u89C8\u5668\u517C\u5BB9\u6027",
+                    "可协助进行页面级整体布局。采用flex布局 注意浏览器兼容性",
                     React.createElement("br", null),
                     React.createElement(
                         "ol",
@@ -23,34 +23,34 @@ define(["module", "react", "Label", "../components/layout/demo1"], function (mod
                         React.createElement(
                             "li",
                             null,
-                            "Layout\uFF1A\u5E03\u5C40\u5BB9\u5668\uFF0C\u5176\u4E0B\u53EF\u5D4C\u5957 Header Sider Content Footer \u6216 Layout \u672C\u8EAB\u3002"
+                            "Layout：布局容器，其下可嵌套 Header Sider Content Footer 或 Layout 本身。"
                         ),
                         React.createElement(
                             "li",
                             null,
-                            "Header\uFF1A\u9876\u90E8\u5E03\u5C40\uFF0C\u81EA\u5E26\u9ED8\u8BA4\u6837\u5F0F\u3002"
+                            "Header：顶部布局，自带默认样式。"
                         ),
                         React.createElement(
                             "li",
                             null,
-                            "Sider\uFF1A\u4FA7\u8FB9\u680F\uFF0C\u81EA\u5E26\u9ED8\u8BA4\u6837\u5F0F\u53CA\u57FA\u672C\u529F\u80FD\u3002"
+                            "Sider：侧边栏，自带默认样式及基本功能。"
                         ),
                         React.createElement(
                             "li",
                             null,
-                            "Content\uFF1A\u5185\u5BB9\u90E8\u5206\uFF0C\u81EA\u5E26\u9ED8\u8BA4\u6837\u5F0F\u3002"
+                            "Content：内容部分，自带默认样式。"
                         ),
                         React.createElement(
                             "li",
                             null,
-                            "Footer\uFF1A\u5E95\u90E8\u5E03\u5C40\uFF0C\u81EA\u5E26\u9ED8\u8BA4\u6837\u5F0F\u3002"
+                            "Footer：底部布局，自带默认样式。"
                         )
                     )
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "\u4EE3\u7801\u6F14\u793A"
+                    "代码演示"
                 ),
                 React.createElement(
                     Label,

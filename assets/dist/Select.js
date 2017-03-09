@@ -60,7 +60,7 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
         function Select(props) {
             _classCallCheck(this, Select);
 
-            var _this = _possibleConstructorReturn(this, (Select.__proto__ || Object.getPrototypeOf(Select)).call(this, props));
+            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Select).call(this, props));
 
             _this.selectedItems = {};
             var valueField = props.valueField || "id";
@@ -151,7 +151,7 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
                 var className = classnames("cm-select-value", {
                     placeholder: !values.length && this.props.placeholder
                 });
-                if(values.length) {
+                if (values.length) {
                     values.forEach(function (value) {
                         var item = _this2.selectedItems[value];
 
@@ -166,19 +166,18 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
                             html.push(label);
                         }
                     });
-                }else{
-                    html.push(_this2.props.placeholder ? _this2.props.placeholder + "&nbsp;" : "&nbsp;");
+                } else {
+                    html.push(this.props.placeholder ? this.props.placeholder + '&nbsp;' : '&nbsp;');
                 }
-                html = '<div class="cm-select-value-text">' + html.join(this.sep) || '&nbsp;' + '</div>';
+                html = '<div class="cm-select-value-text">' + (html.join(this.sep) || '&nbsp;') + '</div>';
 
-                html = html + '<input type="hidden" name="' + this.props.name + '" value="' + this.state.value + '">';
+                html = html + '<input type="hidden" class="' + this.props.className + '" name="' + this.props.name + '" value="' + this.state.value + '">';
 
                 return React.createElement("span", { className: className, dangerouslySetInnerHTML: { __html: html } });
             }
         }, {
             key: "_renderFilter",
             value: function _renderFilter() {
-
                 return "";
             }
         }, {
@@ -260,12 +259,12 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
         }, {
             key: "_renderOptions",
             value: function _renderOptions() {
-                var _props = this.props,
-                    disabled = _props.disabled,
-                    readOnly = _props.readOnly,
-                    textField = _props.textField,
-                    valueField = _props.valueField,
-                    optionsTpl = _props.optionsTpl;
+                var _props = this.props;
+                var disabled = _props.disabled;
+                var readOnly = _props.readOnly;
+                var textField = _props.textField;
+                var valueField = _props.valueField;
+                var optionsTpl = _props.optionsTpl;
 
 
                 var data = this.state.data;
@@ -389,27 +388,31 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
         }, {
             key: "componentWillMount",
             value: function componentWillMount() {
+                var _this5 = this;
+
                 if (this.props.url) {
-                    var scope = this;
-                    Ajax.get(this.props.url, {}, function (data) {
-                        if (data) {
-                            data = scope._rebuildData(data);
-                            scope.setState({
-                                data: data
-                            });
-                        }
-                    });
+                    (function () {
+                        var scope = _this5;
+                        Ajax.get(_this5.props.url, {}, function (data) {
+                            if (data) {
+                                data = scope._rebuildData(data);
+                                scope.setState({
+                                    data: data
+                                });
+                            }
+                        });
+                    })();
                 }
             }
         }, {
             key: "render",
             value: function render() {
-                var _props2 = this.props,
-                    className = _props2.className,
-                    disabled = _props2.disabled,
-                    readOnly = _props2.readOnly,
-                    style = _props2.style,
-                    grid = _props2.grid;
+                var _props2 = this.props;
+                var className = _props2.className;
+                var disabled = _props2.disabled;
+                var readOnly = _props2.readOnly;
+                var style = _props2.style;
+                var grid = _props2.grid;
 
                 className = classnames("cm-select", getGrid(grid), {
                     active: this.state.active,

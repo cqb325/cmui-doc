@@ -59,34 +59,92 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
 
             var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Toast).call(this, props));
 
-            _this.addState({
-                visibility: false
-            });
+            _this.toast = null;
             return _this;
         }
 
         _createClass(Toast, [{
             key: "show",
-            value: function show() {
-                this.setState({
-                    visibility: true
-                });
+            value: function show(msg) {
+                this.toast.show(msg);
             }
         }, {
             key: "hide",
-            value: function hide() {
-                this.setState({
-                    visibility: false
-                });
+            value: function hide(msg) {
+                this.toast.hide(msg);
             }
         }, {
             key: "componentDidMount",
             value: function componentDidMount() {
+                var _this2 = this;
+
                 if (!window.Toast) {
                     window.Toast = this;
+
+                    this.container = document.createElement("div");
+                    document.body.appendChild(this.container);
+
+                    window.setTimeout(function () {
+                        ReactDOM.render(React.createElement(ToastInner, { msg: _this2.props.msg, ref: function ref(_ref) {
+                                _this2.toast = _ref;
+                            } }), _this2.container);
+                    }, 0);
                 } else {
                     console.warn("Toast already exist");
                 }
+            }
+        }, {
+            key: "render",
+            value: function render() {
+                return React.createElement("div", { className: "toast-placeholder" });
+            }
+        }]);
+
+        return Toast;
+    }(BaseComponent);
+
+    var ToastInner = function (_React$Component) {
+        _inherits(ToastInner, _React$Component);
+
+        function ToastInner(props) {
+            _classCallCheck(this, ToastInner);
+
+            var _this3 = _possibleConstructorReturn(this, Object.getPrototypeOf(ToastInner).call(this, props));
+
+            _this3.state = {
+                visibility: false,
+                msg: props.msg || "数据加载中"
+            };
+            return _this3;
+        }
+
+        /**
+         * 显示Toast
+         * @param msg
+         */
+
+
+        _createClass(ToastInner, [{
+            key: "show",
+            value: function show(msg) {
+                var params = {
+                    visibility: true
+                };
+                if (msg) {
+                    params.msg = msg;
+                }
+                this.setState(params);
+            }
+        }, {
+            key: "hide",
+            value: function hide(msg) {
+                var params = {
+                    visibility: false
+                };
+                if (msg) {
+                    params.msg = msg;
+                }
+                this.setState(params);
             }
         }, {
             key: "render",
@@ -117,15 +175,15 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
                         React.createElement(
                             "p",
                             { className: "weui_toast_content" },
-                            "数据加载中"
+                            this.state.msg
                         )
                     )
                 );
             }
         }]);
 
-        return Toast;
-    }(BaseComponent);
+        return ToastInner;
+    }(React.Component);
 
     Toast.propTypes = {
         /**

@@ -55,7 +55,7 @@ define(["module", "react", "react-dom", "../BaseDemo", "DateRange", "FontIcon", 
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -67,7 +67,7 @@ define(["module", "react", "react-dom", "../BaseDemo", "DateRange", "FontIcon", 
                     React.createElement(
                         "div",
                         { className: "code-box-demo" },
-                        React.createElement(DateRange, { value: "2017-01-01\u81F32017-01-15", sep: "\u81F3", shortcuts: ["一周内", "一个月内", "三个月内", "半年内", "一个月后", "半年后"] })
+                        React.createElement(DateRange, { value: "2017-01-01至2017-01-15", sep: "至", shortcuts: ["一周内", "一个月内", "三个月内", "半年内", "一个月后", "半年后"] })
                     ),
                     React.createElement(
                         "div",
@@ -75,12 +75,12 @@ define(["module", "react", "react-dom", "../BaseDemo", "DateRange", "FontIcon", 
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u5FEB\u6377\u9009\u62E9"
+                            "快捷选择"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u8BBE\u7F6E shortcuts \u53EF\u4EE5\u8BBE\u7F6E\u5FEB\u6377\u9009\u62E9\u3002",
+                            "设置 shortcuts 可以设置快捷选择。",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),
@@ -90,7 +90,7 @@ define(["module", "react", "react-dom", "../BaseDemo", "DateRange", "FontIcon", 
                         React.createElement(
                             Code,
                             { className: "language-jsx" },
-                            "\nconst DateTime = require(\"DateTime\");\n\nReactDOM.render(\n<div>\n    <DateRange value=\"2017-01-01\u81F32017-01-15\" sep=\"\u81F3\"></DateRange>\n</div>, mountNode);\n"
+                            "\nconst DateTime = require(\"DateTime\");\n\nReactDOM.render(\n<div>\n    <DateRange value=\"2017-01-01至2017-01-15\" sep=\"至\"></DateRange>\n</div>, mountNode);\n"
                         )
                     )
                 );
