@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tooltip", "../Code"], fun
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -110,12 +110,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tooltip", "../Code"], fun
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "主题"
+                            "\u4E3B\u9898"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "设置 theme 属性设置 Tooltip 的主题， 目前支持default、black、primary、error，默认为black。",
+                            "\u8BBE\u7F6E theme \u5C5E\u6027\u8BBE\u7F6E Tooltip \u7684\u4E3B\u9898\uFF0C \u76EE\u524D\u652F\u6301default\u3001black\u3001primary\u3001error\uFF0C\u9ED8\u8BA4\u4E3Ablack\u3002",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

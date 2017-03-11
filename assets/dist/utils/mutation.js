@@ -30,7 +30,6 @@ define(['module'], function (module) {
     };
 
     module.exports.append = function (el, what) {
-        var frag = document.createDocumentFragment();
         return el.appendChild(mkfragment(what));
     };
 

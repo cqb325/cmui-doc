@@ -10,17 +10,17 @@ define(["module", "react", "Label", "../components/icon/demo1", "../components/i
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "FontIcon 字体图标"
+                    "FontIcon \u5B57\u4F53\u56FE\u6807"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "语义化的矢量图形。"
+                    "\u8BED\u4E49\u5316\u7684\u77E2\u91CF\u56FE\u5F62\u3002"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "代码演示"
+                    "\u4EE3\u7801\u6F14\u793A"
                 ),
                 React.createElement(
                     Label,

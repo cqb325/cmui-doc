@@ -10,17 +10,17 @@ define(["module", "react", "Row", "Col", "Label", "../components/button/demo1", 
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Button 按钮"
+                    "Button \u6309\u94AE"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "按钮用于开始一个即时操作。响应用户点击行为，触发相应的业务逻辑。"
+                    "\u6309\u94AE\u7528\u4E8E\u5F00\u59CB\u4E00\u4E2A\u5373\u65F6\u64CD\u4F5C\u3002\u54CD\u5E94\u7528\u6237\u70B9\u51FB\u884C\u4E3A\uFF0C\u89E6\u53D1\u76F8\u5E94\u7684\u4E1A\u52A1\u903B\u8F91\u3002"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "代码演示"
+                    "\u4EE3\u7801\u6F14\u793A"
                 ),
                 React.createElement(
                     Row,

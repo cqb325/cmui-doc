@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Card", "../Code"], functi
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -102,12 +102,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Card", "../Code"], functi
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "无边框"
+                            "\u65E0\u8FB9\u6846"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "在灰色背景上使用无边框的卡片。",
+                            "\u5728\u7070\u8272\u80CC\u666F\u4E0A\u4F7F\u7528\u65E0\u8FB9\u6846\u7684\u5361\u7247\u3002",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

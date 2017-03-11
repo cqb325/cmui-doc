@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "Button", "ButtonGroup", "FontIcon", "
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -126,12 +126,12 @@ define(["module", "react", "../BaseDemo", "Button", "ButtonGroup", "FontIcon", "
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "按钮组"
+                            "\u6309\u94AE\u7EC4"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "可以将多个 Button 放入 ButtonGroup 的容器中。",
+                            "\u53EF\u4EE5\u5C06\u591A\u4E2A Button \u653E\u5165 ButtonGroup \u7684\u5BB9\u5668\u4E2D\u3002",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

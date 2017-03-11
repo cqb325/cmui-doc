@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "Row", "Col", "FontIcon", "../Code"], 
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -106,14 +106,14 @@ define(["module", "react", "../BaseDemo", "Row", "Col", "FontIcon", "../Code"], 
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "左右偏移"
+                            "\u5DE6\u53F3\u504F\u79FB"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "使用 grid 的 offset 可以将列向右侧偏。例如，offset=",
+                            "\u4F7F\u7528 grid \u7684 offset \u53EF\u4EE5\u5C06\u5217\u5411\u53F3\u4FA7\u504F\u3002\u4F8B\u5982\uFF0Coffset=",
                             1 / 2,
-                            " 将元素向右侧偏移了 50% 的宽度。",
+                            " \u5C06\u5143\u7D20\u5411\u53F3\u4FA7\u504F\u79FB\u4E86 50% \u7684\u5BBD\u5EA6\u3002",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

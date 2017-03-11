@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "Select", "../Code", "FontIcon"], func
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -77,12 +77,12 @@ define(["module", "react", "../BaseDemo", "Select", "../Code", "FontIcon"], func
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "禁用"
+                            "\u7981\u7528"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "禁用状态的select",
+                            "\u7981\u7528\u72B6\u6001\u7684select",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),
@@ -92,7 +92,7 @@ define(["module", "react", "../BaseDemo", "Select", "../Code", "FontIcon"], func
                         React.createElement(
                             Code,
                             { className: "language-jsx" },
-                            "\nconst Select = require(\"Select\");\n\nlet data = [\n    {\"id\":\"110000\",\"text\":\"北京\"},\n    {\"id\":\"120000\",\"text\":\"天津\"},\n    {\"id\":\"310000\",\"text\":\"上海\"}\n];\n\nReactDOM.render(\n<div>\n    <Select data={data} value=\"110000\" disabled={true}></Select>\n</div>, mountNode);\n"
+                            "\nconst Select = require(\"Select\");\n\nlet data = [\n    {\"id\":\"110000\",\"text\":\"\u5317\u4EAC\"},\n    {\"id\":\"120000\",\"text\":\"\u5929\u6D25\"},\n    {\"id\":\"310000\",\"text\":\"\u4E0A\u6D77\"}\n];\n\nReactDOM.render(\n<div>\n    <Select data={data} value=\"110000\" disabled={true}></Select>\n</div>, mountNode);\n"
                         )
                     )
                 );

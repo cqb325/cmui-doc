@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "RadioGroup", "FontIcon", "../Code"], 
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -76,12 +76,12 @@ define(["module", "react", "../BaseDemo", "RadioGroup", "FontIcon", "../Code"], 
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "堆积布局"
+                            "\u5806\u79EF\u5E03\u5C40"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "设置RadioGroup的layout为stack可以设置为堆积布局",
+                            "\u8BBE\u7F6ERadioGroup\u7684layout\u4E3Astack\u53EF\u4EE5\u8BBE\u7F6E\u4E3A\u5806\u79EF\u5E03\u5C40",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

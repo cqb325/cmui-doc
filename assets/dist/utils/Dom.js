@@ -1,6 +1,12 @@
 define(['module', './classes', './mutation'], function (module, classes, mutation) {
     'use strict';
 
+    var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+        return typeof obj;
+    } : function (obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
             throw new TypeError("Cannot call a class as a function");
@@ -280,7 +286,7 @@ define(['module', './classes', './mutation'], function (module, classes, mutatio
         }, {
             key: 'forceRedraw',
             value: function forceRedraw(el) {
-                var originalDisplay = el.style.display;
+                var originalDisplay = Dom.css(el, "display");
 
                 el.style.display = 'none';
                 var oh = el.offsetHeight;
@@ -315,7 +321,7 @@ define(['module', './classes', './mutation'], function (module, classes, mutatio
         }, {
             key: 'overView',
             value: function overView(el) {
-                var pad = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
+                var pad = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
                 var height = window.innerHeight || document.documentElement.clientHeight;
                 var bottom = el.getBoundingClientRect().bottom + pad;
@@ -346,6 +352,9 @@ define(['module', './classes', './mutation'], function (module, classes, mutatio
                 if (typeof html !== 'string') {
                     if (html.nodeType && html.nodeType === 1) {
                         return [html];
+                    }
+                    if ((typeof html === 'undefined' ? 'undefined' : _typeof(html)) === 'object' && html.length) {
+                        return html;
                     }
                     throw new TypeError('String expected');
                 }
@@ -779,28 +788,28 @@ define(['module', './classes', './mutation'], function (module, classes, mutatio
 
     proto.prepend = function (what) {
         for (var i = 0; i < this.length; ++i) {
-            mutation.prepend(this[i], dom(what));
+            mutation.prepend(this[i], Dom.dom(what));
         }
         return this;
     };
 
     proto.append = function (what) {
         for (var i = 0; i < this.length; ++i) {
-            mutation.append(this[i], dom(what));
+            mutation.append(this[i], Dom.dom(what));
         }
         return this;
     };
 
     proto.before = function (what) {
         for (var i = 0; i < this.length; ++i) {
-            mutation.before(this[i], dom(what));
+            mutation.before(this[i], Dom.dom(what));
         }
         return this;
     };
 
     proto.after = function (what) {
         for (var i = 0; i < this.length; ++i) {
-            mutation.after(this[i], dom(what));
+            mutation.after(this[i], Dom.dom(what));
         }
         return this;
     };

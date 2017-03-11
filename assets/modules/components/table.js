@@ -10,18 +10,18 @@ define(["module", "react", "Label", "../components/table/demo1"], function (modu
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Table 表格"
+                    "Table \u8868\u683C"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "表格。",
+                    "\u8868\u683C\u3002",
                     React.createElement("br", null)
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "代码演示"
+                    "\u4EE3\u7801\u6F14\u793A"
                 ),
                 React.createElement(
                     Label,

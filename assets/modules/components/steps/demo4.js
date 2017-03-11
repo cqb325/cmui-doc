@@ -57,7 +57,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Steps", "../Code", "Butto
         function Demo(props) {
             _classCallCheck(this, Demo);
 
-            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).call(this, props));
+            var _this = _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).call(this, props));
 
             _this.state = {
                 current: 0
@@ -145,12 +145,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Steps", "../Code", "Butto
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "步骤切换"
+                            "\u6B65\u9AA4\u5207\u6362"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "通常配合内容及按钮使用，表示一个流程的处理进度。",
+                            "\u901A\u5E38\u914D\u5408\u5185\u5BB9\u53CA\u6309\u94AE\u4F7F\u7528\uFF0C\u8868\u793A\u4E00\u4E2A\u6D41\u7A0B\u7684\u5904\u7406\u8FDB\u5EA6\u3002",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

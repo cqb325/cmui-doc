@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "Select", "../Code", "FontIcon"], func
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -68,7 +68,7 @@ define(["module", "react", "../BaseDemo", "Select", "../Code", "FontIcon"], func
                     React.createElement(
                         "div",
                         { className: "code-box-demo" },
-                        React.createElement(Select, { data: data, placeholder: "选择城市", hasEmptyOption: "true", choiceText: "--自定义请选择--" })
+                        React.createElement(Select, { data: data, placeholder: "\u9009\u62E9\u57CE\u5E02", hasEmptyOption: "true", choiceText: "--\u81EA\u5B9A\u4E49\u8BF7\u9009\u62E9--" })
                     ),
                     React.createElement(
                         "div",
@@ -76,12 +76,12 @@ define(["module", "react", "../BaseDemo", "Select", "../Code", "FontIcon"], func
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "placeholder和choiceText"
+                            "placeholder\u548CchoiceText"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "可以设置placeholder显示未选择的文字和choiceText取消选中的文字",
+                            "\u53EF\u4EE5\u8BBE\u7F6Eplaceholder\u663E\u793A\u672A\u9009\u62E9\u7684\u6587\u5B57\u548CchoiceText\u53D6\u6D88\u9009\u4E2D\u7684\u6587\u5B57",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),
@@ -91,7 +91,7 @@ define(["module", "react", "../BaseDemo", "Select", "../Code", "FontIcon"], func
                         React.createElement(
                             Code,
                             { className: "language-jsx" },
-                            "\nconst Select = require(\"Select\");\n\nlet data = [\n    {\"id\":\"110000\",\"text\":\"北京\"},\n    {\"id\":\"120000\",\"text\":\"天津\"},\n    {\"id\":\"310000\",\"text\":\"上海\"}\n];\n\nReactDOM.render(\n<div>\n    <Select data={data} placeholder=\"选择城市\" hasEmptyOption=\"true\" choiceText=\"--自定义请选择--\"></Select>\n</div>, mountNode);\n"
+                            "\nconst Select = require(\"Select\");\n\nlet data = [\n    {\"id\":\"110000\",\"text\":\"\u5317\u4EAC\"},\n    {\"id\":\"120000\",\"text\":\"\u5929\u6D25\"},\n    {\"id\":\"310000\",\"text\":\"\u4E0A\u6D77\"}\n];\n\nReactDOM.render(\n<div>\n    <Select data={data} placeholder=\"\u9009\u62E9\u57CE\u5E02\" hasEmptyOption=\"true\" choiceText=\"--\u81EA\u5B9A\u4E49\u8BF7\u9009\u62E9--\"></Select>\n</div>, mountNode);\n"
                         )
                     )
                 );

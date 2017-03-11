@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "../Code"], function (modu
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -111,12 +111,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "../Code"], function (modu
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "图标尺寸"
+                            "\u56FE\u6807\u5C3A\u5BF8"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "设置FontIcon的 size 属性可以调节图标的大小， size 可设的值为 lg、2x、3x、4x、5x和不设置",
+                            "\u8BBE\u7F6EFontIcon\u7684 size \u5C5E\u6027\u53EF\u4EE5\u8C03\u8282\u56FE\u6807\u7684\u5927\u5C0F\uFF0C size \u53EF\u8BBE\u7684\u503C\u4E3A lg\u30012x\u30013x\u30014x\u30015x\u548C\u4E0D\u8BBE\u7F6E",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

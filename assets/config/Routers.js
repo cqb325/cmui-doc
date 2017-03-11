@@ -35,7 +35,8 @@ define(function(module, exports){
             {id:"320", text: "Tree",link: "#/components/tree"},
             {id:"321", text: "Select",link: "#/components/select"},
             {id:"322", text: "Table",link: "#/components/table"},
-            {id:"323", text: "Progress",link: "#/components/progress"}
+            {id:"323", text: "Progress",link: "#/components/progress"},
+            {id:"324", text: "Slick",link: "#/components/slick"}
         ]}
     ];
 });

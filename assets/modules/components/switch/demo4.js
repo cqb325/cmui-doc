@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Switch", "../Code"], func
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -70,7 +70,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Switch", "../Code"], func
                         React.createElement(
                             "div",
                             null,
-                            React.createElement(Switch, { checkedText: "开", unCheckedText: "关" })
+                            React.createElement(Switch, { checkedText: "\u5F00", unCheckedText: "\u5173" })
                         ),
                         React.createElement(
                             "div",
@@ -84,12 +84,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Switch", "../Code"], func
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "文字"
+                            "\u6587\u5B57"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "带有文字的Switch。",
+                            "\u5E26\u6709\u6587\u5B57\u7684Switch\u3002",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),
@@ -99,7 +99,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Switch", "../Code"], func
                         React.createElement(
                             Code,
                             { className: "language-jsx" },
-                            "\nconst Switch = require(\"Switch\");\n\nReactDOM.render(\n<div>\n    <div>\n        <Switch checkedText=\"开\" unCheckedText=\"关\"></Switch>\n    </div>\n    <div className=\"mt-15\">\n        <Switch checkedText=\"on\" unCheckedText=\"off\"></Switch>\n    </div>\n</div>, mountNode);\n"
+                            "\nconst Switch = require(\"Switch\");\n\nReactDOM.render(\n<div>\n    <div>\n        <Switch checkedText=\"\u5F00\" unCheckedText=\"\u5173\"></Switch>\n    </div>\n    <div className=\"mt-15\">\n        <Switch checkedText=\"on\" unCheckedText=\"off\"></Switch>\n    </div>\n</div>, mountNode);\n"
                         )
                     )
                 );

@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "Row", "Col", "FontIcon", "../Code"], 
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -154,12 +154,12 @@ define(["module", "react", "../BaseDemo", "Row", "Col", "FontIcon", "../Code"], 
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "基本用法"
+                            "\u57FA\u672C\u7528\u6CD5"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "布局的栅格化系统，我们是基于行（row）和列（col）来定义信息区块的外部框架，以保证页面的每个区域能够稳健地排布起来",
+                            "\u5E03\u5C40\u7684\u6805\u683C\u5316\u7CFB\u7EDF\uFF0C\u6211\u4EEC\u662F\u57FA\u4E8E\u884C\uFF08row\uFF09\u548C\u5217\uFF08col\uFF09\u6765\u5B9A\u4E49\u4FE1\u606F\u533A\u5757\u7684\u5916\u90E8\u6846\u67B6\uFF0C\u4EE5\u4FDD\u8BC1\u9875\u9762\u7684\u6BCF\u4E2A\u533A\u57DF\u80FD\u591F\u7A33\u5065\u5730\u6392\u5E03\u8D77\u6765",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

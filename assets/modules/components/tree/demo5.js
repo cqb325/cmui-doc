@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tree", "../Code"], functi
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -101,12 +101,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tree", "../Code"], functi
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "实时加载子节点"
+                            "\u5B9E\u65F6\u52A0\u8F7D\u5B50\u8282\u70B9"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "在节点open的事件中通过loadDynamicJSON函数加载子节点",
+                            "\u5728\u8282\u70B9open\u7684\u4E8B\u4EF6\u4E2D\u901A\u8FC7loadDynamicJSON\u51FD\u6570\u52A0\u8F7D\u5B50\u8282\u70B9",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),
@@ -116,7 +116,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tree", "../Code"], functi
                         React.createElement(
                             Code,
                             { className: "language-jsx" },
-                            "\nconst Tree = require(\"Tree\");\n\nclass Demo extends BaseDemo{\n\n    componentDidMount(){\n        let tree = this.refs.tree;\n        tree.on(\"open\", function(item){\n            if(item.open) {\n                window.setTimeout(function(){\n                    tree.loadDynamicJSON(item, [{id: new Date().getTime(), text: \"新节点\"}]);\n                }, 300);\n            }\n        });\n    }\n\n    render(){\n        let treeData = [{\n            id: 0,\n            text: \"中国\",\n            open: true,\n            children: [\n                {\n                    id: '1',\n                    text: \"北京\",\n                    children: [{id: '11', text: \"海淀\"},{id: '12', text: \"朝阳\"}]\n                },{\n                    id: '2',\n                    text: \"上海\"\n                }\n            ]\n        }];\n\n        return (\n            <div className=\"code-box-demo\">\n                <Tree data={treeData} ref=\"tree\"></Tree>\n            </div>\n        );\n    }\n}\n\n"
+                            "\nconst Tree = require(\"Tree\");\n\nclass Demo extends BaseDemo{\n\n    componentDidMount(){\n        let tree = this.refs.tree;\n        tree.on(\"open\", function(item){\n            if(item.open) {\n                window.setTimeout(function(){\n                    tree.loadDynamicJSON(item, [{id: new Date().getTime(), text: \"\u65B0\u8282\u70B9\"}]);\n                }, 300);\n            }\n        });\n    }\n\n    render(){\n        let treeData = [{\n            id: 0,\n            text: \"\u4E2D\u56FD\",\n            open: true,\n            children: [\n                {\n                    id: '1',\n                    text: \"\u5317\u4EAC\",\n                    children: [{id: '11', text: \"\u6D77\u6DC0\"},{id: '12', text: \"\u671D\u9633\"}]\n                },{\n                    id: '2',\n                    text: \"\u4E0A\u6D77\"\n                }\n            ]\n        }];\n\n        return (\n            <div className=\"code-box-demo\">\n                <Tree data={treeData} ref=\"tree\"></Tree>\n            </div>\n        );\n    }\n}\n\n"
                         )
                     )
                 );

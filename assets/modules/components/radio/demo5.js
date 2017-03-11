@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "CheckBox", "RadioGroup", "FontIcon", 
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -76,12 +76,12 @@ define(["module", "react", "../BaseDemo", "CheckBox", "RadioGroup", "FontIcon", 
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "样式"
+                            "\u6837\u5F0F"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "可以设置 RadioGroup 的stick为true，将 RadioGroup 变为按钮组",
+                            "\u53EF\u4EE5\u8BBE\u7F6E RadioGroup \u7684stick\u4E3Atrue\uFF0C\u5C06 RadioGroup \u53D8\u4E3A\u6309\u94AE\u7EC4",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

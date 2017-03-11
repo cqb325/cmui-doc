@@ -10,17 +10,17 @@ define(["module", "react", "Label", "../components/pagination/demo1", "../compon
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Pagination 分页"
+                    "Pagination \u5206\u9875"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "分页显示数据或者内容时使用。"
+                    "\u5206\u9875\u663E\u793A\u6570\u636E\u6216\u8005\u5185\u5BB9\u65F6\u4F7F\u7528\u3002"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "代码演示"
+                    "\u4EE3\u7801\u6F14\u793A"
                 ),
                 React.createElement(
                     Label,

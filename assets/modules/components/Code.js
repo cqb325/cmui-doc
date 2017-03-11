@@ -55,7 +55,7 @@ define(["module", "react"], function (module, React) {
         function Code(props) {
             _classCallCheck(this, Code);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Code).call(this, props));
+            return _possibleConstructorReturn(this, (Code.__proto__ || Object.getPrototypeOf(Code)).call(this, props));
         }
 
         _createClass(Code, [{
@@ -76,9 +76,9 @@ define(["module", "react"], function (module, React) {
         }, {
             key: "render",
             value: function render() {
-                var _props = this.props;
-                var className = _props.className;
-                var children = _props.children;
+                var _props = this.props,
+                    className = _props.className,
+                    children = _props.children;
 
                 return React.createElement(
                     "code",

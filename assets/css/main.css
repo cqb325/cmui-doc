@@ -319,3 +319,14 @@ pre[class*="language-"] {
   color: #fff;
   line-height: 120px;
 }
+.cm-slick {
+  height: 160px;
+}
+.cm-slick-item {
+  text-align: center;
+  height: 160px;
+  line-height: 130px;
+  background: #506b9e;
+  color: #fff;
+  overflow: hidden;
+}

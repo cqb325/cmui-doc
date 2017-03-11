@@ -10,17 +10,17 @@ define(["module", "react", "Label", "../components/radio/demo1", "../components/
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Radio 单选框"
+                    "Radio \u5355\u9009\u6846"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "单选框。"
+                    "\u5355\u9009\u6846\u3002"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "代码演示"
+                    "\u4EE3\u7801\u6F14\u793A"
                 ),
                 React.createElement(
                     Label,

@@ -55,7 +55,7 @@ define(["module", "react", "react-dom", "../BaseDemo", "DateRange", "FontIcon", 
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -75,12 +75,12 @@ define(["module", "react", "react-dom", "../BaseDemo", "DateRange", "FontIcon", 
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "默认值"
+                            "\u9ED8\u8BA4\u503C"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "设置value属性xxxx-xx-xx~xxxx-xx-xx可以设置默认值。",
+                            "\u8BBE\u7F6Evalue\u5C5E\u6027xxxx-xx-xx~xxxx-xx-xx\u53EF\u4EE5\u8BBE\u7F6E\u9ED8\u8BA4\u503C\u3002",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

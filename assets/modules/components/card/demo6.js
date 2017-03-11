@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Card", "Button", "../Code
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
+            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -110,12 +110,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Card", "Button", "../Code
                             React.createElement(
                                 Button,
                                 { onClick: this.setTitle.bind(this) },
-                                "改变标题"
+                                "\u6539\u53D8\u6807\u9898"
                             ),
                             React.createElement(
                                 Button,
                                 { onClick: this.setContent.bind(this), className: "ml-10" },
-                                "改变内容"
+                                "\u6539\u53D8\u5185\u5BB9"
                             )
                         )
                     ),
@@ -125,12 +125,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Card", "Button", "../Code
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "栅格卡片"
+                            "\u6805\u683C\u5361\u7247"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "在系统概览页面常常和栅格进行配合。",
+                            "\u5728\u7CFB\u7EDF\u6982\u89C8\u9875\u9762\u5E38\u5E38\u548C\u6805\u683C\u8FDB\u884C\u914D\u5408\u3002",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

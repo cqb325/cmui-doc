@@ -10,17 +10,17 @@ define(["module", "react", "Row", "Col", "Label", "../components/breadcrumb/demo
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Breadcrumb 面包屑"
+                    "Breadcrumb \u9762\u5305\u5C51"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "显示当前页面在系统层级结构中的位置，并能向上返回。"
+                    "\u663E\u793A\u5F53\u524D\u9875\u9762\u5728\u7CFB\u7EDF\u5C42\u7EA7\u7ED3\u6784\u4E2D\u7684\u4F4D\u7F6E\uFF0C\u5E76\u80FD\u5411\u4E0A\u8FD4\u56DE\u3002"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "代码演示"
+                    "\u4EE3\u7801\u6F14\u793A"
                 ),
                 React.createElement(
                     Row,
