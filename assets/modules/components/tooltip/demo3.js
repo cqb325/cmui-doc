@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tooltip", "Row", "Col", "
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -73,7 +73,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tooltip", "Row", "Col", "
                             React.createElement(
                                 Col,
                                 { grid: 0.2 },
-                                "\xA0"
+                                " "
                             ),
                             React.createElement(
                                 Col,
@@ -117,7 +117,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tooltip", "Row", "Col", "
                             React.createElement(
                                 Col,
                                 { grid: 0.2 },
-                                "\xA0"
+                                " "
                             )
                         ),
                         React.createElement(
@@ -139,17 +139,17 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tooltip", "Row", "Col", "
                             React.createElement(
                                 Col,
                                 { grid: 0.2 },
-                                "\xA0"
+                                " "
                             ),
                             React.createElement(
                                 Col,
                                 { grid: 0.2 },
-                                "\xA0"
+                                " "
                             ),
                             React.createElement(
                                 Col,
                                 { grid: 0.2 },
-                                "\xA0"
+                                " "
                             ),
                             React.createElement(
                                 Col,
@@ -184,17 +184,17 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tooltip", "Row", "Col", "
                             React.createElement(
                                 Col,
                                 { grid: 0.2 },
-                                "\xA0"
+                                " "
                             ),
                             React.createElement(
                                 Col,
                                 { grid: 0.2 },
-                                "\xA0"
+                                " "
                             ),
                             React.createElement(
                                 Col,
                                 { grid: 0.2 },
-                                "\xA0"
+                                " "
                             ),
                             React.createElement(
                                 Col,
@@ -229,17 +229,17 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tooltip", "Row", "Col", "
                             React.createElement(
                                 Col,
                                 { grid: 0.2 },
-                                "\xA0"
+                                " "
                             ),
                             React.createElement(
                                 Col,
                                 { grid: 0.2 },
-                                "\xA0"
+                                " "
                             ),
                             React.createElement(
                                 Col,
                                 { grid: 0.2 },
-                                "\xA0"
+                                " "
                             ),
                             React.createElement(
                                 Col,
@@ -261,7 +261,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tooltip", "Row", "Col", "
                             React.createElement(
                                 Col,
                                 { grid: 0.2 },
-                                "\xA0"
+                                " "
                             ),
                             React.createElement(
                                 Col,
@@ -305,7 +305,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tooltip", "Row", "Col", "
                             React.createElement(
                                 Col,
                                 { grid: 0.2 },
-                                "\xA0"
+                                " "
                             )
                         )
                     ),
@@ -315,12 +315,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tooltip", "Row", "Col", "
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u4F4D\u7F6E"
+                            "位置"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u652F\u630112\u4E2A\u4E0D\u540C\u7684\u663E\u793A\u4F4D\u7F6E\uFF0C\u901A\u8FC7\u8BBE\u7F6Ealign\u5C5E\u6027\u8BBE\u7F6E\u3002",
+                            "支持12个不同的显示位置，通过设置align属性设置。",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

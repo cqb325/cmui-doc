@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "Slick", "../Code", "FontIcon"], funct
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -98,12 +98,12 @@ define(["module", "react", "../BaseDemo", "Slick", "../Code", "FontIcon"], funct
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u7EB5\u5411\u7684Slick"
+                            "纵向的Slick"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "layout\u5C5E\u6027\u53EF\u4EE5\u662Fhorizontal\u548Cvertical",
+                            "layout属性可以是horizontal和vertical",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tree", "../Code"], functi
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -89,12 +89,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tree", "../Code"], functi
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u5E26checkbox\u7684Tree"
+                            "带checkbox的Tree"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u8BBE\u7F6EenableCheckbox\u5C5E\u6027\uFF0C\u662F\u4E00\u4E2A\u5E26\u52FE\u9009\u7684tree",
+                            "设置enableCheckbox属性，是一个带勾选的tree",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),
@@ -104,7 +104,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tree", "../Code"], functi
                         React.createElement(
                             Code,
                             { className: "language-jsx" },
-                            "\nconst Tree = require(\"Tree\");\n\nlet treeData = [{\n    id: 0,\n    text: \"\u4E2D\u56FD\",\n    open: true,\n    children: [\n        {\n            id: '1',\n            text: \"\u5317\u4EAC\",\n            children: [{id: '11', text: \"\u6D77\u6DC0\"},{id: '12', text: \"\u671D\u9633\"}]\n        },{\n            id: '2',\n            text: \"\u4E0A\u6D77\"\n        }\n    ]\n}];\n\nReactDOM.render(\n<div>\n   <Tree data={treeData} enableCheckbox={true}></Tree>\n</div>, mountNode);\n"
+                            "\nconst Tree = require(\"Tree\");\n\nlet treeData = [{\n    id: 0,\n    text: \"中国\",\n    open: true,\n    children: [\n        {\n            id: '1',\n            text: \"北京\",\n            children: [{id: '11', text: \"海淀\"},{id: '12', text: \"朝阳\"}]\n        },{\n            id: '2',\n            text: \"上海\"\n        }\n    ]\n}];\n\nReactDOM.render(\n<div>\n   <Tree data={treeData} enableCheckbox={true}></Tree>\n</div>, mountNode);\n"
                         )
                     )
                 );

@@ -55,7 +55,7 @@ define(["module", "react", "react-dom", "core/Ajax"], function (module, React, R
         function BaseDemo(props) {
             _classCallCheck(this, BaseDemo);
 
-            var _this = _possibleConstructorReturn(this, (BaseDemo.__proto__ || Object.getPrototypeOf(BaseDemo)).call(this, props));
+            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BaseDemo).call(this, props));
 
             _this.state = {
                 src: ""

@@ -10,19 +10,19 @@ define(["module", "react", "Label", "Row", "Col", "../components/progress/demo1"
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Progress \u8FDB\u5EA6\u6761"
+                    "Progress 进度条"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "\u5C55\u793A\u64CD\u4F5C\u7684\u5F53\u524D\u8FDB\u5EA6\u3002",
+                    "展示操作的当前进度。",
                     React.createElement("br", null),
-                    "\u5728\u64CD\u4F5C\u9700\u8981\u8F83\u957F\u65F6\u95F4\u624D\u80FD\u5B8C\u6210\u65F6\uFF0C\u4E3A\u7528\u6237\u663E\u793A\u8BE5\u64CD\u4F5C\u7684\u5F53\u524D\u8FDB\u5EA6\u548C\u72B6\u6001"
+                    "在操作需要较长时间才能完成时，为用户显示该操作的当前进度和状态"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "\u4EE3\u7801\u6F14\u793A"
+                    "代码演示"
                 ),
                 React.createElement(
                     Row,

@@ -10,17 +10,17 @@ define(["module", "react", "Label", "../components/grid/demo1", "../components/g
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Grid \u6805\u683C"
+                    "Grid 栅格"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "\u65E0\u6781\u6805\u683C\u3002"
+                    "无极栅格。"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "\u4EE3\u7801\u6F14\u793A"
+                    "代码演示"
                 ),
                 React.createElement(
                     Label,

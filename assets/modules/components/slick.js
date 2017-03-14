@@ -10,19 +10,19 @@ define(["module", "react", "Label", "Row", "Col", "../components/slick/demo1", "
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Slick \u5E7B\u706F\u7247"
+                    "Slick 幻灯片"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "\u4E00\u7EC4\u8F6E\u64AD\u7684\u533A\u57DF\u3002",
+                    "一组轮播的区域。",
                     React.createElement("br", null),
-                    "\u7528\u4E8E\u4E00\u7EC4\u56FE\u7247\u6216\u5361\u7247\u8F6E\u64AD"
+                    "用于一组图片或卡片轮播"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "\u4EE3\u7801\u6F14\u793A"
+                    "代码演示"
                 ),
                 React.createElement(
                     Row,

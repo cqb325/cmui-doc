@@ -84,7 +84,7 @@ define(["module", "react", "react-dom", "classnames", "utils/Dom", "velocity", "
         function Slick(props) {
             _classCallCheck(this, Slick);
 
-            var _this = _possibleConstructorReturn(this, (Slick.__proto__ || Object.getPrototypeOf(Slick)).call(this, props));
+            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Slick).call(this, props));
 
             _this.addState({
                 current: props.current,
@@ -110,9 +110,11 @@ define(["module", "react", "react-dom", "classnames", "utils/Dom", "velocity", "
             key: "jumpTo",
             value: function jumpTo(index, callback) {
                 callback = callback ? callback : function () {};
-                this.setState({
-                    current: index
-                });
+                if (this._isMounted) {
+                    this.setState({
+                        current: index
+                    });
+                }
 
                 if (this.props.onShow) {
                     this.props.onShow(index);
@@ -291,8 +293,14 @@ define(["module", "react", "react-dom", "classnames", "utils/Dom", "velocity", "
                 }, this.props.delay);
             }
         }, {
+            key: "componentWillUnmount",
+            value: function componentWillUnmount() {
+                this._isMounted = false;
+            }
+        }, {
             key: "componentDidMount",
             value: function componentDidMount() {
+                this._isMounted = true;
                 var ele = Dom.dom(ReactDOM.findDOMNode(this));
                 this._width = ele.width();
                 this._height = ele.height();
@@ -341,10 +349,10 @@ define(["module", "react", "react-dom", "classnames", "utils/Dom", "velocity", "
         }, {
             key: "render",
             value: function render() {
-                var _props = this.props,
-                    className = _props.className,
-                    style = _props.style,
-                    layout = _props.layout;
+                var _props = this.props;
+                var className = _props.className;
+                var style = _props.style;
+                var layout = _props.layout;
 
 
                 className = classnames(className, "cm-slick", _defineProperty({}, "cm-slick-" + layout, layout));
@@ -400,7 +408,7 @@ define(["module", "react", "react-dom", "classnames", "utils/Dom", "velocity", "
         function Item(props) {
             _classCallCheck(this, Item);
 
-            var _this6 = _possibleConstructorReturn(this, (Item.__proto__ || Object.getPrototypeOf(Item)).call(this, props));
+            var _this6 = _possibleConstructorReturn(this, Object.getPrototypeOf(Item).call(this, props));
 
             _this6.addState({});
             return _this6;

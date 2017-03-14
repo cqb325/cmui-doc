@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "Slick", "../Code", "FontIcon"], funct
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -98,12 +98,12 @@ define(["module", "react", "../BaseDemo", "Slick", "../Code", "FontIcon"], funct
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u81EA\u52A8\u64AD\u653E"
+                            "自动播放"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u8BBE\u7F6EautoPlay\u5C5E\u6027\u4E3A true \u5373\u53EF",
+                            "设置autoPlay属性为 true 即可",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

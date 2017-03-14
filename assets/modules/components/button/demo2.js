@@ -55,7 +55,7 @@ define(["module", "react", "react-dom", "../BaseDemo", "Button", "FontIcon", "..
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -131,12 +131,12 @@ define(["module", "react", "react-dom", "../BaseDemo", "Button", "FontIcon", "..
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u6309\u94AE\u5C3A\u5BF8"
+                            "按钮尺寸"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u6309\u94AE\u6709\u5927\u3001\u4E2D\u3001\u5C0F\u4E09\u79CD\u5C3A\u5BF8\u3002 \u901A\u8FC7\u8BBE\u7F6E size \u4E3A large small \u5206\u522B\u628A\u6309\u94AE\u8BBE\u4E3A\u5927\u3001\u5C0F\u5C3A\u5BF8\u3002\u82E5\u4E0D\u8BBE\u7F6E size\uFF0C\u5219\u5C3A\u5BF8\u4E3A\u4E2D\u3002",
+                            "按钮有大、中、小三种尺寸。 通过设置 size 为 large small 分别把按钮设为大、小尺寸。若不设置 size，则尺寸为中。",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

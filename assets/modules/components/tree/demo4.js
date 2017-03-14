@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tree", "../Code"], functi
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -75,12 +75,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Tree", "../Code"], functi
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u52A0\u8F7D\u8FDC\u7A0B\u6570\u636E"
+                            "加载远程数据"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "tree\u4ECEurl\u5730\u5740\u4E2D\u83B7\u53D6\u8FDC\u7A0B\u6570\u636E\u8FDB\u884C\u6E32\u67D3",
+                            "tree从url地址中获取远程数据进行渲染",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

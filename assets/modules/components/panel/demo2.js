@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Button", "Panel", "../Cod
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -93,12 +93,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Button", "Panel", "../Cod
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u6CA1\u6709footer"
+                            "没有footer"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u4E0D\u8BBE\u7F6Efooters\u5C5E\u6027\uFF0C\u5C06\u4E0D\u663E\u793Afooter\u3002",
+                            "不设置footers属性，将不显示footer。",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

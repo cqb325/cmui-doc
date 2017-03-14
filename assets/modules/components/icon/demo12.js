@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "../Code"], function (modu
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -89,12 +89,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "../Code"], function (modu
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u81EA\u5B9A\u4E49\u5B57\u4F53"
+                            "自定义字体"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u8BBE\u7F6EFontIcon\u7684 font \u5C5E\u6027\u5373\u53EF\u8BBE\u7F6E\u5B57\u4F53\u7684family\uFF0Cicon\u5C5E\u6027\u6307\u5411\u7684\u5B57\u5C31\u662F\u8BE5\u5B57\u4F53\u4E2D\u7684\u56FE\u6807\uFF0C\u5728\u9875\u9762\u4E2D\u7684head\u9700\u8981\u5F15\u5165\u5BF9\u5E94\u7684css\u6837\u5F0F",
+                            "设置FontIcon的 font 属性即可设置字体的family，icon属性指向的字就是该字体中的图标，在页面中的head需要引入对应的css样式",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

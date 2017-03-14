@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "Slick", "../Code", "FontIcon"], funct
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -98,12 +98,12 @@ define(["module", "react", "../BaseDemo", "Slick", "../Code", "FontIcon"], funct
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "slide\u7279\u6548"
+                            "slide特效"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u8BBE\u7F6Eeffect\u5C5E\u6027\u4E3Aslide\u5373\u53EF",
+                            "设置effect属性为slide即可",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

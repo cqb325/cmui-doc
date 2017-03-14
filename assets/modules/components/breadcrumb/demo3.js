@@ -55,7 +55,7 @@ define(["module", "react", "react-dom", "../BaseDemo", "Breadcrumb", "FontIcon",
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -98,12 +98,12 @@ define(["module", "react", "react-dom", "../BaseDemo", "Breadcrumb", "FontIcon",
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u5206\u9694\u7B26"
+                            "分隔符"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u8BBE\u7F6EBreadcrumb\u7684separator\u5C5E\u6027\u53EF\u4EE5\u81EA\u5B9A\u4E49\u9762\u5305\u5C51\u7684\u5206\u9694\u7B26\u3002",
+                            "设置Breadcrumb的separator属性可以自定义面包屑的分隔符。",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

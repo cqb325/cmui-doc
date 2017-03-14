@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Switch", "../Code"], func
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -84,12 +84,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Switch", "../Code"], func
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u5927\u5C0F"
+                            "大小"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u8BBE\u7F6Esize\u4E3Asmall\u53EF\u4EE5\u8BBE\u7F6E\u5C0Fswitch\u3002",
+                            "设置size为small可以设置小switch。",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

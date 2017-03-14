@@ -10,19 +10,19 @@ define(["module", "react", "Label", "../components/switch/demo1", "../components
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Switch \u5F00\u5173"
+                    "Switch 开关"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "\u5F00\u5173\u9009\u62E9\u5668\u3002",
+                    "开关选择器。",
                     React.createElement("br", null),
-                    "\u9700\u8981\u8868\u793A\u5F00\u5173\u72B6\u6001/\u4E24\u79CD\u72B6\u6001\u4E4B\u95F4\u7684\u5207\u6362\u65F6\u4F7F\u7528\u3002"
+                    "需要表示开关状态/两种状态之间的切换时使用。"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "\u4EE3\u7801\u6F14\u793A"
+                    "代码演示"
                 ),
                 React.createElement(
                     Label,

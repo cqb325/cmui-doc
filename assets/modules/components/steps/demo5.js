@@ -57,7 +57,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Steps", "../Code"], funct
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -83,12 +83,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Steps", "../Code"], funct
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u7AD6\u76F4\u5F62\u5F0F\u7684\u6B65\u9AA4\u6761"
+                            "竖直形式的步骤条"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u7B80\u5355\u7684\u7AD6\u76F4\u65B9\u5411\u7684\u6B65\u9AA4\u6761\u3002",
+                            "简单的竖直方向的步骤条。",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

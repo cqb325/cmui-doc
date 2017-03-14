@@ -10,19 +10,19 @@ define(["module", "react", "Label", "../components/card/demo1", "../components/c
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Card \u5361\u7247"
+                    "Card 卡片"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "\u901A\u7528\u5361\u7247\u5BB9\u5668\u3002",
+                    "通用卡片容器。",
                     React.createElement("br", null),
-                    "\u6700\u57FA\u7840\u7684\u5361\u7247\u5BB9\u5668\uFF0C\u53EF\u627F\u8F7D\u6587\u5B57\u3001\u5217\u8868\u3001\u56FE\u7247\u3001\u6BB5\u843D\uFF0C\u5E38\u7528\u4E8E\u540E\u53F0\u6982\u89C8\u9875\u9762\u3002"
+                    "最基础的卡片容器，可承载文字、列表、图片、段落，常用于后台概览页面。"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "\u4EE3\u7801\u6F14\u793A"
+                    "代码演示"
                 ),
                 React.createElement(
                     Label,

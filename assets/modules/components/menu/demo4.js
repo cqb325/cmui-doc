@@ -58,7 +58,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Menu", "../Code", "Switch
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -151,12 +151,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Menu", "../Code", "Switch
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u591A\u5F00"
+                            "多开"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u8BBE\u7F6E modal \u4E3A multi \u53EF\u4EE5\u8BBE\u7F6E\u83DC\u5355\u4E3A\u591A\u5C55\u5F00\u72B6\u6001 \u9ED8\u8BA4\u4E3Asignle \u5355\u5F00\u72B6\u6001\u3002 \u8BBE\u7F6E theme \u4E3A dark \u53EF\u4EE5\u8BBE\u7F6E\u9ED1\u8272\u4E3B\u9898  \u652F\u6301 light \u548C dark \u9ED8\u8BA4\u4E3A light\u3002",
+                            "设置 modal 为 multi 可以设置菜单为多展开状态 默认为signle 单开状态。 设置 theme 为 dark 可以设置黑色主题  支持 light 和 dark 默认为 light。",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

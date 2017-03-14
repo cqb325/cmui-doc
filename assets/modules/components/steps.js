@@ -10,19 +10,19 @@ define(["module", "react", "Label", "../components/steps/demo1", "../components/
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Steps \u6B65\u9AA4\u6761"
+                    "Steps 步骤条"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "\u5F15\u5BFC\u7528\u6237\u6309\u7167\u6D41\u7A0B\u5B8C\u6210\u4EFB\u52A1\u7684\u5BFC\u822A\u6761\u3002",
+                    "引导用户按照流程完成任务的导航条。",
                     React.createElement("br", null),
-                    "\u5F53\u4EFB\u52A1\u590D\u6742\u6216\u8005\u5B58\u5728\u5148\u540E\u5173\u7CFB\u65F6\uFF0C\u5C06\u5176\u5206\u89E3\u6210\u4E00\u7CFB\u5217\u6B65\u9AA4\uFF0C\u4ECE\u800C\u7B80\u5316\u4EFB\u52A1\u3002"
+                    "当任务复杂或者存在先后关系时，将其分解成一系列步骤，从而简化任务。"
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "\u4EE3\u7801\u6F14\u793A"
+                    "代码演示"
                 ),
                 React.createElement(
                     Label,

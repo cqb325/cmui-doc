@@ -55,7 +55,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Switch", "../Code"], func
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -75,12 +75,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Switch", "../Code"], func
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u9ED8\u8BA4\u9009\u4E2D"
+                            "默认选中"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u9ED8\u8BA4\u9009\u4E2D\u53EF\u4EE5\u8BBE\u7F6Echecked\u4E3Atrue",
+                            "默认选中可以设置checked为true",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

@@ -55,7 +55,7 @@ define(["module", "react", "react-dom", "../BaseDemo", "Button", "FontIcon", "..
         function Demo() {
             _classCallCheck(this, Demo);
 
-            return _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).apply(this, arguments));
         }
 
         _createClass(Demo, [{
@@ -99,12 +99,12 @@ define(["module", "react", "react-dom", "../BaseDemo", "Button", "FontIcon", "..
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "\u6309\u94AE\u4E3B\u9898"
+                            "按钮主题"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "\u6309\u94AE\u4E3B\u9898\u6709\u4E94\u79CD\uFF1A\u901A\u8FC7\u8BBE\u7F6E theme \u4E3A default primary success warning danger \u8FDB\u884C\u521B\u5EFA",
+                            "按钮主题有五种：通过设置 theme 为 default primary success warning danger 进行创建",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),

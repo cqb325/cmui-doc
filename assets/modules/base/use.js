@@ -10,12 +10,12 @@ define(["module", "react", "react-dom"], function (module, React, ReactDOM) {
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "\u5F00\u59CB\u4F7F\u7528"
+                    "开始使用"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "\u4F7F\u7528\u65B9\u5F0F"
+                    "使用方式"
                 )
             );
         }

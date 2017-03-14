@@ -10,18 +10,18 @@ define(["module", "react", "Label", "../components/menu/demo1", "../components/m
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "Menu \u83DC\u5355"
+                    "Menu 菜单"
                 ),
                 React.createElement(
                     "blockquote",
                     { className: "page-tip" },
-                    "\u4E3A\u9875\u9762\u548C\u529F\u80FD\u63D0\u4F9B\u5BFC\u822A\u7684\u83DC\u5355\u5217\u8868\u3002",
+                    "为页面和功能提供导航的菜单列表。",
                     React.createElement("br", null)
                 ),
                 React.createElement(
                     "h1",
                     { className: "page-h1" },
-                    "\u4EE3\u7801\u6F14\u793A"
+                    "代码演示"
                 ),
                 React.createElement(
                     Label,

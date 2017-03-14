@@ -1,4 +1,4 @@
-define(["module", "react", "react-dom", "Core", "classnames", "FontIcon", "core/BaseComponent"], function (module, React, ReactDOM, Core, classnames, FontIcon, BaseComponent) {
+define(["module", "react", "react-dom", "Core", "classnames", "FontIcon", "Button", "core/BaseComponent"], function (module, React, ReactDOM, Core, classnames, FontIcon, Button, BaseComponent) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -240,7 +240,9 @@ define(["module", "react", "react-dom", "Core", "classnames", "FontIcon", "core/
                             current: current,
                             _current: current
                         });
-                        ReactDOM.findDOMNode(this.refs.pageNum).value = current;
+                        if (this.refs.pageNum) {
+                            ReactDOM.findDOMNode(this.refs.pageNum).value = current;
+                        }
                     }
                 }
                 if (!preventCallback) {
@@ -268,15 +270,15 @@ define(["module", "react", "react-dom", "Core", "classnames", "FontIcon", "core/
                         });
                     }
 
+                    this.update({ current: page });
                     if (this.props.onChange) {
-                        this.update({ current: page });
                         this.props.onChange(page, this.state.pageSize);
-                        this.emit("change", page, this.state.pageSize);
-                    } else {
-                        this.goToPage(page);
                     }
+                    this.emit("change", page, this.state.pageSize);
 
-                    ReactDOM.findDOMNode(this.refs.pageNum).value = page;
+                    if (this.refs.pageNum) {
+                        ReactDOM.findDOMNode(this.refs.pageNum).value = page;
+                    }
 
                     return page;
                 }
@@ -288,9 +290,21 @@ define(["module", "react", "react-dom", "Core", "classnames", "FontIcon", "core/
             value: function goToPage() {
                 var page = parseInt(ReactDOM.findDOMNode(this.refs.pageNum).value);
                 if (this._isValid(page) && page <= this._calcPage()) {
-                    if (this.props.onChange) {
-                        this.props.onChange(page, this.state.pageSize);
-                    }
+                    this._handleChange(page);
+                }
+            }
+        }, {
+            key: "handlerInput",
+            value: function handlerInput(e) {
+                this.setState({
+                    _current: e.target.value
+                });
+            }
+        }, {
+            key: "keyUp",
+            value: function keyUp(e) {
+                if (e.keyCode == 13) {
+                    this.goToPage();
                 }
             }
         }, {
@@ -366,7 +380,7 @@ define(["module", "react", "react-dom", "Core", "classnames", "FontIcon", "core/
                             React.createElement(
                                 "span",
                                 { className: "ellipse" },
-                                "..."
+                                "•••"
                             )
                         ));
                     } else if (interval.start - edges == 1) {
@@ -388,7 +402,7 @@ define(["module", "react", "react-dom", "Core", "classnames", "FontIcon", "core/
                                 React.createElement(
                                     "span",
                                     { className: "ellipse" },
-                                    "..."
+                                    "•••"
                                 )
                             ));
                         } else if (pages - edges - interval.end == 1) {
@@ -453,10 +467,30 @@ define(["module", "react", "react-dom", "Core", "classnames", "FontIcon", "core/
                         " ",
                         React.createElement(
                             "span",
-                            { className: "page-code" },
-                            "到第 ",
-                            React.createElement("input", { name: "pageNum", className: "pageNum", ref: "pageNum", autoComplete: "off", value: this.state.current, onChange: this.goToPage.bind(this, null), type: "text", style: { width: "40px" } }),
-                            "页"
+                            { className: "page-code mr-10" },
+                            React.createElement(
+                                "span",
+                                null,
+                                "到第"
+                            ),
+                            React.createElement("input", { name: "pageNum", className: "pageNum", ref: "pageNum",
+                                autoComplete: "off",
+                                value: this.state._current,
+                                type: "text",
+                                style: { width: "40px" },
+                                onChange: this.handlerInput.bind(this),
+                                onKeyUp: this.keyUp.bind(this)
+                            }),
+                            React.createElement(
+                                "span",
+                                null,
+                                "页"
+                            )
+                        ),
+                        React.createElement(
+                            Button,
+                            { theme: "primary", flat: true, onClick: this.goToPage.bind(this, null) },
+                            "确定"
                         )
                     ) : null
                 );
