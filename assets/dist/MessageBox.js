@@ -1,4 +1,4 @@
-define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'utils/Dom', 'Panel', 'Button'], function (module, React, ReactDOM, classnames, BaseComponent, Dom, Panel, Button) {
+define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'utils/Dom', 'Panel', 'Button', "velocity"], function (module, React, ReactDOM, classnames, BaseComponent, Dom, Panel, Button, velocity) {
     "use strict";
 
     var _extends = Object.assign || function (target) {
@@ -145,7 +145,7 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'uti
             key: "hide",
             value: function hide() {
                 var ele = Dom.dom(ReactDOM.findDOMNode(this.panel));
-                ele.hide();
+                velocity(ele[0], "fadeOut", { duration: 300 });
 
                 if (this.props.onHide) {
                     this.props.onHide();
@@ -202,6 +202,8 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'uti
                     var h = ele.clientHeight;
                     ele.style.marginLeft = -w / 2 + "px";
                     ele.style.marginTop = -h / 2 + "px";
+                    Dom.dom(ele).hide();
+                    velocity(ele, "fadeIn", { duration: 300 });
 
                     if (_this2.props.onShow) {
                         _this2.props.onShow();

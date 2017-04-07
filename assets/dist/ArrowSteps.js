@@ -63,13 +63,13 @@ define(['module', "react", 'react-dom', 'utils/Dom', "classnames", "core/BaseCom
         if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
     }
 
-    var Steps = function (_BaseComponent) {
-        _inherits(Steps, _BaseComponent);
+    var ArrowSteps = function (_BaseComponent) {
+        _inherits(ArrowSteps, _BaseComponent);
 
-        function Steps(props) {
-            _classCallCheck(this, Steps);
+        function ArrowSteps(props) {
+            _classCallCheck(this, ArrowSteps);
 
-            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Steps).call(this, props));
+            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ArrowSteps).call(this, props));
 
             _this.addState({
                 current: props.current || 0
@@ -79,7 +79,7 @@ define(['module', "react", 'react-dom', 'utils/Dom', "classnames", "core/BaseCom
             return _this;
         }
 
-        _createClass(Steps, [{
+        _createClass(ArrowSteps, [{
             key: 'componentWillReceiveProps',
             value: function componentWillReceiveProps(nextProps) {
                 if (nextProps.current !== this.state.current) {
@@ -91,18 +91,10 @@ define(['module', "react", 'react-dom', 'utils/Dom', "classnames", "core/BaseCom
         }, {
             key: 'componentDidMount',
             value: function componentDidMount() {
-                var _this2 = this;
-
-                var w = this.steps.length == 1 ? "100%" : 1 / (this.steps.length - 1) * 100 + "%";
-                var lastWidth = this.steps.length > 1 ? this.steps[this.steps.length - 1].getWidth() : 0;
+                var w = this.steps.length == 1 ? "100%" : 1 / this.steps.length * 100 + "%";
 
                 this.steps.forEach(function (step, index) {
-                    if (index < _this2.steps.length - 1) {
-                        step.updateStyle({
-                            width: w,
-                            marginRight: -lastWidth / 2 + "px"
-                        });
-                    }
+                    step.updateStyle({ width: w });
                 });
             }
         }, {
@@ -165,7 +157,7 @@ define(['module', "react", 'react-dom', 'utils/Dom', "classnames", "core/BaseCom
         }, {
             key: 'renderSteps',
             value: function renderSteps() {
-                var _this3 = this;
+                var _this2 = this;
 
                 var index = 1;
                 return React.Children.map(this.props.children, function (child) {
@@ -183,8 +175,8 @@ define(['module', "react", 'react-dom', 'utils/Dom', "classnames", "core/BaseCom
                     if (componentName === 'Step') {
                         var props = _extends({
                             index: index,
-                            current: _this3.state.current,
-                            "data-bindStep": _this3.bindStep.bind(_this3)
+                            current: _this2.state.current,
+                            "data-bindStep": _this2.bindStep.bind(_this2)
                         }, child.props);
                         index++;
 
@@ -201,9 +193,9 @@ define(['module', "react", 'react-dom', 'utils/Dom', "classnames", "core/BaseCom
                 var className = _props.className;
                 var style = _props.style;
 
-                className = classnames("cm-steps", className, {
-                    "cm-steps-small": this.props.size == "small",
-                    "cm-steps-vertical": this.props.layout == "vertical"
+                className = classnames("cm-arrow-steps", className, {
+                    "cm-arrow-steps-small": this.props.size == "small",
+                    "cm-arrow-steps-vertical": this.props.layout == "vertical"
                 });
 
                 var steps = this.renderSteps();
@@ -215,7 +207,7 @@ define(['module', "react", 'react-dom', 'utils/Dom', "classnames", "core/BaseCom
             }
         }]);
 
-        return Steps;
+        return ArrowSteps;
     }(BaseComponent);
 
     var Step = function (_BaseComponent2) {
@@ -224,9 +216,9 @@ define(['module', "react", 'react-dom', 'utils/Dom', "classnames", "core/BaseCom
         function Step(props) {
             _classCallCheck(this, Step);
 
-            var _this4 = _possibleConstructorReturn(this, Object.getPrototypeOf(Step).call(this, props));
+            var _this3 = _possibleConstructorReturn(this, Object.getPrototypeOf(Step).call(this, props));
 
-            _this4.addState({
+            _this3.addState({
                 title: props.title,
                 description: props.description || "",
                 content: props.content,
@@ -234,7 +226,7 @@ define(['module', "react", 'react-dom', 'utils/Dom', "classnames", "core/BaseCom
                 index: props.index,
                 current: props.current
             });
-            return _this4;
+            return _this3;
         }
 
         _createClass(Step, [{
@@ -247,10 +239,10 @@ define(['module', "react", 'react-dom', 'utils/Dom', "classnames", "core/BaseCom
         }, {
             key: 'updateStyle',
             value: function updateStyle(style) {
-                var _this5 = this;
+                var _this4 = this;
 
                 window.setTimeout(function () {
-                    _this5.setState({ style: style });
+                    _this4.setState({ style: style });
                 }, 0);
             }
         }, {
@@ -289,41 +281,12 @@ define(['module', "react", 'react-dom', 'utils/Dom', "classnames", "core/BaseCom
                 });
                 style = _extends(this.state.style, style || {});
 
-                var inner = "";
-                if (!this.props.icon) {
-                    if (status == "finished") {
-                        inner = React.createElement(FontIcon, { icon: "check" });
-                    } else {
-                        inner = React.createElement(
-                            'span',
-                            null,
-                            this.props.index
-                        );
-                    }
-                } else {
-                    inner = React.createElement(FontIcon, { icon: this.props.icon });
-                }
-
                 return React.createElement(
                     'div',
                     { className: className, style: style },
                     React.createElement(
                         'div',
-                        { className: 'cm-step-tail' },
-                        React.createElement('i', null)
-                    ),
-                    React.createElement(
-                        'div',
                         { className: 'cm-steps-step' },
-                        React.createElement(
-                            'div',
-                            { className: 'cm-step-head' },
-                            React.createElement(
-                                'div',
-                                { className: 'cm-step-head-inner' },
-                                inner
-                            )
-                        ),
                         React.createElement(
                             'div',
                             { className: 'cm-step-main' },
@@ -346,7 +309,7 @@ define(['module', "react", 'react-dom', 'utils/Dom', "classnames", "core/BaseCom
         return Step;
     }(BaseComponent);
 
-    Steps.Step = Step;
+    ArrowSteps.Step = Step;
 
-    module.exports = Steps;
+    module.exports = ArrowSteps;
 });

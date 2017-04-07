@@ -78,6 +78,7 @@ define(["module", "react", "react-dom", "classnames", 'utils/Dom', 'utils/Events
             //距离目标的距离
             _this.gap = 5;
             _this.timer = null;
+            _this.scrollElements = [];
             return _this;
         }
 
@@ -117,6 +118,16 @@ define(["module", "react", "react-dom", "classnames", 'utils/Dom', 'utils/Events
                         }, 100);
                     }
                 });
+
+                this.getScrollElements(this.props.baseEle);
+
+                this.scrollElements.forEach(function (ele) {
+                    Events.on(ele, "scroll", function (e) {
+                        if (_this2.state.visible && _this2._isMounted) {
+                            _this2.update(_this2.state.visible);
+                        }
+                    });
+                });
             }
         }, {
             key: "update",
@@ -125,6 +136,14 @@ define(["module", "react", "react-dom", "classnames", 'utils/Dom', 'utils/Events
                 if (visible) {
                     var base = Dom.dom(this.props.baseEle);
                     var baseOffset = base.offset();
+                    var scroll = this.getScroll(this.props.baseEle);
+
+                    var scrollTop = scroll.top;
+                    var scrollLeft = scroll.left;
+                    // if(this.props.offsetEle) {
+                    //     scrollTop = Dom.query(this.props.offsetEle).scrollTop;
+                    //     scrollLeft = Dom.query(this.props.offsetEle).scrollLeft;
+                    // }
 
                     var style = {};
                     var baseWidth = base.width();
@@ -162,7 +181,7 @@ define(["module", "react", "react-dom", "classnames", 'utils/Dom', 'utils/Events
 
                     if (this.props.align === "left") {
                         style.left = baseOffset.left - tipWidth - this.gap;
-                        style.top = baseOffset.top - Math.abs(baseHeight - tipHeight) / 2;
+                        style.top = baseOffset.top + (baseHeight - tipHeight) / 2;
                     }
                     if (this.props.align === "leftTop") {
                         style.left = baseOffset.left - tipWidth - this.gap;
@@ -175,7 +194,7 @@ define(["module", "react", "react-dom", "classnames", 'utils/Dom', 'utils/Events
 
                     if (this.props.align === "right") {
                         style.left = baseOffset.left + baseWidth + this.gap;
-                        style.top = baseOffset.top - Math.abs(baseHeight - tipHeight) / 2;
+                        style.top = baseOffset.top + (baseHeight - tipHeight) / 2;
                     }
                     if (this.props.align === "rightTop") {
                         style.left = baseOffset.left + baseWidth + this.gap;
@@ -186,6 +205,9 @@ define(["module", "react", "react-dom", "classnames", 'utils/Dom', 'utils/Events
                         style.top = baseOffset.top - (tipHeight - baseHeight);
                     }
 
+                    style.top = style.top - scrollTop;
+                    style.left = style.left - scrollLeft;
+
                     this.setState({
                         visible: visible,
                         style: style
@@ -195,14 +217,40 @@ define(["module", "react", "react-dom", "classnames", 'utils/Dom', 'utils/Events
                         visible: visible
                     });
 
-                    window.setTimeout(function () {
-                        tip.hide();
-                    }, this.props.delay || 0);
+                    // window.setTimeout(()=>{
+                    //     tip.hide();
+                    // }, this.props.delay || 0);
                 }
 
                 if (this.props.onVisibleChange) {
                     this.props.onVisibleChange(visible);
                 }
+            }
+        }, {
+            key: "getScrollElements",
+            value: function getScrollElements(ele) {
+                var parent = ele.parentNode;
+
+                while (parent !== null && parent.tagName !== "HTML") {
+                    if (parent.scrollHeight > parent.offsetHeight && Dom.dom(parent).css("overflow") !== "hidden") {
+                        this.scrollElements.push(parent);
+                    }
+                    parent = parent.parentNode;
+                }
+            }
+        }, {
+            key: "getScroll",
+            value: function getScroll() {
+                var top = 0,
+                    left = 0;
+                this.scrollElements.forEach(function (ele) {
+                    top += ele.scrollTop;
+                    left += ele.scrollLeft;
+                });
+                return {
+                    top: top,
+                    left: left
+                };
             }
         }, {
             key: "setContent",

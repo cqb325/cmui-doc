@@ -59,19 +59,14 @@ define(["module", "react", "react-dom", "Core", "classnames", "FontIcon", "Butto
         function PagePrev(props) {
             _classCallCheck(this, PagePrev);
 
-            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PagePrev).call(this, props));
-
-            _this.state = {
-                pageNum: props.current
-            };
-            return _this;
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(PagePrev).call(this, props));
         }
 
         _createClass(PagePrev, [{
             key: "render",
             value: function render() {
                 var className = classnames("prev", {
-                    disabled: this.state.pageNum == 1
+                    disabled: this.props.current == 1
                 });
                 return React.createElement(
                     "li",

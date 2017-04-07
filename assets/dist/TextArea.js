@@ -176,12 +176,14 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
                 var style = _props2.style;
                 var height = _props2.height;
 
-                var others = Omit(this.props, ["className", "grid", "type", "trigger", "style", "autoHeight"]);
+                var others = Omit(this.props, ["className", "handleChange", "data-valueType", "data-itemBind", "grid", "type", "trigger", "style", "autoHeight"]);
                 var handleChange = this.props.handleChange ? function (event) {
                     _this2.props.handleChange(event, { component: _this2 });
                 } : this.handleChange.bind(this);
                 style = style || {};
-                style["height"] = height;
+                if (height != undefined && height != null) {
+                    style["height"] = height;
+                }
                 var props = {
                     className: classnames(className, 'cm-form-control', getGrid(grid)),
                     onChange: handleChange,
@@ -238,7 +240,7 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
          * @attribute height
          * @type {String}
          */
-        height: PropTypes.string
+        height: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
     };
 
     TextArea.defaultProps = {

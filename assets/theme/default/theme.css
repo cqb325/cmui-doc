@@ -963,6 +963,7 @@ a:focus {
   font-size: 13px;
   transition: border-color ease-in-out 0.15s;
   cursor: pointer;
+  height: 30px;
 }
 .cm-datetime.disabled {
   cursor: default;
@@ -1134,10 +1135,38 @@ a:focus {
   outline: 0;
   box-shadow: 0 0 0 2px rgba(16, 142, 233, 0.2);
 }
+textarea.cm-form-control {
+  padding: 4px 11px;
+}
+.cm-form.cm-form-stack .cm-form-row {
+  display: block;
+}
+.cm-form.cm-form-stack .cm-form-label {
+  display: block;
+  text-align: left;
+}
+.cm-form-inline .cm-form-group,
+.cm-form-inline.cm-form-group {
+  display: inline-block;
+}
+.cm-form-label {
+  display: inline-block;
+  text-align: right;
+  margin-right: 8px;
+}
+.cm-form-label.cm-form-label-top {
+  vertical-align: top;
+}
+.cm-form-row {
+  display: inline-block;
+}
 .cm-form-group {
   position: relative;
   margin-bottom: 10px;
   margin-right: 10px;
+}
+.cm-form-group .cm-form-group {
+  margin-bottom: 0!important;
 }
 .cm-form-group.invalid .cm-form-control {
   border: 1px solid #E05B5B;
@@ -1157,10 +1186,11 @@ a:focus {
 }
 .cm-form-group.input-group .input-group-addon {
   display: inline-block;
-  padding: 7px 12px;
+  padding: 4px 12px;
+  height: 28px;
   font-size: 14px;
   font-weight: 400;
-  line-height: 1;
+  line-height: normal;
   color: #555;
   text-align: center;
   background-color: #eee;
@@ -1205,7 +1235,7 @@ a:focus {
   border: 1px solid #ccc;
   border-radius: 2px;
   color: #333333;
-  min-width: 150px;
+  min-width: 162px;
   display: block;
   background-color: #fff;
   background-image: none;
@@ -1225,7 +1255,7 @@ a:focus {
   overflow: hidden;
   white-space: nowrap;
   display: inline-block;
-  line-height: 1.5;
+  line-height: 17px;
   vertical-align: middle;
 }
 .cm-select .cm-select-cert {
@@ -2389,7 +2419,7 @@ a:focus {
 }
 .cm-panel .cm-panel-title {
   padding: 7px 15px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #e9e9e9;
 }
 .cm-panel .cm-panel-content {
   padding: 20px;
@@ -2398,7 +2428,7 @@ a:focus {
   float: right;
 }
 .cm-panel .cm-panel-footer {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #e9e9e9;
   padding: 8px 10px;
   text-align: center;
 }
@@ -2408,7 +2438,7 @@ a:focus {
   top: 50%;
   left: 50%;
   z-index: 50000;
-  min-width: 200px;
+  min-width: 300px;
 }
 .cm-panel.cm-dialog {
   background: #fff;
@@ -2554,6 +2584,9 @@ a:focus {
   -webkit-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.cm-tooltip-helper {
+  display: inline-block;
 }
 .cm-tooltip {
   position: absolute;
@@ -3759,16 +3792,16 @@ a:focus {
   z-index: 10003;
 }
 .cm-svg-spin-gear1 {
-  -webkit-transform: translate(-20px, -20px);
-  transform: translate(-20px, -20px);
+  -webkit-transform: translate(-20px, -20px) rotate(15deg);
+  transform: translate(-20px, -20px) rotate(15deg);
   -webkit-animation: spin2 4s linear infinite;
   animation: spin2 4s linear infinite;
   -webkit-transform-origin: center;
   transform-origin: center;
 }
 .cm-svg-spin-gear2 {
-  -webkit-transform: translate(20px, 20px);
-  transform: translate(20px, 20px);
+  -webkit-transform: translate(20px, 20px) rotate(15deg);
+  transform: translate(20px, 20px) rotate(15deg);
   -webkit-animation: spin3 4s linear infinite;
   animation: spin3 4s linear infinite;
   -webkit-transform-origin: center;
@@ -3972,4 +4005,46 @@ a:focus {
   100% {
     border-radius: 20px;
   }
+}
+.cm-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+  border-radius: 4px 4px 0 0;
+  overflow: hidden;
+}
+.cm-table.text-center {
+  text-align: center;
+}
+.cm-table .cm-table-col-index,
+.cm-table .cm-table-col-checkbox {
+  width: 50px;
+}
+.cm-table > thead > tr > th {
+  background: #f7f7f7;
+  font-weight: 500;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+  color: rgba(0, 0, 0, 0.85);
+}
+.cm-table > tbody > tr > td,
+.cm-table > thead > tr > th {
+  padding: 11px 8px;
+  word-break: break-all;
+}
+.cm-table > tbody > tr > td {
+  border-bottom: 1px solid #e9e9e9;
+}
+.cm-table.table-hover > tbody > tr:hover > td {
+  background: #ecf6fd;
+}
+.cm-table.table-bordered {
+  border: 1px solid #e9e9e9;
+  border-right: 0;
+  border-bottom: 0;
+}
+.cm-table.table-bordered > thead > tr > th,
+.cm-table.table-bordered > tbody > tr > td {
+  border-right: 1px solid #e9e9e9;
 }

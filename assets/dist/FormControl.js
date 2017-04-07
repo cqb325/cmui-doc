@@ -1,4 +1,4 @@
-define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'utils/omit', 'utils/regs', 'utils/Validation', 'Label', 'core/Ajax', 'Tooltip'], function (module, React, classnames, BaseComponent, grids, Omit, Regs, Validation, Label, Ajax, Tooltip) {
+define(["module", "react", "react-dom", "classnames", "core/BaseComponent", 'utils/omit', 'utils/regs', 'utils/dom', 'utils/Validation', 'Label', 'core/Ajax', 'Tooltip'], function (module, React, ReactDOM, classnames, BaseComponent, Omit, Regs, Dom, Validation, Label, Ajax, Tooltip) {
     "use strict";
 
     var _extends = Object.assign || function (target) {
@@ -63,8 +63,6 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
         if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
     }
 
-    var getGrid = grids.getGrid;
-
     var PropTypes = React.PropTypes;
 
     var FormControl = function (_BaseComponent) {
@@ -114,7 +112,7 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
                         component = FormControl.COMPONENTS["text"];
                     }
 
-                    var others = Omit(this.props, ["className", "children", "layout", "rules", "messages", "isFormItem", "onValid", "onChange", "label", "labelGrid"]);
+                    var others = Omit(this.props, ["itemStyle", "labelWidth", "handleChange", "data-valueType", "className", "children", "layout", "rules", "messages", "isFormItem", "onValid", "onChange", "label", "labelGrid"]);
                     var props = _extends({
                         type: this.props.type,
                         key: this.props.name,
@@ -124,13 +122,15 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
                     }, others);
                     var componentName = component.component.name || component.component.toString().match(/function\s*([^(]*)\(/)[1];
                     if (componentName === 'Input') {
-                        props["data-handleChange"] = this.handleChange.bind(this);
+                        props["handleChange"] = this.handleChange.bind(this);
                     } else if (componentName === 'TextArea') {
                         this._areaLabel = true;
-                        props["data-handleChange"] = this.handleChange.bind(this);
+                        props["handleChange"] = this.handleChange.bind(this);
                     } else {
                         props.onChange = this.onChange.bind(this);
                     }
+
+                    props.style = this.props.itemStyle;
 
                     component = React.createElement(component.component, props);
                 }
@@ -147,7 +147,7 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
                 return React.Children.map(children, function (child, index) {
                     var registerComp = _this2.isRegisterComponent(child);
                     if (registerComp) {
-                        var others = Omit(_this2.props, ["className", "children", "layout", "rules", "messages", "isFormItem", "onValid", "onChange", "label", "labelGrid"]);
+                        var others = Omit(_this2.props, ["itemStyle", "labelWidth", "handleChange", "data-valueType", "tipAlign", "className", "children", "layout", "rules", "messages", "isFormItem", "onValid", "onChange", "label", "labelGrid"]);
                         var props = _extends({
                             key: index,
                             "data-valueType": registerComp.valueType,
@@ -159,13 +159,15 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
                         var componentName = child.type.name || child.type.toString().match(/function\s*([^(]*)\(/)[1];
 
                         if (componentName === 'Input' || componentName === 'TextArea') {
-                            props["data-handleChange"] = _this2.handleChange.bind(_this2);
+                            props["handleChange"] = _this2.handleChange.bind(_this2);
                             if (componentName === 'TextArea') {
                                 _this2._areaLabel = true;
                             }
                         } else {
                             props.onChange = _this2.onChange.bind(_this2);
                         }
+
+                        props.style = _this2.props.itemStyle;
 
                         return React.cloneElement(child, props);
                     } else {
@@ -216,25 +218,43 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
                 this.item.setState({ value: value });
 
                 if (trigger && trigger == event.type) {
-                    var valid = this.check(value);
+                    this.check(value);
                     if (this.props.onChange) {
-                        this.props.onChange(value);
+                        this.props.onChange.apply(this, arguments);
                     }
-
-                    if (valid) {} else {}
                 }
+            }
+        }, {
+            key: "needValid",
+            value: function needValid() {
+                if (this.props.type === "hidden") {
+                    return false;
+                }
+
+                if (this.props.disabled || this.props.readOnly) {
+                    return false;
+                }
+                var ele = Dom.dom(ReactDOM.findDOMNode(this));
+                if (ele.width() === 0 && ele.height() === 0) {
+                    return false;
+                }
+
+                return true;
             }
         }, {
             key: "onChange",
             value: function onChange(value) {
                 var valid = this.check(value);
                 if (this.props.onChange) {
-                    this.props.onChange(value);
+                    this.props.onChange.apply(this, arguments);
                 }
             }
         }, {
             key: "check",
             value: function check(value) {
+                if (!this.needValid()) {
+                    return true;
+                }
                 if (!value) {
                     value = this.item.getValue();
                 }
@@ -264,7 +284,7 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
                     }
                 }
                 for (var method in rules) {
-                    if (method === "required" || "remote") {
+                    if (method === "required" || method === "remote") {
                         continue;
                     }
                     rule = { method: method, parameters: rules[method] };
@@ -479,37 +499,45 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
                     invalid: this.state.errorTip ? true : false
                 });
 
-                var labelClass = classnames("cm-form-label", {
-                    required: required || this.required
-                });
-
                 var items = this._getControl(type);
                 var customChildren = this._renderChildren();
 
-                var labelEle = null;
-                if (label) {
-                    if (layout === "inline") {
-                        labelEle = React.createElement(
-                            Label,
-                            { className: labelClass, component: "label", grid: labelGrid, style: this._areaLabel ? { "verticalAlign": "top" } : {} },
-                            label
-                        );
-                    }
-                    if (layout === "stack") {
-                        labelEle = React.createElement(
-                            Label,
-                            { className: labelClass, grid: labelGrid, style: this._areaLabel ? { "verticalAlign": "top" } : {} },
-                            label
-                        );
-                    }
-                }
-                return React.createElement(
-                    Tooltip,
-                    { theme: "error", className: "error-tip", align: this._tipAlign, ref: "tooltip", title: this.state.errorTip },
-                    React.createElement(
+                var labelClass = classnames("cm-form-label", {
+                    required: required || this.required,
+                    "cm-form-label-top": this._areaLabel
+                });
+
+                if (type === "hidden") {
+                    return React.createElement(
                         "div",
                         { className: className, style: style },
-                        labelEle,
+                        items,
+                        customChildren
+                    );
+                }
+
+                var labelEle = null;
+                if (label) {
+                    if (label === "&nbsp;") {
+                        label = " ";
+                    }
+                    var labelStyle = {};
+                    if (this.props.labelWidth) {
+                        labelStyle["width"] = this.props.labelWidth + "px";
+                    }
+                    labelEle = React.createElement(
+                        Label,
+                        { className: labelClass, grid: labelGrid, style: labelStyle },
+                        label
+                    );
+                }
+                return React.createElement(
+                    "div",
+                    { className: className, style: style },
+                    labelEle,
+                    React.createElement(
+                        Tooltip,
+                        { theme: "error", className: "error-tip", align: this._tipAlign, ref: "tooltip", title: this.state.errorTip },
                         items,
                         customChildren
                     )

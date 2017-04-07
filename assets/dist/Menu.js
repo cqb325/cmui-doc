@@ -84,7 +84,7 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
         function Menu(props) {
             _classCallCheck(this, Menu);
 
-            var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this, props));
+            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Menu).call(this, props));
 
             _this.onSelect = _this.onSelect.bind(_this);
             _this.onClick = _this.onClick.bind(_this);
@@ -116,11 +116,11 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
             }
         }, {
             key: "onSelect",
-            value: function onSelect(item, e) {
+            value: function onSelect(item) {
                 if (this.props.onSelect) {
-                    this.props.onSelect(item, e);
+                    this.props.onSelect(item);
                 }
-                this.emit("select", item, e);
+                this.emit("select", item);
             }
         }, {
             key: "unSelect",
@@ -230,9 +230,9 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
         }, {
             key: "render",
             value: function render() {
-                var _props = this.props,
-                    className = _props.className,
-                    style = _props.style;
+                var _props = this.props;
+                var className = _props.className;
+                var style = _props.style;
 
                 className = classnames(className, "cm-menu", this.state.theme, _defineProperty({}, "cm-menu-" + this.state.layout, this.props.layout != undefined));
                 return React.createElement(
@@ -258,14 +258,14 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
         function SubMenu(props) {
             _classCallCheck(this, SubMenu);
 
-            var _this3 = _possibleConstructorReturn(this, (SubMenu.__proto__ || Object.getPrototypeOf(SubMenu)).call(this, props));
+            var _this3 = _possibleConstructorReturn(this, Object.getPrototypeOf(SubMenu).call(this, props));
 
             _this3.addState({
                 hover: false,
                 collapsed: !props.open || false
             });
 
-            _this3.identify = props.identify || "SubMenu_level_" + props.level + "_index_" + props.index;
+            _this3.identify = props.identify || "SubMenu_level_" + (props.parent.identify ? props.parent.identify : "") + "_" + props.index;
             _this3.children = [];
             _this3.name = "SubMenu";
             return _this3;
@@ -501,10 +501,11 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
         function MenuItemGroup(props) {
             _classCallCheck(this, MenuItemGroup);
 
-            var _this6 = _possibleConstructorReturn(this, (MenuItemGroup.__proto__ || Object.getPrototypeOf(MenuItemGroup)).call(this, props));
+            var _this6 = _possibleConstructorReturn(this, Object.getPrototypeOf(MenuItemGroup).call(this, props));
 
             _this6.children = [];
             _this6.name = "MenuItemGroup";
+            _this6.identify = "ItemGroup_" + props.parent.identify + "_" + props.index;
             return _this6;
         }
 
@@ -567,9 +568,9 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
         function Item(props) {
             _classCallCheck(this, Item);
 
-            var _this8 = _possibleConstructorReturn(this, (Item.__proto__ || Object.getPrototypeOf(Item)).call(this, props));
+            var _this8 = _possibleConstructorReturn(this, Object.getPrototypeOf(Item).call(this, props));
 
-            _this8.identify = props.identify || "Item_level_" + props.level + "_index_" + props.index;
+            _this8.identify = props.identify || "Item_level_" + (props.parent.identify ? props.parent.identify : "") + "_" + props.index;
 
             _this8.addState({
                 active: props.select || false
@@ -580,35 +581,39 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
 
         _createClass(Item, [{
             key: "onClick",
-            value: function onClick(e) {
+            value: function onClick() {
                 if (this.props.disabled) {
                     return false;
                 }
 
                 if (this.props.onClick) {
-                    this.props.onClick(this, e);
+                    this.props.onClick(this);
                 }
 
                 var parent = this.props.root;
                 if (parent.lastSelect && parent.lastSelect != this) {
                     parent.lastSelect.unSelect();
                 }
-                this.select(e);
+                this.select();
             }
         }, {
             key: "select",
-            value: function select(e) {
-                this.setState({ active: true });
+            value: function select() {
+                if (this._isMounted) {
+                    this.setState({ active: true });
+                }
                 var parent = this.props.root;
                 parent.lastSelect = this;
                 if (this.props.onSelect) {
-                    this.props.onSelect(this, e);
+                    this.props.onSelect(this);
                 }
             }
         }, {
             key: "unSelect",
             value: function unSelect() {
-                this.setState({ active: false });
+                if (this._isMounted) {
+                    this.setState({ active: false });
+                }
                 var parent = this.props.root;
                 parent.lastSelect = null;
                 if (parent.unSelect) {
@@ -621,8 +626,14 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
                 return this.identify;
             }
         }, {
+            key: "componentWillUnmount",
+            value: function componentWillUnmount() {
+                this._isMounted = false;
+            }
+        }, {
             key: "componentDidMount",
             value: function componentDidMount() {
+                this._isMounted = true;
                 var root = this.props.root;
                 root.bindKey(this.identify, this);
                 this.props.parent.appendChild(this);

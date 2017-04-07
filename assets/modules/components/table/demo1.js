@@ -61,7 +61,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Table2", "../Code"], func
         _createClass(Demo, [{
             key: "render",
             value: function render() {
-                var columns = [{ name: "field1", text: "数字" }, { name: "field2", text: "日期", format: "DateFormat" }, { name: "field3", text: "文字" }];
+                var columns = [{ name: "index", text: "序号", type: "index" }, { name: "field1", text: "数字" }, { name: "field2", text: "日期", format: "DateFormat" }, { name: "field3", text: "文字" }];
                 var data = [];
                 for (var i = 0; i < 10; i++) {
                     data.push({
@@ -76,7 +76,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Table2", "../Code"], func
                     React.createElement(
                         "div",
                         { className: "code-box-demo" },
-                        React.createElement(Table, { data: data, columns: columns })
+                        React.createElement(Table, { data: data, columns: columns, bordered: true })
                     ),
                     React.createElement(
                         "div",

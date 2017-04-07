@@ -32,25 +32,19 @@ define(['module'], function (module) {
         }
 
         if (objA instanceof Array && objB instanceof Array) {
-            var _ret = function () {
-                if (objA.length != objB.length) {
-                    return {
-                        v: false
-                    };
-                }
-                var equal = true;
-                objA.forEach(function (objAItem) {
-                    objB.forEach(function (objBItem) {
-                        equal && shallowEqual(objAItem, objBItem);
-                    });
+            if (objA.length != objB.length) {
+                return false;
+            }
+            var equal = true;
+            objA.forEach(function (objAItem) {
+                objB.forEach(function (objBItem) {
+                    if (!shallowEqual(objAItem, objBItem)) {
+                        equal = false;
+                    }
                 });
+            });
 
-                return {
-                    v: equal
-                };
-            }();
-
-            if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+            return equal;
         }
 
         var keysA = Object.keys(objA);

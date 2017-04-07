@@ -61,9 +61,11 @@ define(["module", "react", "classnames", "core/BaseComponent", "CheckBox", "core
 
             var data = props.data ? Core.clone(props.data) : null;
 
+            data = _this._rebuildData(data);
+
             _this.addState({
                 data: data,
-                value: props.value || ""
+                value: props.value == undefined ? "" : props.value
             });
 
             _this._lastChecked = null;
@@ -71,16 +73,44 @@ define(["module", "react", "classnames", "core/BaseComponent", "CheckBox", "core
         }
 
         /**
-         * 值变化回调
-         * @method handleChange
-         * @param value {String} 当前操作对象的值
-         * @param checked   {Boolean} 知否选中
-         * @param event     {Event} 事件对象
-         * @param item  {Object} 当前操作对象
+         * 重构数据格式
+         * @param data
+         * @private
          */
 
 
         _createClass(RadioGroup, [{
+            key: "_rebuildData",
+            value: function _rebuildData(data) {
+                if (!data) {
+                    return null;
+                }
+                if (Object.prototype.toString.apply(data) === '[object Array]') {
+                    var one = data[0];
+                    if (Object.prototype.toString.apply(one) === '[object String]') {
+                        return data.map(function (item, index) {
+                            var option = { id: index + "", text: item };
+                            return option;
+                        });
+                    }
+                    if (Object.prototype.toString.apply(one) === '[object Object]') {
+                        return data;
+                    }
+                    return null;
+                }
+
+                if (Object.prototype.toString.apply(data) === '[object Object]') {
+                    var ret = [];
+                    for (var id in data) {
+                        var item = { id: id, text: data[id] };
+                        ret.push(item);
+                    }
+                    return ret;
+                }
+
+                return null;
+            }
+        }, {
             key: "handleChange",
             value: function handleChange(value, checked, event, item) {
                 var _props = this.props;
@@ -137,7 +167,7 @@ define(["module", "react", "classnames", "core/BaseComponent", "CheckBox", "core
                     var text_key = textField ? textField : "text";
                     var value = item[value_key],
                         text = item[text_key];
-                    var checked = currentValue == value;
+                    var checked = currentValue === value;
                     if (checked) {
                         this._lastChecked = item;
                     }
@@ -217,7 +247,7 @@ define(["module", "react", "classnames", "core/BaseComponent", "CheckBox", "core
          * @attribute value
          * @type {String}
          */
-        value: PropTypes.string,
+        value: PropTypes.any,
         /**
          * 只读属性
          * @attribute readOnly

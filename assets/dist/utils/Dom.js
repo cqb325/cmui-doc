@@ -4,7 +4,7 @@ define(['module', './classes', './mutation'], function (module, classes, mutatio
     var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
         return typeof obj;
     } : function (obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
 
     function _classCallCheck(instance, Constructor) {
@@ -321,7 +321,7 @@ define(['module', './classes', './mutation'], function (module, classes, mutatio
         }, {
             key: 'overView',
             value: function overView(el) {
-                var pad = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+                var pad = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
 
                 var height = window.innerHeight || document.documentElement.clientHeight;
                 var bottom = el.getBoundingClientRect().bottom + pad;

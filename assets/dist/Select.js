@@ -64,8 +64,9 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
 
             _this.selectedItems = {};
             var valueField = props.valueField || "id";
-            var data = _this._rebuildData(props.data, props.value, valueField);
             _this.sep = props.sep || ',';
+
+            var data = _this._rebuildData(props.data, props.value, valueField);
 
             _this.addState({
                 value: props.value,
@@ -171,7 +172,7 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Cor
                 }
                 html = '<div class="cm-select-value-text">' + (html.join(this.sep) || '&nbsp;') + '</div>';
 
-                html = html + '<input type="hidden" class="' + this.props.className + '" name="' + this.props.name + '" value="' + this.state.value + '">';
+                html = html + '<input type="hidden" class="' + this.props.className + '" name="' + this.props.name + '" value="' + (this.state.value || "") + '">';
 
                 return React.createElement("span", { className: className, dangerouslySetInnerHTML: { __html: html } });
             }

@@ -173,6 +173,10 @@ define(['module', 'react', 'react-dom', 'internal/Popup', 'utils/Events'], funct
             key: 'contentIsEmpty',
             value: function contentIsEmpty(empty) {
                 this.setState({ isEmpty: empty });
+                if (empty) {
+                    this.setState({ popupVisible: false });
+                    this.popupRef.update(false);
+                }
             }
         }, {
             key: 'componentWillUnmount',
@@ -199,6 +203,7 @@ define(['module', 'react', 'react-dom', 'internal/Popup', 'utils/Events'], funct
                 var props = {
                     align: this.props.align,
                     baseEle: baseEle,
+                    offsetEle: this.props.offsetEle,
                     visible: this.state.popupVisible,
                     extraProps: this.props.extraProps,
                     delay: this.props.delay,

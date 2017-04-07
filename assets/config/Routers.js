@@ -17,7 +17,7 @@ define(function(module, exports){
             {id:"33", text: "Radio",link: "#/components/radio"},
             {id:"34", text: "Icon",link: "#/components/icon"},
             {id:"35", text: "All Icons",link: "#/components/allIcons"},
-            {id:"36", text: "Affix",link: "#/components/affix"},
+            // {id:"36", text: "Affix",link: "#/components/affix"},
             {id:"37", text: "Grid",link: "#/components/grid"},
             {id:"371", text: "Layout",link: "#/components/layout"},
             {id:"38", text: "Breadcrumb",link: "#/components/breadcrumb"},
@@ -38,6 +38,11 @@ define(function(module, exports){
             {id:"323", text: "Progress",link: "#/components/progress"},
             {id:"324", text: "Slick",link: "#/components/slick"},
             {id:"325", text: "Spin",link: "#/components/spin"}
+        ]},
+        {id: "4", "text": "业务组件", children: [
+            {id:"41", text: "列表页",link: "#/business-component/simple-list-page"},
+            {id:"42", text: "表单",link: "#/business-component/form"},
+            {id:"43", text: "表格表单",link: "#/business-component/table-form"}
         ]}
     ];
 });

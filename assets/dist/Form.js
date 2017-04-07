@@ -1,6 +1,21 @@
 define(["module", "react", "react-dom", "classnames", "core/BaseComponent", 'utils/grids', 'Button', 'utils/Dom', 'core/Ajax'], function (module, React, ReactDOM, classnames, BaseComponent, grids, Button, Dom, Ajax) {
     "use strict";
 
+    function _defineProperty(obj, key, value) {
+        if (key in obj) {
+            Object.defineProperty(obj, key, {
+                value: value,
+                enumerable: true,
+                configurable: true,
+                writable: true
+            });
+        } else {
+            obj[key] = value;
+        }
+
+        return obj;
+    }
+
     var _extends = Object.assign || function (target) {
         for (var i = 1; i < arguments.length; i++) {
             var source = arguments[i];
@@ -89,6 +104,10 @@ define(["module", "react", "react-dom", "classnames", "core/BaseComponent", 'uti
 
             _this.items = {};
 
+            if (_this.props.component && _this.props.component != "form") {
+                _this.method = "ajax";
+            }
+
             _this.addState({});
             return _this;
         }
@@ -122,7 +141,7 @@ define(["module", "react", "react-dom", "classnames", "core/BaseComponent", 'uti
             key: "getItem",
             value: function getItem(name) {
                 if (this.items[name]) {
-                    return this.items[name].getReference();
+                    return this.items[name].ref.getReference();
                 }
 
                 return null;
@@ -158,11 +177,12 @@ define(["module", "react", "react-dom", "classnames", "core/BaseComponent", 'uti
                             }
                         }
                     }
-                    if (componentName === 'FormControl') {
+                    if (componentName === 'FormControl' || componentName === 'Row') {
                         var props = _extends({
                             "data-itemBind": _this2.itemBind.bind(_this2)
                         }, child.props);
                         props.layout = _this2.props.layout ? _this2.props.layout : props.layout;
+                        props.labelWidth = _this2.props.labelWidth ? _this2.props.labelWidth : props.labelWidth;
                         return React.cloneElement(child, props);
                     } else {
                         return child;
@@ -173,11 +193,11 @@ define(["module", "react", "react-dom", "classnames", "core/BaseComponent", 'uti
             key: "submit",
             value: function submit() {
                 var _props = this.props;
-                var method = _props.method;
                 var customParams = _props.customParams;
                 var success = _props.success;
                 var error = _props.error;
 
+                var method = this.method;
                 if (this.isValid()) {
                     if (method === "ajax") {
                         var params = customParams ? customParams() : this.getFormParams();
@@ -235,21 +255,37 @@ define(["module", "react", "react-dom", "classnames", "core/BaseComponent", 'uti
                 var className = _props2.className;
                 var grid = _props2.grid;
                 var style = _props2.style;
-                var children = _props2.children;
+                var layout = _props2.layout;
+                var encType = _props2.encType;
 
 
-                className = classnames("cm-form", className, getGrid(grid));
+                className = classnames("cm-form", className, getGrid(grid), _defineProperty({}, "cm-form-" + layout, layout));
 
-                return React.createElement(
-                    "form",
-                    { ref: "form", className: className, style: style, action: this.action, method: this.method || "post", target: this.target },
-                    this.renderChildren(),
-                    React.createElement(
+                if (this.props.component && this.props.component === "div") {
+                    return React.createElement(
                         "div",
-                        { style: { "textAlign": "center" } },
-                        this.renderSubmit()
-                    )
-                );
+                        { ref: "form", className: className, style: style, encType: encType, action: this.action,
+                            method: this.method || "post", target: this.target },
+                        this.renderChildren(),
+                        React.createElement(
+                            "div",
+                            { style: { "textAlign": "center" } },
+                            this.renderSubmit()
+                        )
+                    );
+                } else {
+                    return React.createElement(
+                        "form",
+                        { ref: "form", className: className, style: style, encType: encType, action: this.action,
+                            method: this.method || "post", target: this.target },
+                        this.renderChildren(),
+                        React.createElement(
+                            "div",
+                            { style: { "textAlign": "center" } },
+                            this.renderSubmit()
+                        )
+                    );
+                }
             }
         }]);
 
@@ -314,4 +350,59 @@ define(["module", "react", "react-dom", "classnames", "core/BaseComponent", 'uti
     };
 
     module.exports = Form;
+
+    var Row = function (_React$Component) {
+        _inherits(Row, _React$Component);
+
+        function Row(props) {
+            _classCallCheck(this, Row);
+
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(Row).call(this, props));
+        }
+
+        _createClass(Row, [{
+            key: "renderChildren",
+            value: function renderChildren() {
+                var _this4 = this;
+
+                return React.Children.map(this.props.children, function (child) {
+                    var componentName = "";
+                    if (child.type) {
+                        if (child.type.name) {
+                            componentName = child.type.name;
+                        } else {
+                            var matches = child.type.toString().match(/function\s*([^(]*)\(/);
+                            if (matches) {
+                                componentName = matches[1];
+                            }
+                        }
+                    }
+                    if (componentName === 'FormControl') {
+                        var props = _extends({
+                            "data-itemBind": _this4.props["data-itemBind"]
+                        }, child.props);
+                        props.layout = _this4.props.layout ? _this4.props.layout : props.layout;
+                        props.labelWidth = _this4.props.labelWidth ? _this4.props.labelWidth : props.labelWidth;
+                        return React.cloneElement(child, props);
+                    } else {
+                        return child;
+                    }
+                });
+            }
+        }, {
+            key: "render",
+            value: function render() {
+                var className = classnames("cm-form-row", this.props.className);
+                return React.createElement(
+                    "div",
+                    { className: className, style: this.props.style },
+                    this.renderChildren()
+                );
+            }
+        }]);
+
+        return Row;
+    }(React.Component);
+
+    Form.Row = Row;
 });

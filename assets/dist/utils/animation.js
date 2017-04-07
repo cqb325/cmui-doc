@@ -89,6 +89,10 @@ define(["module", "react", "react-dom"], function (module, React, ReactDOM) {
                 }, 10);
 
                 this.startTime++;
+            } else {
+                if (this.props.onAnimationEnd) {
+                    this.props.onAnimationEnd();
+                }
             }
         }
     });

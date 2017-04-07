@@ -1,4 +1,4 @@
-define(["module", "react", 'react-dom', "classnames", 'Core', 'utils/Dom', 'utils/Events', 'internal/InnerTrigger', "core/BaseComponent"], function (module, React, ReactDOM, classnames, Core, Dom, Events, InnerTrigger, BaseComponent) {
+define(["module", "react", 'react-dom', "classnames", 'internal/InnerTrigger', "core/BaseComponent"], function (module, React, ReactDOM, classnames, InnerTrigger, BaseComponent) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -49,6 +49,8 @@ define(["module", "react", 'react-dom', "classnames", 'Core', 'utils/Dom', 'util
         if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
     }
 
+    var PropTypes = React.PropTypes;
+
     var Tooltip = function (_BaseComponent) {
         _inherits(Tooltip, _BaseComponent);
 
@@ -76,6 +78,13 @@ define(["module", "react", 'react-dom', "classnames", 'Core', 'utils/Dom', 'util
             return _this;
         }
 
+        /**
+         * 获取显示的内容
+         * @param title
+         * @returns {XML}
+         */
+
+
         _createClass(Tooltip, [{
             key: "getPopupElement",
             value: function getPopupElement(title) {
@@ -101,8 +110,8 @@ define(["module", "react", 'react-dom', "classnames", 'Core', 'utils/Dom', 'util
             key: "setTitle",
             value: function setTitle(title) {
                 this.setState({ title: title });
-                this.refs.trigger.updateContent(this.getPopupElement(title));
                 this.refs.trigger.contentIsEmpty(!title);
+                this.refs.trigger.updateContent(this.getPopupElement(title));
             }
         }, {
             key: "render",
@@ -124,6 +133,7 @@ define(["module", "react", 'react-dom', "classnames", 'Core', 'utils/Dom', 'util
                         align: this.props.align || "top",
                         delay: this.delay,
                         isEmpty: !this.state.title,
+                        offsetEle: this.props.offsetEle,
                         onVisibleChange: this.onVisibleChange.bind(this),
                         extraProps: {
                             className: className,
@@ -132,7 +142,7 @@ define(["module", "react", 'react-dom', "classnames", 'Core', 'utils/Dom', 'util
                     },
                     React.isValidElement(this.props.children) ? this.props.children : React.createElement(
                         "span",
-                        null,
+                        { className: "cm-tooltip-helper" },
                         this.props.children
                     )
                 );
@@ -144,6 +154,47 @@ define(["module", "react", 'react-dom', "classnames", 'Core', 'utils/Dom', 'util
 
     Tooltip.defaultProps = {
         theme: "black"
+    };
+
+    Tooltip.propTypes = {
+        /**
+         * 显示的内容
+         * @attribute title
+         * @type {String}
+         */
+        title: PropTypes.string,
+        /**
+         * 自定义class
+         * @attribute className
+         * @type {String}
+         */
+        className: PropTypes.string,
+        /**
+         * 自定义样式
+         * @attribute style
+         * @type {Object}
+         */
+        style: PropTypes.object,
+        /**
+         * 主题
+         * @attribute theme
+         * @type {String}
+         */
+        theme: PropTypes.string,
+        /**
+         * 停靠位置 "topLeft","top","topRight","bottom","bottomLeft",
+         * "bottomRight","left","leftTop","leftBottom","right",
+         * "rightTop","rightBottom"
+         * @attribute theme
+         * @type {String}
+         */
+        align: PropTypes.oneOf(["topLeft", "top", "topRight", "bottom", "bottomLeft", "bottomRight", "left", "leftTop", "leftBottom", "right", "rightTop", "rightBottom"]),
+        /**
+         * 触发条件 "hover","click"
+         * @attribute trigger
+         * @type {String}
+         */
+        trigger: PropTypes.oneOf(["hover", "click"])
     };
 
     module.exports = Tooltip;

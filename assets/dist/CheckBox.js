@@ -102,6 +102,15 @@ define(["module", "react", "classnames", "core/BaseComponent", 'internal/Enhance
                 this.handleTrigger(checked, event);
             }
         }, {
+            key: "componentWillReceiveProps",
+            value: function componentWillReceiveProps(nextProps) {
+                if (nextProps.checked != this.state.checked) {
+                    this.setState({
+                        checked: nextProps.checked
+                    });
+                }
+            }
+        }, {
             key: "handleTrigger",
             value: function handleTrigger(checked, event) {
                 var value = this.state.value;
@@ -141,7 +150,7 @@ define(["module", "react", "classnames", "core/BaseComponent", 'internal/Enhance
                 return React.createElement(
                     "span",
                     { className: className, onClick: this.handleChange.bind(this) },
-                    React.createElement("input", { ref: "input", checked: this.state.checked,
+                    React.createElement("input", { ref: "input", checked: this.props.checked,
                         type: type, name: name,
                         defaultValue: this.state.value,
                         style: { display: "none" },
@@ -174,7 +183,7 @@ define(["module", "react", "classnames", "core/BaseComponent", 'internal/Enhance
          * @attribute value
          * @type {String}
          */
-        value: PropTypes.string,
+        value: PropTypes.any,
         /**
          * 组件类型
          * @attribute type
@@ -211,7 +220,7 @@ define(["module", "react", "classnames", "core/BaseComponent", 'internal/Enhance
          * @attribute label
          * @type {String}
          */
-        label: PropTypes.string,
+        label: PropTypes.any,
         /**
          * 值变化回调
          * @attribute onChange

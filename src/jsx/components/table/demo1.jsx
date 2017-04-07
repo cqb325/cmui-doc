@@ -7,6 +7,7 @@ const Code = require("../Code");
 class Demo extends BaseDemo{
     render(){
         let columns = [
+            {name: "index", text: "序号", type: "index"},
             {name: "field1", text: "数字"},
             {name: "field2", text: "日期", format: "DateFormat"},
             {name: "field3", text: "文字"}
@@ -22,7 +23,7 @@ class Demo extends BaseDemo{
         return (
             <div>
                 <div className="code-box-demo">
-                    <Table data={data} columns={columns}></Table>
+                    <Table data={data} columns={columns} bordered={true}></Table>
                 </div>
                 <div className="code-box-desc">
                     <div className="code-box-title">典型用法</div>

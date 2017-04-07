@@ -414,7 +414,7 @@ define(["module", "react", "classnames", "core/BaseComponent", "utils/shallowEqu
             _this3.idData = {};
             _this3._reBuildData(props.data);
             _this3.selectedItem = null;
-            _this3.checkedItems = null;
+            _this3.checkedItems = {};
             _this3.addState({
                 data: props.data || [],
                 url: props.url,
@@ -476,7 +476,7 @@ define(["module", "react", "classnames", "core/BaseComponent", "utils/shallowEqu
         }, {
             key: "_check",
             value: function _check(item) {
-                var checkedItems = this.checkedItems || {};
+                var checkedItems = this.checkedItems;
 
                 if (item._checked === 0 || item._checked === 2) {
                     item._checked = 1;
@@ -519,16 +519,16 @@ define(["module", "react", "classnames", "core/BaseComponent", "utils/shallowEqu
         }, {
             key: "setItemChecked",
             value: function setItemChecked(item, checked) {
-                var checkedItems = this.checkedItems || {};
+                var checkedItems = this.checkedItems;
 
                 item._checked = checked;
                 if (item._checked === 0) {
                     delete checkedItems[item.id];
                 }
-                if (item.checked === 1) {
+                if (item._checked === 1) {
                     checkedItems[item.id] = item;
                 }
-                if (item.checked === 2) {
+                if (item._checked === 2) {
                     delete checkedItems[item.id];
                 }
 
@@ -661,7 +661,7 @@ define(["module", "react", "classnames", "core/BaseComponent", "utils/shallowEqu
                 if (!item) {
                     return;
                 }
-                if (item.checked !== 0) {
+                if (item._checked !== 0) {
                     this.setItemChecked(item, 0);
                 }
             }
@@ -709,6 +709,17 @@ define(["module", "react", "classnames", "core/BaseComponent", "utils/shallowEqu
                 }
                 if (item) {
                     this._select(item);
+                }
+            }
+        }, {
+            key: "unSelectItem",
+            value: function unSelectItem(item) {
+                if (typeof item === 'string') {
+                    item = this.getItem(item);
+                }
+                if (item) {
+                    item._node.unSelect();
+                    this.selectedItem = null;
                 }
             }
         }, {

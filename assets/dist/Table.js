@@ -1,4 +1,4 @@
-define(["module", "react", "Core", "classnames", "core/BaseComponent", "moment", "utils/Dom"], function (module, React, Core, classnames, BaseComponent, moment, Dom) {
+define(["module", "react", "Core", "classnames", "core/BaseComponent", "moment", "utils/Dom", "utils/UUID", "CheckBox", "utils/shallowEqual"], function (module, React, Core, classnames, BaseComponent, moment, Dom, UUID, CheckBox, shallowEqual) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -59,151 +59,170 @@ define(["module", "react", "Core", "classnames", "core/BaseComponent", "moment",
 
             var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Table).call(this, props));
 
+            _this.data = _this._rebuildData(props.data);
+
             _this.addState({
-                data: props.data || [],
-                header: props.header
+                data: _this.data || [],
+                columns: props.columns
             });
+
+            _this.checkboxes = {};
+
+            _this._index = 1;
             return _this;
         }
 
-        /**
-         * 设置数据
-         * @method setData
-         * @param data {Array} 表体数据
-         */
-
-
         _createClass(Table, [{
+            key: "_rebuildData",
+            value: function _rebuildData(data) {
+                if (data && data.length) {
+                    return data.map(function (item) {
+                        return {
+                            key: item.id || UUID.v4(),
+                            data: item
+                        };
+                    });
+                }
+                return data;
+            }
+        }, {
             key: "setData",
             value: function setData(data) {
+                var newData = this._rebuildData(data);
+                this._index = 1;
+                this.setState({ data: newData });
+            }
+        }, {
+            key: "getData",
+            value: function getData() {
+                return this.state.data;
+            }
+        }, {
+            key: "addRow",
+            value: function addRow(row) {
+                var data = this.getData();
+                data.push({
+                    key: row.id || UUID.v4(),
+                    data: row
+                });
+                this.setState({ data: data });
+            }
+        }, {
+            key: "removeRow",
+            value: function removeRow(index) {
+                var data = this.getData();
+                if (index >= 0 && index < data.length) {
+                    data.splice(index, 1);
+                    this.setState({ data: data });
+                }
+            }
+        }, {
+            key: "removeRows",
+            value: function removeRows(field, value) {
+                var data = this.getData();
+                for (var i = data.length - 1; i >= 0; i--) {
+                    if (data[i].data[field] == value) {
+                        data.splice(i, 1);
+                    }
+                }
                 this.setState({ data: data });
             }
         }, {
             key: "resetData",
             value: function resetData(data) {
-                this.setState({ header: data.header, data: data.data });
+                var newData = this._rebuildData(data.data);
+                this._index = 1;
+                this.setState({ columns: data.columns, data: newData });
             }
         }, {
-            key: "_renderHeader",
-            value: function _renderHeader() {
-                var header = this.state.header,
-                    cols = void 0;
-                if (header) {
-                    cols = header.map(function (col, colIndex) {
-                        if (col.hide) {
-                            return null;
-                        } else {
-                            return React.createElement(
-                                "th",
-                                { key: "header_" + colIndex, className: col.className, width: col.width,
-                                    name: col.name },
-                                col.text
-                            );
+            key: "checkedAll",
+            value: function checkedAll(checked) {
+                for (var key in this.checkboxes) {
+                    var row = this.checkboxes[key]["row"];
+                    row.check(checked);
+                }
+            }
+        }, {
+            key: "checkRow",
+            value: function checkRow(field, value) {
+                for (var key in this.checkboxes) {
+                    var row = this.checkboxes[key]["row"];
+                    if (row.getData()[field] == value) {
+                        row.check(true);
+                    }
+                }
+            }
+        }, {
+            key: "unCheckRow",
+            value: function unCheckRow(field, value) {
+                for (var key in this.checkboxes) {
+                    var row = this.checkboxes[key]["row"];
+                    if (row.getData()[field] == value) {
+                        row.check(false);
+                    }
+                }
+            }
+        }, {
+            key: "bindCheckBox",
+            value: function bindCheckBox(key, data) {
+                this.checkboxes[key] = data;
+            }
+        }, {
+            key: "unBindCheckBox",
+            value: function unBindCheckBox(key) {
+                delete this.checkboxes[key];
+            }
+        }, {
+            key: "getAllChecked",
+            value: function getAllChecked() {
+                var data = [];var rows = [];
+                for (var key in this.checkboxes) {
+                    var row = this.checkboxes[key]["row"];
+                    if (row.isChecked()) {
+                        data.push(row.getData());
+                        rows.push(row);
+                    }
+                }
+
+                return {
+                    data: data,
+                    rows: rows
+                };
+            }
+        }, {
+            key: "refreshHeaderCheckBox",
+            value: function refreshHeaderCheckBox(key, checked) {
+                if (!checked) {
+                    this.refs.header.check(checked);
+                } else {
+                    var isAllChecked = true;
+                    for (var _key in this.checkboxes) {
+                        var row = this.checkboxes[_key]["row"];
+                        if (!row.isChecked()) {
+                            isAllChecked = false;
+                            break;
                         }
-                    });
-                }
-                return React.createElement(
-                    "thead",
-                    null,
-                    React.createElement(
-                        "tr",
-                        null,
-                        cols
-                    )
-                );
-            }
-        }, {
-            key: "_renderBody",
-            value: function _renderBody() {
-                var data = this.state.data,
-                    header = this.state.header,
-                    rows = void 0;
-
-                if (data && data.length && header) {
-                    rows = data.map(function (row, rowIndex) {
-                        var cells = header.map(function (col, colIndex) {
-                            if (col.hide) {
-                                return null;
-                            } else {
-                                var value = row[col.name];
-                                value = this._formatData(value, col, row);
-                                var tip = "";
-                                if (React.isValidElement(value)) {
-                                    if (col.tip) {
-                                        tip = value.props.children;
-                                    }
-                                    return React.createElement(
-                                        "td",
-                                        { key: "cell_" + rowIndex + "_" + colIndex, title: tip },
-                                        value
-                                    );
-                                }
-
-                                if (value instanceof Array) {
-                                    value = value.join("");
-                                    col.tip = false;
-                                }
-
-                                if (col.tip) {
-                                    tip = value + "";
-                                    if ('<' == tip.charAt(0)) {
-                                        tip = Dom.dom(tip).text();
-                                    }
-                                }
-                                return React.createElement("td", { key: "cell_" + rowIndex + "_" + colIndex, title: tip,
-                                    dangerouslySetInnerHTML: { __html: value } });
-                            }
-                        }, this);
-
-                        return React.createElement(
-                            "tr",
-                            { key: "row_" + rowIndex },
-                            cells
-                        );
-                    }, this);
-                }
-
-                return React.createElement(
-                    "tbody",
-                    null,
-                    rows
-                );
-            }
-        }, {
-            key: "_formatData",
-            value: function _formatData(value, col, row) {
-                if (col.format) {
-                    var formatFun = void 0;
-                    if (Core.isFunction(col.format)) {
-                        formatFun = col.format;
-                    } else if (Core.isString(col.format)) {
-                        formatFun = Table.Formats[col.format];
                     }
-                    if (formatFun) {
-                        value = formatFun(value, col, row);
-                    }
-                }
 
-                return value;
+                    this.refs.header.check(isAllChecked);
+                }
             }
         }, {
             key: "render",
             value: function render() {
-                var className = classnames("cm-table", "table", this.props.className, {
+                var className = classnames("cm-table", this.props.className, {
                     "table-bordered": this.props.bordered,
                     "table-striped": this.props.striped,
                     "table-hover": this.props.hover
                 });
-                var header = this._renderHeader();
-                var body = this._renderBody();
                 return React.createElement(
                     "div",
                     { className: "table-responsive" },
                     React.createElement(
                         "table",
                         { className: className, style: this.props.style },
-                        header,
-                        body
+                        React.createElement(Header, { ref: "header", columns: this.state.columns, table: this }),
+                        React.createElement(Body, { ref: "body", data: this.state.data, columns: this.state.columns, table: this })
                     )
                 );
             }
@@ -211,6 +230,314 @@ define(["module", "react", "Core", "classnames", "core/BaseComponent", "moment",
 
         return Table;
     }(BaseComponent);
+
+    var Header = function (_BaseComponent2) {
+        _inherits(Header, _BaseComponent2);
+
+        function Header(props) {
+            _classCallCheck(this, Header);
+
+            var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Header).call(this, props));
+
+            _this2.addState({
+                columns: props.columns || []
+            });
+            return _this2;
+        }
+
+        _createClass(Header, [{
+            key: "componentWillReceiveProps",
+            value: function componentWillReceiveProps(nextProps) {
+                if (!shallowEqual(nextProps.columns, this.state.columns)) {
+                    this.setState({
+                        columns: nextProps.columns
+                    });
+                }
+            }
+        }, {
+            key: "checkedAll",
+            value: function checkedAll(value, checked, event, item) {
+                this.props.table.checkedAll(checked);
+            }
+        }, {
+            key: "check",
+            value: function check(checked) {
+                this.refs.checkbox.updateState({
+                    checked: checked
+                });
+            }
+        }, {
+            key: "renderColumns",
+            value: function renderColumns() {
+                var _this3 = this;
+
+                var columns = this.state.columns;
+
+                return columns.map(function (column, index) {
+                    if (columns.hide) {
+                        return null;
+                    }
+                    var text = null;
+                    var className = classnames(column.className);
+                    if (column.type === "checkbox") {
+                        text = React.createElement(CheckBox, { ref: "checkbox", checked: false, onChange: _this3.checkedAll.bind(_this3) });
+                        className = classnames(className, "cm-table-col-checkbox");
+                    } else if (column.type === "index") {
+                        className = classnames(className, "cm-table-col-index");
+                        text = column.text;
+                    } else {
+                        text = column.text;
+                    }
+                    return React.createElement(
+                        "th",
+                        { key: index, className: className, width: column.width, style: column.style,
+                            name: column.name },
+                        text
+                    );
+                });
+            }
+        }, {
+            key: "render",
+            value: function render() {
+
+                return React.createElement(
+                    "thead",
+                    null,
+                    React.createElement(
+                        "tr",
+                        null,
+                        this.renderColumns()
+                    )
+                );
+            }
+        }]);
+
+        return Header;
+    }(BaseComponent);
+
+    Table.Header = Header;
+
+    /**
+     * Body 类
+     * @class Body
+     * @extend BaseComponent
+     */
+
+    var Body = function (_BaseComponent3) {
+        _inherits(Body, _BaseComponent3);
+
+        function Body(props) {
+            _classCallCheck(this, Body);
+
+            var _this4 = _possibleConstructorReturn(this, Object.getPrototypeOf(Body).call(this, props));
+
+            _this4.addState({
+                data: props.data || []
+            });
+            return _this4;
+        }
+
+        _createClass(Body, [{
+            key: "componentWillReceiveProps",
+            value: function componentWillReceiveProps(nextProps) {
+                if (!shallowEqual(nextProps.data, this.state.data)) {
+                    this.setState({
+                        data: nextProps.data
+                    });
+                }
+            }
+        }, {
+            key: "renderData",
+            value: function renderData() {
+                var _this5 = this;
+
+                var data = this.state.data;
+
+                return data.map(function (row, index) {
+                    console.log(row.key);
+                    return React.createElement(Row, { row: index, data: row.data, key: row.key, identify: row.key, columns: _this5.props.columns, table: _this5.props.table });
+                });
+            }
+        }, {
+            key: "render",
+            value: function render() {
+
+                return React.createElement(
+                    "tbody",
+                    null,
+                    this.renderData()
+                );
+            }
+        }]);
+
+        return Body;
+    }(BaseComponent);
+
+    Table.Body = Body;
+
+    /**
+     * Row 类
+     * @class Row
+     * @extend BaseComponent
+     */
+
+    var Row = function (_BaseComponent4) {
+        _inherits(Row, _BaseComponent4);
+
+        function Row(props) {
+            _classCallCheck(this, Row);
+
+            var _this6 = _possibleConstructorReturn(this, Object.getPrototypeOf(Row).call(this, props));
+
+            _this6.addState({
+                data: props.data || []
+            });
+
+            _this6.identify = props.identify || UUID.v4();
+            return _this6;
+        }
+
+        _createClass(Row, [{
+            key: "componentWillReceiveProps",
+            value: function componentWillReceiveProps(nextProps) {
+                if (!shallowEqual(nextProps.data, this.state.data)) {
+                    this.setState({
+                        data: nextProps.data
+                    });
+                }
+            }
+        }, {
+            key: "checkRow",
+            value: function checkRow(value, checked, event, item) {
+                var _this7 = this;
+
+                window.setTimeout(function () {
+                    _this7.props.table.refreshHeaderCheckBox(_this7.identify, checked);
+                }, 0);
+            }
+        }, {
+            key: "check",
+            value: function check(checked) {
+                this.refs.checkbox.updateState({ checked: checked });
+            }
+        }, {
+            key: "isChecked",
+            value: function isChecked() {
+                if (this.refs.checkbox) {
+                    return this.refs.checkbox.state.checked;
+                } else {
+                    return false;
+                }
+            }
+        }, {
+            key: "getData",
+            value: function getData() {
+                return this.state.data;
+            }
+        }, {
+            key: "componentDidMount",
+            value: function componentDidMount() {
+                if (this.refs.checkbox) {
+                    this.props.table.bindCheckBox(this.identify, { checkbox: this.refs.checkbox, row: this });
+                }
+            }
+        }, {
+            key: "componentWillUnmount",
+            value: function componentWillUnmount() {
+                if (this.refs.checkbox) {
+                    this.props.table.unBindCheckBox(this.identify);
+                }
+            }
+        }, {
+            key: "renderData",
+            value: function renderData() {
+                var _this8 = this;
+
+                var data = this.state.data;
+                var table = this.props.table;
+
+                var columns = this.props.columns || [];
+                return columns.map(function (col, index) {
+                    if (col.hide) {
+                        return null;
+                    }
+                    if (col.type === "checkbox") {
+                        return React.createElement(
+                            "td",
+                            { "data-row": _this8.props.row, "data-col": index, key: index },
+                            React.createElement(CheckBox, { ref: "checkbox", checked: false, onChange: _this8.checkRow.bind(_this8) })
+                        );
+                    }
+                    if (col.type === "index") {
+                        return React.createElement(
+                            "td",
+                            { "data-row": _this8.props.row, "data-col": index, key: index },
+                            table._index++
+                        );
+                    }
+                    var text = data[col.name];
+                    text = _this8.formatData(text, col, data);
+
+                    var tip = "";
+                    if (React.isValidElement(text)) {
+                        if (col.tip) {
+                            text = text.props.children;
+                        }
+                        return React.createElement(
+                            "td",
+                            { "data-row": _this8.props.row, "data-col": index, key: index, title: tip },
+                            text
+                        );
+                    }
+
+                    if (text instanceof Array) {
+                        text = text.join("");
+                        col.tip = false;
+                    }
+
+                    if (col.tip) {
+                        tip = text + "";
+                        if ('<' == tip.charAt(0)) {
+                            tip = Dom.dom(tip).text();
+                        }
+                    }
+
+                    return React.createElement("td", { "data-row": _this8.props.row, "data-col": index, key: index, dangerouslySetInnerHTML: { __html: text }, title: tip });
+                });
+            }
+        }, {
+            key: "formatData",
+            value: function formatData(text, col, data) {
+                if (col.format) {
+                    var formatFun = void 0;
+                    if (typeof col.format === 'function') {
+                        formatFun = col.format;
+                    } else if (typeof col.format === 'string') {
+                        formatFun = Table.Formats[col.format];
+                    }
+                    if (formatFun) {
+                        text = formatFun(text, col, data);
+                    }
+                }
+
+                return text;
+            }
+        }, {
+            key: "render",
+            value: function render() {
+
+                return React.createElement(
+                    "tr",
+                    { "data-row": this.props.row },
+                    this.renderData()
+                );
+            }
+        }]);
+
+        return Row;
+    }(BaseComponent);
+
+    Table.Row = Row;
 
     Table.propTypes = {
         /**

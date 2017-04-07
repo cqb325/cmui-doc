@@ -116,7 +116,7 @@ define(["module", "react", "react-dom", "classnames", "core/BaseComponent"], fun
         }, {
             key: "addCount",
             value: function addCount(num) {
-                num = num || 1;
+                num = num || 0;
                 var value = Math.max(this.state.value + num, 0);
 
                 this.setState({

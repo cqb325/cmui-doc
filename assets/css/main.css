@@ -330,3 +330,12 @@ pre[class*="language-"] {
   color: #fff;
   overflow: hidden;
 }
+.cm-table .cm-form-group {
+  margin: 0;
+}
+.cm-table.text-center .cm-form-group {
+  text-align: left;
+}
+.cm-table.form-table {
+  overflow: visible;
+}

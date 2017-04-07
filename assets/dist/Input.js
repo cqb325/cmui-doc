@@ -142,14 +142,14 @@ define(["module", "react", "classnames", "core/BaseComponent", 'utils/grids', 'u
                 var type = _props2.type;
                 var trigger = _props2.trigger;
 
-                var others = Omit(this.props, ["className", "grid", "type", "trigger"]);
-                var handleChange = this.props["data-handleChange"] ? function (event) {
-                    _this2.props["data-handleChange"](event, { component: _this2 });
+                var others = Omit(this.props, ["className", "handleChange", "data-valueType", "data-itemBind", "grid", "type", "trigger"]);
+                var handleChange = this.props["handleChange"] ? function (event) {
+                    _this2.props["handleChange"](event, { component: _this2 });
                 } : this.handleChange.bind(this);
                 var props = {
                     className: classnames(className, 'cm-form-control', getGrid(grid)),
                     onChange: handleChange,
-                    type: type === ('password' || 'hidden') ? type : 'text',
+                    type: type === 'password' || type === 'hidden' ? type : 'text',
                     value: this.state.value
                 };
 

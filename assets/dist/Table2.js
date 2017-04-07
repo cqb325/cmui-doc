@@ -65,6 +65,8 @@ define(["module", "react", "Core", "classnames", "core/BaseComponent", "moment",
             });
 
             _this.checkboxes = {};
+
+            _this._index = 1;
             return _this;
         }
 
@@ -78,6 +80,7 @@ define(["module", "react", "Core", "classnames", "core/BaseComponent", "moment",
         _createClass(Table, [{
             key: "setData",
             value: function setData(data) {
+                this._index = 1;
                 this.setState({ data: data });
             }
         }, {
@@ -115,6 +118,7 @@ define(["module", "react", "Core", "classnames", "core/BaseComponent", "moment",
         }, {
             key: "resetData",
             value: function resetData(data) {
+                this._index = 1;
                 this.setState({ columns: data.columns, data: data.data });
             }
         }, {
@@ -193,7 +197,7 @@ define(["module", "react", "Core", "classnames", "core/BaseComponent", "moment",
         }, {
             key: "render",
             value: function render() {
-                var className = classnames("cm-table", "table", this.props.className, {
+                var className = classnames("cm-table", this.props.className, {
                     "table-bordered": this.props.bordered,
                     "table-striped": this.props.striped,
                     "table-hover": this.props.hover
@@ -261,14 +265,19 @@ define(["module", "react", "Core", "classnames", "core/BaseComponent", "moment",
                         return null;
                     }
                     var text = null;
+                    var className = classnames(column.className);
                     if (column.type === "checkbox") {
                         text = React.createElement(CheckBox, { ref: "checkbox", checked: false, onChange: _this3.checkedAll.bind(_this3) });
+                        className = classnames(className, "cm-table-col-checkbox");
+                    } else if (column.type === "index") {
+                        className = classnames(className, "cm-table-col-index");
+                        text = column.text;
                     } else {
                         text = column.text;
                     }
                     return React.createElement(
                         "th",
-                        { key: index, className: column.className, width: column.width, style: column.style,
+                        { key: index, className: className, width: column.width, style: column.style,
                             name: column.name },
                         text
                     );
@@ -431,6 +440,7 @@ define(["module", "react", "Core", "classnames", "core/BaseComponent", "moment",
                 var _this8 = this;
 
                 var data = this.state.data;
+                var table = this.props.table;
 
                 var columns = this.props.columns || [];
                 return columns.map(function (col, index) {
@@ -442,6 +452,13 @@ define(["module", "react", "Core", "classnames", "core/BaseComponent", "moment",
                             "td",
                             { "data-row": _this8.props.row, "data-col": index, key: index },
                             React.createElement(CheckBox, { ref: "checkbox", checked: false, onChange: _this8.checkRow.bind(_this8) })
+                        );
+                    }
+                    if (col.type === "index") {
+                        return React.createElement(
+                            "td",
+                            { "data-row": _this8.props.row, "data-col": index, key: index },
+                            table._index++
                         );
                     }
                     var text = data[col.name];

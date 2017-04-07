@@ -61,7 +61,7 @@ define(["module", "react", "classnames", "core/BaseComponent", "CheckBox", "core
 
             _this.addState({
                 data: props.data,
-                value: props.value || ""
+                value: props.value == undefined ? "" : props.value
             });
             return _this;
         }

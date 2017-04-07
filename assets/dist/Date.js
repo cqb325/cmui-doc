@@ -295,11 +295,11 @@ define(["module", "react", "react-dom", "classnames", "moment", "utils/Dom", "co
                 setTimeout(function () {
                     _this5.setState({
                         current: current,
-                        value: current.format("YYYY-MM-DD HH:mm:ss")
+                        value: current.format("HH:mm:ss")
                     });
                 }, 0);
 
-                this.valueChange(current.format("YYYY-MM-DD HH:mm:ss"), current.toDate());
+                this.valueChange(current.format("HH:mm:ss"), current.toDate());
                 this.emit("selectTime", current.format("HH:mm:ss"));
             }
         }, {
