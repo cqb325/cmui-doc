@@ -42,6 +42,28 @@ let Page = React.createClass({
                         </Label>
                     </Col>
                 </Row>
+
+                <h2 className="page-h2">API</h2>
+                <h3 className="page-h3">Input</h3>
+
+                <table className="cm-table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>参数</th>
+                            <th>说明</th>
+                            <th>类型</th>
+                            <th>默认值</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>theme</td>
+                            <td>theme</td>
+                            <td>string</td>
+                            <td>default</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         );
     }

@@ -7,7 +7,9 @@ const FormControl = require("FormControl");
 const Input = require("Input");
 const Select = require("Select");
 const Button = require("Button");
+const Mock = require("mock");
 
+Mock.mock("getOperatorList.html", {"total|100-500":1,"pageSize": 10,"pageNum|1-50":1,"data|10":[{"id":"@string(8)","province": "@CHINESENAME","username":"@CHINESENAME","mobile":"@String('number',11)","email":"@email","desc":"@string(15)","createTime": "@datetime()","status|0-1":1}]});
 
 class Demo extends BaseDemo{
 
@@ -38,7 +40,7 @@ class Demo extends BaseDemo{
                         <label>状态</label> <Select name="status" data={[{id: "0", text: "禁用"},{id: "1", text: "激活"}]} className="searchItem"/>
                         <a className="cm-button primary ml-10" id="search-btn">查 询</a>
                     </div>
-                    <SimpleListPage pagination={true} columns={columns} action="http://192.168.105.202:8415/mock/cdn/getOperatorList.html"></SimpleListPage>
+                    <SimpleListPage pagination={true} columns={columns} action="getOperatorList.html"></SimpleListPage>
                 </div>
                 <div className="code-box-desc">
                     <div className="code-box-title">列表页组件的约定</div>
@@ -75,7 +77,7 @@ ReactDOM.render(
         <label>状态</label> <Select name="status" data={[{id: "0", text: "禁用"},{id: "1", text: "激活"}]} className="searchItem"/>
         <a className="cm-button primary ml-10" id="search-btn">查 询</a>
     </div>
-    <SimpleListPage pagination={true} columns={columns} action="http://192.168.105.202:8415/mock/cdn/getOperatorList.html"></SimpleListPage>
+    <SimpleListPage pagination={true} columns={columns} action="getOperatorList.html"></SimpleListPage>
 </div>, mountNode);
 `}
                     </Code>
