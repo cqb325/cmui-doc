@@ -1,5 +1,6 @@
 const React = require("react");
 const Label = require("Label");
+const Table = require("Table");
 const Demo1 = require("../components/card/demo1");
 const Demo2 = require("../components/card/demo2");
 const Demo3 = require("../components/card/demo3");
@@ -56,6 +57,47 @@ let Page = React.createClass({
                         <Demo6></Demo6>
                     </Label>
                 </Label>
+
+                <h2 className="page-h2">API</h2>
+                <h3 className="page-h3">Card</h3>
+
+                <Table columns={[
+                    {name: "param", text: "参数"},
+                    {name: "desc", text: "说明"},
+                    {name: "type", text: "类型"},
+                    {name: "default", text: "默认值"}
+                ]} bordered={true} data={[
+                    {param: "className", desc: "自定义class", type: "string", default: ""},
+                    {param: "style", desc: "自定义样式", type: "object", default: ""},
+                    {param: "title", desc: "标题", type: "string", default: ""},
+                    {param: "tools", desc: "按钮", type: "string/ReactElement", default: ""},
+                    {param: "border", desc: "是否存在边框", type: "boolean", default: "true"},
+                    {param: "loadding", desc: "内容占位等待加载", type: "boolean", default: "false"},
+                    {param: "bodyStyle", desc: "内容区域的样式", type: "object", default: ""}
+                ]}></Table>
+
+                <h3 className="page-h3">Methods</h3>
+
+                <ul className="code-methods">
+                    <li>
+                        <i>setTitle(title)</i>
+                        <span>设置Card的标题</span>
+                        <ul>
+                            <li>
+                                title {`String`} 标题
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <i>setContent(content)</i>
+                        <span>设置Card的内容</span>
+                        <ul>
+                            <li>
+                                content {`String/ReactElement`} 内容文字或React对象
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         );
     }

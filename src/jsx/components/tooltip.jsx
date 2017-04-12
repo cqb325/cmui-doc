@@ -1,5 +1,6 @@
 const React = require("react");
 const Label = require("Label");
+const Table = require("Table");
 const Demo1 = require("../components/tooltip/demo1");
 const Demo2 = require("../components/tooltip/demo2");
 const Demo3 = require("../components/tooltip/demo3");
@@ -36,6 +37,39 @@ let Page = React.createClass({
                         <Demo4></Demo4>
                     </Label>
                 </Label>
+
+                <h2 className="page-h2">API</h2>
+                <h3 className="page-h3">Tooltip</h3>
+
+                <Table columns={[
+                    {name: "param", text: "参数"},
+                    {name: "desc", text: "说明"},
+                    {name: "type", text: "类型"},
+                    {name: "default", text: "默认值"}
+                ]} bordered={true} data={[
+                    {param: "className", desc: "自定义class", type: "string", default: ""},
+                    {param: "style", desc: "自定义样式", type: "object", default: ""},
+                    {param: "title", desc: "提示信息", type: "string", default: ""},
+                    {param: "theme", desc: "主题default、black、primary、error", type: "string", default: "black"},
+                    {param: "delay", desc: "鼠标移走后延迟响应时间", type: "number", default: "0"},
+                    {param: "trigger", desc: "触发类型 click or hover", type: "string", default: "hover"},
+                    {param: "onVisibleChange", desc: "显隐改变时触发", type: "function", default: ""},
+                    {param: "align", desc: "显示的位置为12个方向", type: "string", default: "top"}
+                ]}></Table>
+
+                <h3 className="page-h3">Methods</h3>
+
+                <ul className="code-methods">
+                    <li>
+                        <i>setTitle(title)</i>
+                        <span>设置标题</span>
+                        <ul>
+                            <li>
+                                title {`String`} 标题
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         );
     }

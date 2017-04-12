@@ -2,6 +2,7 @@ const React = require("react");
 const Label = require("Label");
 const Row = require("Row");
 const Col = require("Col");
+const Table = require("Table");
 const Demo1 = require("../components/progress/demo1");
 const Demo2 = require("../components/progress/demo2");
 const Demo3 = require("../components/progress/demo3");
@@ -52,6 +53,70 @@ let Page = React.createClass({
                         </Label>
                     </Col>
                 </Row>
+
+                <h2 className="page-h2">API</h2>
+                <h3 className="page-h3">Progress</h3>
+
+                <Table columns={[
+                    {name: "param", text: "参数"},
+                    {name: "desc", text: "说明"},
+                    {name: "type", text: "类型"},
+                    {name: "default", text: "默认值"}
+                ]} bordered={true} data={[
+                    {param: "className", desc: "自定义class", type: "string", default: ""},
+                    {param: "style", desc: "自定义样式", type: "object", default: ""},
+                    {param: "value", desc: "进度值", type: "number", default: "0"},
+                    {param: "min", desc: "最小值", type: "number", default: "0"},
+                    {param: "max", desc: "最大值", type: "number", default: "100"},
+                    {param: "radius", desc: "半径", type: "number", default: "60"},
+                    {param: "strokeWidth", desc: "圆形线条粗细值", type: "number", default: "10"},
+                    {param: "status", desc: "状态", type: "string", default: ""},
+                    {param: "showPercent", desc: "是否显示进度文字", type: "boolean", default: "true"},
+                    {param: "active", desc: "动效状态激活", type: "boolean", default: "false"},
+                    {param: "type", desc: "普通进度line 还是圆形进度circle", type: "string", default: ""},
+                    {param: "format", desc: "进度结果格式化", type: "function", default: ""}
+                ]}></Table>
+
+                <h3 className="page-h3">Methods</h3>
+
+                <ul className="code-methods">
+                    <li>
+                        <i>getMin()</i>
+                        <span>获取最小值</span>
+                        <ul>
+                            <li>
+                                return {`Number`} 最小值
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <i>getMax()</i>
+                        <span>获取最大值</span>
+                        <ul>
+                            <li>
+                                return {`Number`} 最大值
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <i>getValue()</i>
+                        <span>获取当前值</span>
+                        <ul>
+                            <li>
+                                return {`Number`} 当前进度值
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <i>update(value)</i>
+                        <span>更新当前进度</span>
+                        <ul>
+                            <li>
+                                value {`Number`}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         );
     }

@@ -350,3 +350,23 @@ pre[class*="language-"] {
 .cm-table.form-table {
   overflow: visible;
 }
+.code-methods {
+  font-size: 14px;
+  font-weight: 500;
+  padding-left: 20px;
+  list-style: none;
+}
+.code-methods i {
+  margin-right: 10px;
+}
+.code-methods span {
+  font-weight: 400;
+  color: #6e6e6e;
+}
+.code-methods ul {
+  padding-left: 40px;
+}
+.code-methods li {
+  padding: 3px 0;
+  margin-bottom: 20px;
+}

@@ -24,8 +24,16 @@ class Demo extends BaseDemo{
 
 
     onChange(name, value, col, items, selectItem){
+        console.log(arguments);
         if(name === "loopDomain"){
             items["checkURL"].setValue("http://"+value);
+        }
+    }
+
+    submit(){
+        if(this.refs.tableForm.isValid()){
+            //do submit
+            console.log("valid all");
         }
     }
 
@@ -57,7 +65,7 @@ class Demo extends BaseDemo{
                     <TableForm ref="tableForm" bordered={true} columns={columns} className="form-table text-center" onChange={this.onChange.bind(this)}></TableForm>
 
                     <div className="mt-25 text-center">
-                        <Button theme="primary" >提 交</Button>
+                        <Button theme="primary" onClick={this.submit.bind(this)}>提 交</Button>
                     </div>
 
                     <div className="mt-20">
