@@ -53,6 +53,15 @@ let Page = React.createClass({
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <i>setValue(value)</i>
+                        <span>设置当前的值</span>
+                        <ul>
+                            <li>
+                                value {`String`} Input的值
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         );

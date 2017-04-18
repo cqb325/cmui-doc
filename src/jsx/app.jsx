@@ -7,6 +7,7 @@ const Router = ReactRouter.Router;
 const Route = ReactRouter.Route;
 const IndexRoute = ReactRouter.IndexRoute;
 const FontIcon = require("FontIcon");
+const Logo = require("Logo");
 
 const Routers = require("Routers");
 
@@ -77,6 +78,9 @@ const App = React.createClass({
         return (
             <div className="rc-desktop-wrap">
                 <div className="menu-wrap">
+                    <div style={{verticalAlign: "middle", borderBottom: "1px dashed #e7e7e7"}}>
+                        <Logo></Logo> <span className="ml-5" style={{position: "relative", top: -11}}>CMUI</span>
+                    </div>
                     <Menu style={{width: 200}}
                           ref="menu"
                     >

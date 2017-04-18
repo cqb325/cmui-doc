@@ -104,6 +104,14 @@ let Page = React.createClass({
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <i>disable()</i>
+                        <span>禁用</span>
+                    </li>
+                    <li>
+                        <i>enable()</i>
+                        <span>启用</span>
+                    </li>
                 </ul>
             </div>
         );
