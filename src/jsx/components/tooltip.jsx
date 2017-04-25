@@ -69,6 +69,14 @@ let Page = React.createClass({
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <i>show()</i>
+                        <span>显示</span>
+                    </li>
+                    <li>
+                        <i>hide()</i>
+                        <span>隐藏</span>
+                    </li>
                 </ul>
             </div>
         );
