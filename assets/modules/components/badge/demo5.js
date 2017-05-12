@@ -1,4 +1,4 @@
-define(["module", "react", "../BaseDemo", "FontIcon", "Pagination", "../Code"], function (module, React, BaseDemo, FontIcon, Pagination, Code) {
+define(["module", "react", "react-dom", "../BaseDemo", "Badge", "FontIcon", "../Code"], function (module, React, ReactDOM, BaseDemo, Badge, FontIcon, Code) {
     "use strict";
 
     function _classCallCheck(instance, Constructor) {
@@ -67,12 +67,16 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Pagination", "../Code"], 
                     React.createElement(
                         "div",
                         { className: "code-box-demo" },
-                        React.createElement(Pagination, { shape: "none", displayInfo: false, current: 1, pageSize: 10, total: 1000, onChange: function onChange(page, size) {
-                                console.log(page);
-                            } }),
-                        React.createElement(Pagination, { shape: "none", theme: "cyan", displayInfo: false, current: 1, pageSize: 10, total: 1000, onChange: function onChange(page, size) {
-                                console.log(page);
-                            } })
+                        React.createElement(
+                            Badge,
+                            { dot: true },
+                            React.createElement(FontIcon, { icon: "book", size: "3x" })
+                        ),
+                        React.createElement(
+                            Badge,
+                            { dot: false },
+                            React.createElement(FontIcon, { icon: "book", size: "3x" })
+                        )
                     ),
                     React.createElement(
                         "div",
@@ -80,12 +84,12 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Pagination", "../Code"], 
                         React.createElement(
                             "div",
                             { className: "code-box-title" },
-                            "displayInfo"
+                            "dot"
                         ),
                         React.createElement(
                             "div",
                             null,
-                            "设置displayInfo 为false 可以不显示页数信息等",
+                            "dot 为 true 只显示红点 false就不显示点",
                             React.createElement(FontIcon, { icon: "chevron-circle-down", ref: "collapse", className: "collapse", onClick: this.openCloseCode.bind(this) })
                         )
                     ),
@@ -95,7 +99,7 @@ define(["module", "react", "../BaseDemo", "FontIcon", "Pagination", "../Code"], 
                         React.createElement(
                             Code,
                             { className: "language-jsx" },
-                            "\nconst Pagination = require(\"Pagination\");\n\nReactDOM.render(\n<div>\n    <Pagination shape=\"none\" displayInfo={false} current={1} pageSize={10} total={1000} onChange={(page, size)=>{console.log(page);}}></Pagination>\n    <Pagination shape=\"none\" theme=\"cyan\" displayInfo={false} current={1} pageSize={10} total={1000} onChange={(page, size)=>{console.log(page);}}></Pagination>\n</div>, mountNode);\n"
+                            "\nconst Badge = require(\"Badge\");\n\nReactDOM.render(\n<div>\n    <Badge dot={true}>\n        <FontIcon icon=\"book\" size=\"3x\"></FontIcon>\n    </Badge>\n\n    <Badge dot={false}>\n        <FontIcon icon=\"book\" size=\"3x\"></FontIcon>\n    </Badge>\n</div>, mountNode);\n"
                         )
                     )
                 );

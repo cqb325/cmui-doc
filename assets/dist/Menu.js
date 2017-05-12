@@ -268,6 +268,8 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
             _this3.identify = props.identify || "SubMenu_level_" + (props.parent.identify ? props.parent.identify : "") + "_" + props.index;
             _this3.children = [];
             _this3.name = "SubMenu";
+
+            _this3.isAnimating = false;
             return _this3;
         }
 
@@ -318,7 +320,7 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
                     return false;
                 }
                 if (this.props.layout === "horizontal") {
-                    this.onClick(null, true);
+                    this.onClick(null, true, false);
                 }
             }
         }, {
@@ -328,12 +330,12 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
                     return false;
                 }
                 if (this.props.layout === "horizontal") {
-                    this.onClick(null, true);
+                    this.onClick(null, true, true);
                 }
             }
         }, {
             key: "onClick",
-            value: function onClick(event, called) {
+            value: function onClick(event, called, collapse) {
                 if (this.props.disabled) {
                     return false;
                 }
@@ -355,10 +357,19 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
                     this.props.onClick(this);
                 }
 
-                if (this.state.collapsed) {
-                    this.collapse(false);
+                if (this.props.layout === "horizontal") {
+                    if (collapse && this.state.collapsed) {
+                        this.collapse(false);
+                    }
+                    if (!collapse && !this.state.collapsed) {
+                        this.collapse(true);
+                    }
                 } else {
-                    this.collapse(true);
+                    if (this.state.collapsed) {
+                        this.collapse(false);
+                    } else {
+                        this.collapse(true);
+                    }
                 }
             }
         }, {
@@ -386,11 +397,17 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
             value: function collapse(collapsed) {
                 var _this5 = this;
 
+                if (this.isAnimating) {
+                    return false;
+                }
                 var subMenu = Dom.dom(ReactDOM.findDOMNode(this.refs.subMenu));
                 var parent = this.props.root;
                 var openKeys = parent.getOpenKeys();
+                this.isAnimating = true;
                 if (collapsed) {
-                    velocity(subMenu[0], "slideUp", { duration: 300 });
+                    velocity(subMenu[0], "slideUp", { duration: 300, complete: function complete() {
+                            _this5.isAnimating = false;
+                        } });
 
                     if (this.props.onCollapse) {
                         this.props.onCollapse(this);
@@ -414,7 +431,9 @@ define(["module", "react", "react-dom", "utils/Dom", "velocity", "utils/UUID", "
                         delete openKeys[this.identify];
                     }
                 } else {
-                    velocity(subMenu[0], "slideDown", { duration: 300 });
+                    velocity(subMenu[0], "slideDown", { duration: 300, complete: function complete() {
+                            _this5.isAnimating = false;
+                        } });
 
                     if (this.props.onOpen) {
                         this.props.onOpen(this);

@@ -971,6 +971,7 @@ a:focus {
   transition: border-color ease-in-out 0.15s;
   cursor: pointer;
   height: 30px;
+  line-height: 22px;
 }
 .cm-datetime.disabled {
   cursor: default;
@@ -1038,6 +1039,12 @@ a:focus {
   border: none;
   outline: none;
   background-color: transparent;
+}
+.cm-datetime .month::-moz-focus-inner,
+.cm-datetime .year::-moz-focus-inner,
+.cm-datetime button.day::-moz-focus-inner {
+  border: 0;
+  padding: 0;
 }
 .cm-datetime .week,
 .cm-datetime button.day span {
@@ -1319,7 +1326,7 @@ textarea.cm-form-control {
 }
 .cm-select .cm-select-value {
   padding: 4px 30px 4px 10px;
-  height: 30px;
+  height: 28px;
   border: 1px solid #ccc;
   border-radius: 2px;
   color: #333333;
@@ -4930,4 +4937,108 @@ textarea.cm-form-control {
 .cm-uploadify-lightbox {
   display: block;
   margin: 0 auto;
+}
+.cm-grid-wrap {
+  position: relative;
+  border: 1px solid #e9e9e9;
+  font-size: 12px;
+}
+.cm-grid-box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.cm-grid-scroll {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+.cm-grid-scroll-box {
+  overflow: auto;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.cm-grid-scroll-spacer-x {
+  height: 100%;
+}
+.cm-grid-scroll-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+.cm-grid-head-wrap {
+  background: #f7f7f7;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #e9e9e9;
+}
+.cm-grid-body-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+.cm-grid-head {
+  width: 32000px;
+  position: relative;
+  left: 0;
+}
+.cm-grid-head:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.cm-grid-column {
+  float: left;
+  border-right: 1px solid #e9e9e9;
+  padding: 8px;
+  word-break: break-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  position: relative;
+}
+.cm-grid-body {
+  width: 32000px;
+  position: relative;
+}
+.cm-grid-row {
+  border-bottom: 1px solid #e9e9e9;
+}
+.cm-grid-row:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.cm-grid-cell {
+  float: left;
+  word-break: break-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 8px;
+  border-right: 1px solid #e9e9e9;
+}
+.cm-grid-resize {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  cursor: col-resize;
+}
+.cm-grid-sort {
+  display: inline-block;
+  background: url(../../imgs/sort.png) center center no-repeat;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  margin-left: 3px;
 }

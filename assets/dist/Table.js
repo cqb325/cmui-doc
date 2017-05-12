@@ -98,6 +98,11 @@ define(["module", "react", "Core", "classnames", "core/BaseComponent", "moment",
                 return this.state.data;
             }
         }, {
+            key: "getColumns",
+            value: function getColumns() {
+                return this.state.columns;
+            }
+        }, {
             key: "addRow",
             value: function addRow(row) {
                 var data = this.getData();
@@ -354,6 +359,7 @@ define(["module", "react", "Core", "classnames", "core/BaseComponent", "moment",
                 var data = this.state.data;
 
                 return data.map(function (row, index) {
+                    console.log(row.key);
                     return React.createElement(Row, { row: index, data: row.data, key: row.key, identify: row.key, columns: _this5.props.columns, table: _this5.props.table });
                 });
             }
