@@ -113,7 +113,7 @@ define(["module", "react", "classnames", "core/BaseComponent", 'FontIcon', 'inte
                     return;
                 }
                 if (this.props.onClick) {
-                    this.props.onClick();
+                    this.props.onClick(e);
                 }
                 this.emit("click");
                 if (this.props.once) {
@@ -244,7 +244,7 @@ define(["module", "react", "classnames", "core/BaseComponent", 'FontIcon', 'inte
          * @attribute size
          * @type {string}
          */
-        size: PropTypes.oneOf(["large", "small"]),
+        size: PropTypes.oneOf(["default","large", "small"]),
         /**
          * 跳转的目标通a标签的target
          * @attribute target

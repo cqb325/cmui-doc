@@ -127,7 +127,6 @@ define(['module', 'react', 'react-dom', "velocity", 'internal/Popup', 'utils/Eve
         }, {
             key: 'onClick',
             value: function onClick(event) {
-                event.preventDefault();
                 var nextVisible = !this.state.popupVisible;
                 if (this.isClickToHide() && !nextVisible || nextVisible && this.isClickToShow()) {
                     this.setPopupVisible(!this.state.popupVisible);
@@ -136,7 +135,6 @@ define(['module', 'react', 'react-dom', "velocity", 'internal/Popup', 'utils/Eve
         }, {
             key: 'onDocumentClick',
             value: function onDocumentClick(event) {
-                event.preventDefault();
                 var target = event.target || event.srcElement;
                 var triggerEle = ReactDOM.findDOMNode(this.refs.target);
                 var overlayEle = ReactDOM.findDOMNode(this.popupRef);
@@ -154,19 +152,12 @@ define(['module', 'react', 'react-dom', "velocity", 'internal/Popup', 'utils/Eve
             }
         }, {
             key: 'onMouseLeave',
-            value: function onMouseLeave(event) {
-                console.log(event.target);
-                window.setTimeout(function () {
-                    console.log(event.target);
-                }, this.props.mouseLeaveDelay * 1000);
-                //this.delaySetPopupVisible(false, this.props.mouseLeaveDelay);
-            }
+            value: function onMouseLeave(event) {}
         }, {
             key: 'onDocumentMove',
             value: function onDocumentMove(event) {
                 var _this2 = this;
 
-                event.preventDefault();
                 if (!this.state.popupVisible) {
                     return true;
                 }
