@@ -102,6 +102,15 @@ let Page = React.createClass({
                         </ul>
                     </li>
                     <li>
+                        <i>setContent(content)</i>
+                        <span>设置内容</span>
+                        <ul>
+                            <li>
+                                content {`String/ReactElement`} 内容
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <i>getPanel()</i>
                         <span>获取dialog的panel</span>
                         <ul>
