@@ -1316,6 +1316,7 @@ textarea.cm-form-control {
   border-radius: 0;
 }
 .cm-select {
+  font-size: 12px;
   display: inline-block;
   position: relative;
   line-height: initial;
