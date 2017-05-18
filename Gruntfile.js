@@ -96,5 +96,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-babel');
 
     // 只需在命令行上输入"grunt"，就会执行default task
-    grunt.registerTask('default', ['jshint','uglify', 'less','cssmin']);
+    grunt.registerTask('default', ['watch']);
 };
