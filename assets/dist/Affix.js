@@ -95,6 +95,9 @@ define(["module", "react", "react-dom", "classnames", "utils/Events", "utils/Dom
         }, {
             key: "onScroll",
             value: function onScroll(event) {
+                if(!this._isMounted){
+                    return false;
+                }
                 var container = Dom.dom(this.target);
                 var scrollTop = container[0].scrollTop;
                 var parentOffset = container.offset();
