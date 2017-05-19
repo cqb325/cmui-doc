@@ -8,6 +8,7 @@ const Route = ReactRouter.Route;
 const IndexRoute = ReactRouter.IndexRoute;
 const FontIcon = require("FontIcon");
 const Logo = require("Logo");
+const store = require("store");
 
 const Routers = require("Routers");
 
@@ -26,6 +27,15 @@ const App = React.createClass({
     getInitialState(){
         return {};
     },
+
+    forwardModule(item){
+        store.set("cm-cmui-doc-lastSelectKey", item.getKey());
+        if(window.location.hash.indexOf(item.props.link) == -1){
+            window.location.hash = item.props.link;
+        }
+        return;
+    },
+
     renderMenu(){
         this.menuIndex = 0;
         return Routers.map((menuItem)=>{
@@ -74,6 +84,15 @@ const App = React.createClass({
         });
     },
 
+    componentDidMount(){
+        let key = store.get("cm-cmui-doc-lastSelectKey");
+        if(key) {
+            this.refs.menu.selectItem(key);
+        }else{
+            this.refs.menu.selectItem("31");
+        }
+    },
+
     render() {
         return (
             <div className="rc-desktop-wrap">
@@ -83,6 +102,7 @@ const App = React.createClass({
                     </div>
                     <Menu style={{width: 200}}
                           ref="menu"
+                          onSelect={this.forwardModule}
                     >
                         {this.renderMenu()}
                     </Menu>
