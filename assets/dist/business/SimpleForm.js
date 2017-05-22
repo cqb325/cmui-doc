@@ -133,7 +133,7 @@ define(["module", "react", "core/BaseComponent", 'classnames', 'Input', 'CheckBo
                             if (typeof itemProps.value === 'function') {
                                 val = itemProps.value(initData);
                             }
-                            itemProps.value = val || itemProps.value;
+                            itemProps.value = val == undefined ? itemProps.value : val;
                             itemProps.value = itemProps.value == undefined || itemProps.value == null ? undefined : itemProps.value + "";
                             return React.createElement(FormControl, _extends({}, itemProps, { label: item.label, onChange: _this2.onChange.bind(_this2, item) }));
                         } else {
