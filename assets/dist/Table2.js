@@ -1,6 +1,21 @@
 define(["module", "react", "Core", "classnames", "core/BaseComponent", "moment", "utils/Dom", "utils/UUID", "CheckBox", "utils/shallowEqual"], function (module, React, Core, classnames, BaseComponent, moment, Dom, UUID, CheckBox, shallowEqual) {
     "use strict";
 
+    function _defineProperty(obj, key, value) {
+        if (key in obj) {
+            Object.defineProperty(obj, key, {
+                value: value,
+                enumerable: true,
+                configurable: true,
+                writable: true
+            });
+        } else {
+            obj[key] = value;
+        }
+
+        return obj;
+    }
+
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
             throw new TypeError("Cannot call a class as a function");
@@ -195,6 +210,14 @@ define(["module", "react", "Core", "classnames", "core/BaseComponent", "moment",
                 }
             }
         }, {
+            key: "onSort",
+            value: function onSort(column, type) {
+                if (this.props.onSort) {
+                    this.props.onSort(column, type);
+                }
+                this.emit("sort", column, type);
+            }
+        }, {
             key: "render",
             value: function render() {
                 var className = classnames("cm-table", this.props.className, {
@@ -254,6 +277,22 @@ define(["module", "react", "Core", "classnames", "core/BaseComponent", "moment",
                 });
             }
         }, {
+            key: "sort",
+            value: function sort(column, event) {
+                var columns = this.state.columns;
+                if (!column.__sort) {
+                    column.__sort = "asc";
+                } else if (column.__sort === "asc") {
+                    column.__sort = "desc";
+                } else {
+                    column.__sort = undefined;
+                }
+                this.setState({
+                    columns: columns
+                });
+                this.props.table.onSort(column, column.__sort);
+            }
+        }, {
             key: "renderColumns",
             value: function renderColumns() {
                 var _this3 = this;
@@ -275,11 +314,17 @@ define(["module", "react", "Core", "classnames", "core/BaseComponent", "moment",
                     } else {
                         text = column.text;
                     }
+                    var sortEle = null;
+                    if (column.sort) {
+                        var sortClassName = classnames("cm-table-sort", _defineProperty({}, "cm-table-sort-" + column.__sort, column.__sort));
+                        sortEle = React.createElement("span", { className: sortClassName, onClick: _this3.sort.bind(_this3, column) });
+                    }
                     return React.createElement(
                         "th",
                         { key: index, className: className, width: column.width, style: column.style,
                             name: column.name },
-                        text
+                        text,
+                        sortEle
                     );
                 });
             }

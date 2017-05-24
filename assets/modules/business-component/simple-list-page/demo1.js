@@ -49,7 +49,7 @@ define(["module", "react", "../../components/BaseDemo", "business/SimpleListPage
         if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
     }
 
-    Mock.mock("getOperatorList.html", { "total|100-500": 1, "pageSize": 10, "pageNum|1-50": 1, "data|10": [{ "id": "@string(8)", "province": "@cname()", "username": "@cname()", "mobile": "@String('number',11)", "email": "@email", "desc": "@string(15)", "createTime": "@datetime()", "status|0-1": 1 }] });
+    Mock.mock(/getOperatorList\.html/, { "total|100-500": 1, "pageSize": 10, "pageNum|1-50": 1, "data|10": [{ "id": "@string(8)", "province": "@cname()", "username": "@cname()", "mobile": "@String('number',11)", "email": "@email", "desc": "@string(15)", "createTime": "@datetime()", "status|0-1": 1 }] });
 
     var Demo = function (_BaseDemo) {
         _inherits(Demo, _BaseDemo);
@@ -63,7 +63,7 @@ define(["module", "react", "../../components/BaseDemo", "business/SimpleListPage
         _createClass(Demo, [{
             key: "render",
             value: function render() {
-                var columns = [{ name: "index", text: "序号", type: "index" }, { name: "username", text: "用户名" }, { name: "mobile", text: "手机号码" }, { name: "email", text: "邮箱" }, { name: "createTime", text: "注册时间" }, { name: "status", text: "状态", format: function format(value, column, row) {
+                var columns = [{ name: "index", text: "序号", type: "index" }, { name: "username", text: "用户名" }, { name: "mobile", text: "手机号码" }, { name: "email", text: "邮箱" }, { name: "createTime", text: "注册时间", sort: true }, { name: "status", text: "状态", format: function format(value, column, row) {
                         return ["禁用", "激活"][value];
                     } }, { name: "op", text: "操作", format: function format(value, column, row) {
                         if (row.status) {

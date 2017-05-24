@@ -55,7 +55,10 @@ define(["module", "react", "Table2", "Pagination", "jquery"], function (module, 
         function SimpleListPage(props) {
             _classCallCheck(this, SimpleListPage);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(SimpleListPage).call(this, props));
+            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SimpleListPage).call(this, props));
+
+            _this.sort = {};
+            return _this;
         }
 
         _createClass(SimpleListPage, [{
@@ -65,6 +68,16 @@ define(["module", "react", "Table2", "Pagination", "jquery"], function (module, 
                     pageNum: page,
                     pageSize: pageSize
                 };
+
+                var sort = [];
+                for (var key in this.sort) {
+                    if (this.sort[key]) {
+                        sort.push(key + " " + this.sort[key]);
+                    }
+                }
+                if (sort.length) {
+                    params["sort"] = sort.join(",");
+                }
 
                 var searchClazz = this.props.searchClass || "searchItem";
 
@@ -87,7 +100,7 @@ define(["module", "react", "Table2", "Pagination", "jquery"], function (module, 
                 var scope = this;
                 $.ajax({
                     url: this.props.action,
-                    type: "post",
+                    type: "get",
                     dataType: "json",
                     data: this.getSearchParams(page, pageSize)
                 }).then(function (ret) {
@@ -156,12 +169,18 @@ define(["module", "react", "Table2", "Pagination", "jquery"], function (module, 
                 this.refs.table.checkRow(field, value);
             }
         }, {
+            key: "sortColumn",
+            value: function sortColumn(column, type) {
+                this.sort[column.name] = type;
+                this.refresh();
+            }
+        }, {
             key: "render",
             value: function render() {
                 return React.createElement(
                     "div",
                     null,
-                    React.createElement(Table, { ref: "table", columns: this.props.columns, data: this.props.data || [], bordered: true, hover: true, striped: true }),
+                    React.createElement(Table, { ref: "table", columns: this.props.columns, onSort: this.sortColumn.bind(this), data: this.props.data || [], bordered: true, hover: true, striped: true }),
                     React.createElement(
                         "div",
                         { className: "cm-row" },
