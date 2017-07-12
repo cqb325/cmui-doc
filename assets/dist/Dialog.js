@@ -291,6 +291,16 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'uti
                 }, 0);
             }
         }, {
+            key: "componentWillReceiveProps",
+            value: function componentWillReceiveProps(nextProps) {
+                if (nextProps.title !== this.state.title) {
+                    this.panel.setTitle(nextProps.title);
+                }
+                if (nextProps.content !== this.state.content) {
+                    this.panel.setContent(nextProps.content);
+                }
+            }
+        }, {
             key: "render",
             value: function render() {
                 return React.createElement("div", null);

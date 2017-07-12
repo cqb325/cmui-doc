@@ -95,7 +95,7 @@ define(["module", "react", "react-dom", "classnames", "utils/Events", "utils/Dom
         }, {
             key: "onScroll",
             value: function onScroll(event) {
-                if(!this._isMounted){
+                if (!this._isMounted) {
                     return false;
                 }
                 var container = Dom.dom(this.target);
@@ -175,7 +175,7 @@ define(["module", "react", "react-dom", "classnames", "utils/Events", "utils/Dom
             value: function render() {
                 var style = this.props.style || {};
                 if (this.state.offset) {
-                    style = _extends({ "top": this.state.offset.top + "px", left: this.state.offset.left + "px", position: "absolute" , zIndex: 1000}, style);
+                    style = _extends({ "top": this.state.offset.top + "px", left: this.state.offset.left + "px", position: "absolute", zIndex: 1000 }, style);
                 }
 
                 var className = classnames("cm-affix", this.props.className);

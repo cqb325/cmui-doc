@@ -2426,7 +2426,7 @@
                 options;
 
             /* Detect jQuery/Zepto elements being animated via the $.fn method. */
-            if (Type.isWrapped(this)) {
+            if (false) {
                 isUtility = false;
 
                 argumentIndex = 0;

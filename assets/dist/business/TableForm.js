@@ -1,4 +1,4 @@
-define(["module", "react", "core/BaseComponent", 'classnames', 'Input', 'CheckBoxGroup', 'RadioGroup', 'DateTime', 'Select', 'TextArea', 'Upload', 'FormControl', 'Table', 'utils/UUID'], function (module, React, BaseComponent, classnames, Input, CheckBoxGroup, RadioGroup, DateTime, Select, TextArea, Upload, FormControl, Table, UUID) {
+define(["module", "react", "core/BaseComponent", 'classnames', 'FormControl', 'Table', 'utils/UUID'], function (module, React, BaseComponent, classnames, FormControl, Table, UUID) {
     "use strict";
 
     function _defineProperty(obj, key, value) {

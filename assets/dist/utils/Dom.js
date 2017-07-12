@@ -738,6 +738,7 @@ define(['module', './classes', './mutation'], function (module, classes, mutatio
             for (var p in prop) {
                 this.setStyle(p, prop[p]);
             }
+            return;
         }
 
         if (2 == arguments.length) {

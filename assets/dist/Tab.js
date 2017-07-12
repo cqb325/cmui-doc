@@ -1,6 +1,20 @@
 define(["module", "react", 'react-dom', "classnames", 'Core', "core/BaseComponent", 'internal/EnhancedButton'], function (module, React, ReactDOM, classnames, Core, BaseComponent, EnhancedButton) {
     "use strict";
 
+    var _extends = Object.assign || function (target) {
+        for (var i = 1; i < arguments.length; i++) {
+            var source = arguments[i];
+
+            for (var key in source) {
+                if (Object.prototype.hasOwnProperty.call(source, key)) {
+                    target[key] = source[key];
+                }
+            }
+        }
+
+        return target;
+    };
+
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
             throw new TypeError("Cannot call a class as a function");
@@ -89,7 +103,13 @@ define(["module", "react", 'react-dom', "classnames", 'Core', "core/BaseComponen
         }, {
             key: "selectByIndex",
             value: function selectByIndex(index) {
-                if (index > 0 && index < this.state.data.length) {
+                if (index >= 0 && index < this.state.data.length) {
+                    var data = this.state.data;
+                    data.forEach(function (item, ind) {
+                        if (ind !== index) {
+                            item.active = false;
+                        }
+                    });
                     this.setState({
                         activeIndex: index
                     });
@@ -153,7 +173,14 @@ define(["module", "react", 'react-dom', "classnames", 'Core', "core/BaseComponen
                     });
 
                     var component = item.component;
-                    var tabPanel = React.createElement(component, { ref: item.id, data: item.data });
+                    var tabPanel = null;
+                    if (React.isValidElement(component)) {
+                        var newProps = _extends({ ref: item.id, data: item.data }, component.props);
+                        tabPanel = React.cloneElement(component, newProps);
+                    } else {
+                        tabPanel = React.createElement(component, { ref: item.id, data: item.data });
+                    }
+
                     return React.createElement(
                         "div",
                         { key: index, className: className },

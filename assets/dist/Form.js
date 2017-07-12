@@ -167,7 +167,7 @@ define(["module", "react", "react-dom", "classnames", "core/BaseComponent", 'uti
 
                 return React.Children.map(this.props.children, function (child) {
                     var componentName = "";
-                    if (child.type) {
+                    if (child && child.type) {
                         if (child.type.name) {
                             componentName = child.type.name;
                         } else {
@@ -179,7 +179,8 @@ define(["module", "react", "react-dom", "classnames", "core/BaseComponent", 'uti
                     }
                     if (componentName === 'FormControl' || componentName === 'Row') {
                         var props = _extends({
-                            "data-itemBind": _this2.itemBind.bind(_this2)
+                            "data-itemBind": _this2.itemBind.bind(_this2),
+                            "itemUnBind": _this2.itemUnBind.bind(_this2)
                         }, child.props);
                         props.layout = _this2.props.layout ? _this2.props.layout : props.layout;
                         props.tipTheme = _this2.props.tipTheme ? _this2.props.tipTheme : props.tipTheme;
@@ -370,7 +371,7 @@ define(["module", "react", "react-dom", "classnames", "core/BaseComponent", 'uti
 
                 return React.Children.map(this.props.children, function (child) {
                     var componentName = "";
-                    if (child.type) {
+                    if (child && child.type) {
                         if (child.type.name) {
                             componentName = child.type.name;
                         } else {
@@ -382,7 +383,8 @@ define(["module", "react", "react-dom", "classnames", "core/BaseComponent", 'uti
                     }
                     if (componentName === 'FormControl') {
                         var props = _extends({
-                            "data-itemBind": _this4.props["data-itemBind"]
+                            "data-itemBind": _this4.props["data-itemBind"],
+                            "itemUnBind": _this4.props["itemUnBind"]
                         }, child.props);
                         props.layout = _this4.props.layout ? _this4.props.layout : props.layout;
                         props.labelWidth = _this4.props.labelWidth ? _this4.props.labelWidth : props.labelWidth;

@@ -79,7 +79,6 @@ define(["module", "react", "react-dom", "classnames", "Button", 'utils/regs', "c
             if (props.max != undefined) {
                 value = Math.min(props.max, value);
             }
-
             _this.addState({
                 value: value || 0,
                 min: props.min,
@@ -274,7 +273,7 @@ define(["module", "react", "react-dom", "classnames", "Button", 'utils/regs', "c
         return InputNumber;
     }(BaseComponent);
 
-    FormControl.register(InputNumber, ["inputnumber"]);
+    FormControl.register(InputNumber, "inputnumber");
 
     module.exports = InputNumber;
 });

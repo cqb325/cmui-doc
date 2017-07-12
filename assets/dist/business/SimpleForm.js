@@ -1,4 +1,4 @@
-define(["module", "react", "core/BaseComponent", 'classnames', 'Input', 'CheckBoxGroup', 'RadioGroup', 'DateTime', 'Select', 'TextArea', 'Upload', 'FormControl', 'Form'], function (module, React, BaseComponent, classnames, Input, CheckBoxGroup, RadioGroup, DateTime, Select, TextArea, Upload, FormControl, Form) {
+define(["module", "react", "core/BaseComponent", 'classnames', 'FormControl', 'Form', 'Button'], function (module, React, BaseComponent, classnames, FormControl, Form, Button) {
     "use strict";
 
     var _extends = Object.assign || function (target) {
@@ -117,6 +117,13 @@ define(["module", "react", "core/BaseComponent", 'classnames', 'Input', 'CheckBo
 
                 if (items) {
                     return items.map(function (item) {
+                        if (item.type === 'button') {
+                            return React.createElement(
+                                Button,
+                                _extends({}, item, { key: _this2.itemIndex++ }),
+                                item.label
+                            );
+                        }
                         if (item.type === "label") {
                             return React.createElement(
                                 "span",
@@ -124,9 +131,27 @@ define(["module", "react", "core/BaseComponent", 'classnames', 'Input', 'CheckBo
                                 item.label
                             );
                         }
+                        if (item.type === "promote") {
+                            var style = item.style || {};
+                            if (_this2.state.data) {
+                                if (_this2.state.data.labelWidth || _this2.state.data.props && _this2.state.data.props.labelWidth) {
+                                    style["paddingLeft"] = parseInt(_this2.state.data.labelWidth) + 8;
+                                    if (_this2.state.data.props && _this2.state.data.props.labelWidth) {
+                                        style["paddingLeft"] = parseInt(_this2.state.data.props.labelWidth) + 8;
+                                    }
+                                }
+                            }
+                            delete item.style;
+                            return React.createElement(
+                                "div",
+                                _extends({ key: _this2.itemIndex++, style: style }, item),
+                                item.label
+                            );
+                        }
                         if (item.type !== "row") {
                             var itemProps = _extends({}, item.props || {});
-                            _this2.mergeProps(itemProps, item, ["name", "type", "rules", "messages"]);
+                            //this.mergeProps(itemProps, item, ["name","type","rules","messages"]);
+                            itemProps = _extends(itemProps, item);
                             itemProps.key = _this2.itemIndex++;
                             var initData = _this2.state.initData;
                             var val = initData[item.name];
@@ -147,9 +172,10 @@ define(["module", "react", "core/BaseComponent", 'classnames', 'Input', 'CheckBo
             key: "renderFormRow",
             value: function renderFormRow(item) {
                 var items = this.renderItems(item.children);
+                var props = _extends({}, item.props, item);
                 return React.createElement(
                     Form.Row,
-                    _extends({}, item.props, { key: this.itemIndex++ }),
+                    _extends({}, props, { key: this.itemIndex++ }),
                     items
                 );
             }
@@ -193,7 +219,8 @@ define(["module", "react", "core/BaseComponent", 'classnames', 'Input', 'CheckBo
             value: function render() {
                 var formData = this.state.data;
                 var formProps = _extends({}, formData.props || {});
-                this.mergeProps(formProps, formData, ["action", "method", "encType"]);
+                // this.mergeProps(formProps, formData, ["action","method","encType","className","style"]);
+                formProps = _extends(formProps, formData);
                 return React.createElement(
                     Form,
                     _extends({ ref: "form" }, formProps),

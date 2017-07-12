@@ -122,6 +122,11 @@ define(["module", "react", "classnames", "core/BaseComponent", "CheckBox", "core
                 return this.state.value;
             }
         }, {
+            key: "setData",
+            value: function setData(data) {
+                this.setState(data);
+            }
+        }, {
             key: "_renderItems",
             value: function _renderItems() {
                 var _props2 = this.props;
@@ -141,7 +146,7 @@ define(["module", "react", "classnames", "core/BaseComponent", "CheckBox", "core
                     var checked = values.indexOf(value) != -1;
                     item._checked = checked;
 
-                    return React.createElement(CheckBox, { key: index,
+                    return React.createElement(CheckBox, { key: value + text,
                         name: name,
                         disabled: this.props.disabled,
                         readOnly: this.props.readOnly,

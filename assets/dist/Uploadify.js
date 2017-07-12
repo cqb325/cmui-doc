@@ -137,15 +137,25 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Fon
                     files: arr
                 });
 
-                if (this.props.auto) {
-                    this.start();
-                }
-
                 if (this.props.onFilesAdded) {
-                    this.props.onFilesAdded(up, files);
+                    var _ret = this.props.onFilesAdded(up, files, arr);
+                    if (_ret == false) {
+                        return false;
+                    } else {
+                        if (this.props.auto) {
+                            this.start();
+                        }
+                    }
                 }
 
-                this.emit("filesAdded", up, files);
+                var ret = this.emit("filesAdded", up, files, arr);
+                if (ret === false) {
+                    return false;
+                } else {
+                    if (this.props.auto) {
+                        this.start();
+                    }
+                }
             }
         }, {
             key: "progress",
@@ -348,7 +358,7 @@ define(["module", "react", 'react-dom', "classnames", "core/BaseComponent", 'Fon
                         max_file_size: maxSize || '2mb',
                         mime_types: mimeTypes
                     },
-                    multi_selection: this.props.multi || true,
+                    multi_selection: this.props.multi != undefined ? this.props.multi : true,
                     multipart_params: this.params,
 
                     init: {

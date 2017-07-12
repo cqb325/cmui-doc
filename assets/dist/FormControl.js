@@ -113,7 +113,7 @@ define(["module", "react", "react-dom", "classnames", "core/BaseComponent", 'uti
                         component = FormControl.COMPONENTS["text"];
                     }
 
-                    var others = Omit(this.props, ["tipTheme", "tipAlign", "tipAuto", "itemStyle", "labelWidth", "handleChange", "data-valueType", "className", "children", "layout", "rules", "messages", "isFormItem", "onValid", "onChange", "label", "labelGrid"]);
+                    var others = Omit(this.props, ["itemUnBind", "tipTheme", "tipAlign", "tipAuto", "itemStyle", "labelWidth", "handleChange", "data-valueType", "className", "children", "layout", "rules", "messages", "isFormItem", "onValid", "onChange", "label", "labelGrid"]);
                     var props = _extends({
                         type: this.props.type,
                         key: this.props.name,
@@ -148,7 +148,7 @@ define(["module", "react", "react-dom", "classnames", "core/BaseComponent", 'uti
                 return React.Children.map(children, function (child, index) {
                     var registerComp = _this2.isRegisterComponent(child);
                     if (registerComp) {
-                        var others = Omit(_this2.props, ["tipTheme", "tipAlign", "tipAuto", "itemStyle", "labelWidth", "handleChange", "data-valueType", "tipAlign", "className", "children", "layout", "rules", "messages", "isFormItem", "onValid", "onChange", "label", "labelGrid"]);
+                        var others = Omit(_this2.props, ["itemUnBind", "tipTheme", "tipAlign", "tipAuto", "itemStyle", "labelWidth", "handleChange", "data-valueType", "tipAlign", "className", "children", "layout", "rules", "messages", "isFormItem", "onValid", "onChange", "label", "labelGrid"]);
                         var props = _extends({
                             key: index,
                             "data-valueType": registerComp.valueType,
@@ -239,9 +239,11 @@ define(["module", "react", "react-dom", "classnames", "core/BaseComponent", 'uti
                 if (this.props.disabled || this.props.readOnly) {
                     return false;
                 }
-                var ele = Dom.dom(ReactDOM.findDOMNode(this));
-                if (ele.width() === 0 && ele.height() === 0) {
-                    return false;
+                if (this._isMounted) {
+                    var ele = Dom.dom(ReactDOM.findDOMNode(this));
+                    if (ele.width() === 0 && ele.height() === 0) {
+                        return false;
+                    }
                 }
 
                 return true;
@@ -278,7 +280,7 @@ define(["module", "react", "react-dom", "classnames", "core/BaseComponent", 'uti
                     return true;
                 }
 
-                if (this.item.props.valueType === 'array') {
+                if (this.item.props["data-valueType"] === 'array') {
                     value = value ? value.split(",") : [];
                 }
 
@@ -495,6 +497,11 @@ define(["module", "react", "react-dom", "classnames", "core/BaseComponent", 'uti
             key: "componentWillUnmount",
             value: function componentWillUnmount() {
                 this._isMounted = false;
+
+                this.item = this.refs["formItem"];
+                if (this.props["itemUnBind"] && this.isFormItem()) {
+                    this.props["itemUnBind"](this.props.name);
+                }
             }
         }, {
             key: "render",
