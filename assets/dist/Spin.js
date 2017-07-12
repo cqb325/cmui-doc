@@ -182,26 +182,31 @@ define(["module", "react", "classnames", "core/BaseComponent"], function (module
                             { className: "cm-svg-spin" },
                             React.createElement(
                                 "svg",
-                                { width: "32px", height: "32px", xmlns: "http://www.w3.org/2000/svg",
-                                    viewBox: "0 0 100 100", preserveAspectRatio: "xMidYMid", className: "uil-gears" },
-                                React.createElement("rect", { x: "0", y: "0", width: "100", height: "100", fill: "none", className: "bk" }),
+                                { className: "lds-gears", width: "32px", height: "32px", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 100 100", preserveAspectRatio: "xMidYMid" },
                                 React.createElement(
                                     "g",
-                                    { className: "cm-svg-spin-gear1" },
+                                    { transform: "translate(50 50)" },
                                     React.createElement(
-                                        "path",
-                                        { d: "M79.9,52.6C80,51.8,80,50.9,80,\r 50s0-1.8-0.1-2.6l-5.1-0.4c-0.3-2.4-0.9-4.6-1.8-6.7l4.2-2.9c-0.7-1.6-1.6-3.1-2.6-4.5 L70,\r 35c-1.4-1.9-3.1-3.5-4.9-4.9l2.2-4.6c-1.4-1-2.9-1.9-4.5-2.6L59.8,\r 27c-2.1-0.9-4.4-1.5-6.7-1.8l-0.4-5.1C51.8,20,50.9,20,50,20 s-1.8,0-2.6,0.1l-0.4,\r 5.1c-2.4,0.3-4.6,0.9-6.7,1.8l-2.9-4.1c-1.6,0.7-3.1,1.6-4.5,2.6l2.1,4.6c-1.9,\r 1.4-3.5,3.1-5,4.9l-4.5-2.1 c-1,1.4-1.9,2.9-2.6,4.5l4.1,2.9c-0.9,2.1-1.5,4.4-1.8,\r 6.8l-5,0.4C20,48.2,20,49.1,20,50s0,1.8,0.1,2.6l5,0.4 c0.3,2.4,0.9,4.7,1.8,\r 6.8l-4.1,2.9c0.7,1.6,1.6,3.1,2.6,4.5l4.5-2.1c1.4,1.9,3.1,3.5,5,4.9l-2.1,4.6c1.4,\r 1,2.9,1.9,4.5,2.6l2.9-4.1 c2.1,0.9,4.4,1.5,6.7,1.8l0.4,5.1C48.2,80,49.1,80,50,\r 80s1.8,0,2.6-0.1l0.4-5.1c2.3-0.3,4.6-0.9,6.7-1.8l2.9,4.2 c1.6-0.7,3.1-1.6,4.5-2.6L65,69.9c1.9-1.4,3.5-3,4.9-4.9l4.6,2.2c1-1.4,1.9-2.9,2.6-4.5L73,59.8c0.9-2.1,1.5-4.4,1.8-6.7L79.9,52.6 z\r M50,65c-8.3,0-15-6.7-15-15c0-8.3,6.7-15,15-15s15,6.7,15,15C65,58.3,58.3,65,50,65z",
-                                            fill: "#1f2d3d", transform: "rotate(27 50 50)" },
-                                        React.createElement("animateTransform", { attributeName: "transform", type: "rotate", from: "90 50 50", to: "0 50 50", dur: "1s", repeatCount: "indefinite" })
-                                    )
-                                ),
-                                React.createElement(
-                                    "g",
-                                    { className: "cm-svg-spin-gear2" },
+                                        "g",
+                                        { transform: "translate(-19 -19) scale(0.6)" },
+                                        React.createElement(
+                                            "g",
+                                            { transform: "rotate(177)" },
+                                            React.createElement("animateTransform", { attributeName: "transform", type: "rotate", values: "0;360", keyTimes: "0;1", dur: "2s", begin: "0s", repeatCount: "indefinite" }),
+                                            React.createElement("path", { fill: "#20a0ff",
+                                                d: "M37.3496987939662 -7 L47.3496987939662 -7 L47.3496987939662 7 L37.3496987939662 7 A38 38 0 0 1 31.359972760794346 21.46047782418268 L31.359972760794346 21.46047782418268 L38.431040572659825 28.531545636048154 L28.531545636048154 38.431040572659825 L21.46047782418268 31.359972760794346 A38 38 0 0 1 7.0000000000000036 37.3496987939662 L7.0000000000000036 37.3496987939662 L7.000000000000004 47.3496987939662 L-6.999999999999999 47.3496987939662 L-7 37.3496987939662 A38 38 0 0 1 -21.46047782418268 31.35997276079435 L-21.46047782418268 31.35997276079435 L-28.531545636048154 38.431040572659825 L-38.43104057265982 28.531545636048158 L-31.359972760794346 21.460477824182682 A38 38 0 0 1 -37.3496987939662 7.000000000000007 L-37.3496987939662 7.000000000000007 L-47.3496987939662 7.000000000000008 L-47.3496987939662 -6.9999999999999964 L-37.3496987939662 -6.999999999999997 A38 38 0 0 1 -31.35997276079435 -21.460477824182675 L-31.35997276079435 -21.460477824182675 L-38.431040572659825 -28.531545636048147 L-28.53154563604818 -38.4310405726598 L-21.4604778241827 -31.35997276079433 A38 38 0 0 1 -6.999999999999992 -37.3496987939662 L-6.999999999999992 -37.3496987939662 L-6.999999999999994 -47.3496987939662 L6.999999999999977 -47.3496987939662 L6.999999999999979 -37.3496987939662 A38 38 0 0 1 21.460477824182686 -31.359972760794342 L21.460477824182686 -31.359972760794342 L28.531545636048158 -38.43104057265982 L38.4310405726598 -28.53154563604818 L31.35997276079433 -21.4604778241827 A38 38 0 0 1 37.3496987939662 -6.999999999999995 M0 -23A23 23 0 1 0 0 23 A23 23 0 1 0 0 -23"
+                                            })
+                                        )
+                                    ),
                                     React.createElement(
-                                        "path",
-                                        { d: "M79.9,52.6C80,51.8,80,50.9,80,50s0-1.8-0.1-2.6l-5.1-0.4c-0.3-2.4-0.9-4.6-1.8-6.7l4.2-2.9c-0.7-1.6-1.6-3.1-2.6-4.5 L70,\r 35c-1.4-1.9-3.1-3.5-4.9-4.9l2.2-4.6c-1.4-1-2.9-1.9-4.5-2.6L59.8,27c-2.1-0.9-4.4-1.5-6.7-1.8l-0.4-5.1C51.8,20,50.9,20,50,\r 20 s-1.8,0-2.6,0.1l-0.4,5.1c-2.4,0.3-4.6,0.9-6.7,1.8l-2.9-4.1c-1.6,0.7-3.1,1.6-4.5,2.6l2.1,4.6c-1.9,1.4-3.5,3.1-5,\r 4.9l-4.5-2.1 c-1,1.4-1.9,2.9-2.6,4.5l4.1,2.9c-0.9,2.1-1.5,4.4-1.8,6.8l-5,0.4C20,48.2,20,49.1,20,50s0,1.8,0.1,2.6l5,\r 0.4 c0.3,2.4,0.9,4.7,1.8,6.8l-4.1,2.9c0.7,1.6,1.6,3.1,2.6,4.5l4.5-2.1c1.4,1.9,3.1,3.5,5,4.9l-2.1,4.6c1.4,1,2.9,1.9,\r 4.5,2.6l2.9-4.1 c2.1,0.9,4.4,1.5,6.7,1.8l0.4,5.1C48.2,80,49.1,80,50,80s1.8,0,2.6-0.1l0.4-5.1c2.3-0.3,4.6-0.9,6.7-1.8l2.9,\r 4.2 c1.6-0.7,3.1-1.6,4.5-2.6L65,69.9c1.9-1.4,3.5-3,4.9-4.9l4.6,2.2c1-1.4,1.9-2.9,2.6-4.5L73,59.8c0.9-2.1,1.5-4.4,1.8-6.7L79.9,52.6 z\r M50,65c-8.3,0-15-6.7-15-15c0-8.3,6.7-15,15-15s15,6.7,15,15C65,58.3,58.3,65,50,65z", fill: "#20A0FF", transform: "rotate(63 50 50)" },
-                                        React.createElement("animateTransform", { attributeName: "transform", type: "rotate", from: "0 50 50", to: "90 50 50", dur: "1s", repeatCount: "indefinite" })
+                                        "g",
+                                        { transform: "translate(19 19) scale(0.6)" },
+                                        React.createElement(
+                                            "g",
+                                            { transform: "rotate(160.5)" },
+                                            React.createElement("animateTransform", { attributeName: "transform", type: "rotate", values: "360;0", keyTimes: "0;1", dur: "2s", begin: "-0.125s", repeatCount: "indefinite" }),
+                                            React.createElement("path", { fill: "rgba(12.549019607843137%,62.74509803921568%,100%,0.382)", d: "M37.3496987939662 -7 L47.3496987939662 -7 L47.3496987939662 7 L37.3496987939662 7 A38 38 0 0 1 31.359972760794346 21.46047782418268 L31.359972760794346 21.46047782418268 L38.431040572659825 28.531545636048154 L28.531545636048154 38.431040572659825 L21.46047782418268 31.359972760794346 A38 38 0 0 1 7.0000000000000036 37.3496987939662 L7.0000000000000036 37.3496987939662 L7.000000000000004 47.3496987939662 L-6.999999999999999 47.3496987939662 L-7 37.3496987939662 A38 38 0 0 1 -21.46047782418268 31.35997276079435 L-21.46047782418268 31.35997276079435 L-28.531545636048154 38.431040572659825 L-38.43104057265982 28.531545636048158 L-31.359972760794346 21.460477824182682 A38 38 0 0 1 -37.3496987939662 7.000000000000007 L-37.3496987939662 7.000000000000007 L-47.3496987939662 7.000000000000008 L-47.3496987939662 -6.9999999999999964 L-37.3496987939662 -6.999999999999997 A38 38 0 0 1 -31.35997276079435 -21.460477824182675 L-31.35997276079435 -21.460477824182675 L-38.431040572659825 -28.531545636048147 L-28.53154563604818 -38.4310405726598 L-21.4604778241827 -31.35997276079433 A38 38 0 0 1 -6.999999999999992 -37.3496987939662 L-6.999999999999992 -37.3496987939662 L-6.999999999999994 -47.3496987939662 L6.999999999999977 -47.3496987939662 L6.999999999999979 -37.3496987939662 A38 38 0 0 1 21.460477824182686 -31.359972760794342 L21.460477824182686 -31.359972760794342 L28.531545636048158 -38.43104057265982 L38.4310405726598 -28.53154563604818 L31.35997276079433 -21.4604778241827 A38 38 0 0 1 37.3496987939662 -6.999999999999995 M0 -23A23 23 0 1 0 0 23 A23 23 0 1 0 0 -23" })
+                                        )
                                     )
                                 )
                             )
@@ -354,4 +359,97 @@ define(["module", "react", "classnames", "core/BaseComponent"], function (module
     }(BaseComponent);
 
     module.exports.CssSpin = CssSpin;
+
+    /**
+     * GIFSpin 类
+     * @class GIFSpin
+     * @constructor
+     * @extend BaseComponent
+     */
+
+    var GIFSpin = function (_BaseComponent4) {
+        _inherits(GIFSpin, _BaseComponent4);
+
+        function GIFSpin(props) {
+            _classCallCheck(this, GIFSpin);
+
+            var _this4 = _possibleConstructorReturn(this, Object.getPrototypeOf(GIFSpin).call(this, props));
+
+            _this4.addState({
+                spinning: props.spinning || false
+            });
+
+            return _this4;
+        }
+
+        /**
+         *
+         */
+
+
+        _createClass(GIFSpin, [{
+            key: "show",
+            value: function show() {
+                this.setState({
+                    spinning: true
+                });
+            }
+        }, {
+            key: "hide",
+            value: function hide() {
+                this.setState({
+                    spinning: false
+                });
+            }
+        }, {
+            key: "renderSpin",
+            value: function renderSpin() {
+                if (this.state.spinning) {
+                    return React.createElement(
+                        "div",
+                        { className: "cm-spin-inner" },
+                        React.createElement(
+                            "div",
+                            { className: "cm-spin" },
+                            React.createElement("img", { src: this.props.src, width: this.props.size, height: this.props.size })
+                        ),
+                        React.createElement(
+                            "div",
+                            { className: "cm-spin-text" },
+                            this.props.title || "loading..."
+                        )
+                    );
+                } else {
+                    return null;
+                }
+            }
+        }, {
+            key: "render",
+            value: function render() {
+                var className = classnames(this.props.className, "cm-spin-wrap", _defineProperty({}, "cm-spin-" + this.props.type, this.props.type));
+                var containerClassName = classnames("cm-container", {
+                    "cm-spin-blur": this.state.spinning
+                });
+                var spin = this.renderSpin();
+                return React.createElement(
+                    "div",
+                    { className: className },
+                    spin,
+                    React.createElement(
+                        "div",
+                        { className: containerClassName },
+                        this.props.children
+                    )
+                );
+            }
+        }]);
+
+        return GIFSpin;
+    }(BaseComponent);
+
+    GIFSpin.defaultProps = {
+        size: 32
+    };
+
+    module.exports.GIFSpin = GIFSpin;
 });
